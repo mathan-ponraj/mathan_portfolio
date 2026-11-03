@@ -151,7 +151,7 @@ function Sidebar() {
       <section className="sidebar-section about-section">
         <p className="section-kicker">About</p>
         <div className="about-copy">
-          <p>AI & Data Analyst</p>
+          <p>AI Data Analyst</p>
           <p>Through 7+ diverse builds covering machine learning models, automated data pipelines, and generative AI systems, I specialize in extracting meaningful narratives from complex datasets.</p>
           <p>Equipped with a robust tech stack including Python, SQL, Power BI, and modern backend tools, I am always exploring innovative ways to solve technical problems.</p>
           <p>Let's build something great together! 💡</p>
