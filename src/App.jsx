@@ -148,14 +148,17 @@ function Sidebar() {
           </p>
         )}
       </div>
-
       <section className="sidebar-section about-section">
         <p className="section-kicker">About</p>
-        <p className="about-copy">AI & Data Analyst
+        <div className="about-copy">
+          <p>AI & Data Analyst</p>
+          <p>Through 7+ diverse builds covering machine learning models, automated data pipelines, and generative AI systems, I specialize in extracting meaningful narratives from complex datasets.</p>
+          <p>Equipped with a robust tech stack including Python, SQL, Power BI, and modern backend tools, I am always exploring innovative ways to solve technical problems.</p>
+          <p>Let's build something great together! 💡</p>
+        </div>
+     </section>
 
-From exploring complex datasets to uncovering actionable insights, I thrive on turning raw data into high-impact, practical solutions. I've engineered over 7 end-to-end data systems and AI-powered applications utilizing Python, SQL, Advanced Excel, Power BI, Machine Learning, and Generative AI. Whether building automated ETL pipelines or designing intelligent recommendation and analytics workflows, I blend technical precision with a passion for problem-solving. Got an interesting challenge? Let's connect! 🤝
-</p>
-      </section>
+     
 
       <section className="sidebar-section skills-section">
         <p className="section-kicker">Skills</p>
