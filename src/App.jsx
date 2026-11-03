@@ -50,7 +50,7 @@ const projects = [
     image: '/images/resume-interview-thumbnail.jpg',
     imageAlt: "Resume documents and laptop on a desk",
     tags: ["Python", "Generative AI", "React", "Vite"],
-    description: "Inspired by HackerRank hackathon challenges, this intelligent algorithm generates tailored resume-rewriting feedback against specific job roles. It also features an interactive AI assistant for simulated, multi-level interview practice.",
+    description: "Inspired by HackerRank hackathon challenge, this AI tool generates tailored resume-rewriting feedback against specific job roles. It also features an interactive AI assistant for simulated, multi-level interview practice.",
     github: "https://github.com/mathan-ponraj/talentiqai",
     live: 'https://talentiq-ai-two.vercel.app/',
     theme: 'resume',
@@ -61,16 +61,16 @@ const projects = [
     image: '/images/youtube-trendtube-thumbnail.jpg',
     imageAlt: "Online video and digital media concept",
     tags: ["Python", "PostgreSql", "ETL", "YouTube API", "Data Analytics"],
-    description: "A trend analytics dashboard for trending YouTube videos that provides region-based insights to guide effective content creation. The ETL pipeline collects data through the YouTube API and stores transformed records in an SQL database for deeper analysis.",
+    description: "A trend analytics data pipeline for trending YouTube videos that provides region-based insights to guide effective content creation. The ETL pipeline collects data through the YouTube API and stores transformed records in an SQL database for deeper analysis.",
     github: "https://github.com/mathan-ponraj/Trendtube",
   },
   {
     number: "03",
-    title: "EduHelpDesk Management System",
+    title: "EduHelpDesk",
     image: '/images/eduhelpdesk-thumbnail.jpg',
     imageAlt: "Notebook and paperwork on a desk",
     tags: ["Python", "SQL", "Data Organization", "SLA Tracking"],
-    description: "An administrative algorithm built to handle student queries with high efficiency. Management can organize and track support tokens to ensure timely resolutions based on SLAs, ticket ageing, and defined priority metrics.",
+    description: "An administrative algorithm designed to help organizations handle student queries with high efficiency. Management can organize and track support tokens to ensure timely resolutions based on SLAs, ticket ageing, and defined priority metrics.",
     github: "https://github.com/mathan-ponraj/EduHelpDesk",
     live: 'https://eduhelpdesk.onrender.com/',
     theme: 'helpdesk',
@@ -79,7 +79,7 @@ const projects = [
     number: "04",
     title: "LapPick",
     tags: ['Python', 'Pandas', 'Scikit-learn', 'Streamlit'],
-    description: "An ML-powered laptop recommendation application that helps users explore suitable laptops through data-driven recommendations. It brings laptop comparison and price insights together in an interactive Streamlit app.",
+    description: "This ML-powered application that helps users to explore suitable laptops through data-driven recommendations. It brings laptop comparison and price insights together in an interactive User Interface.",
     image: '/images/lappick-thumbnail.svg',
     imageAlt: 'LapPick laptop price and recommendation system banner',
     github: 'https://github.com/mathan-ponraj/lappick',
@@ -151,7 +151,19 @@ function Sidebar() {
 
       <section className="sidebar-section about-section">
         <p className="section-kicker">About</p>
-        <p className="about-copy">Computer Science graduate with a strong interest in data science, machine learning, and AI. I enjoy turning raw data into useful insights and building practical solutions to real-world problems.</p>
+        <p className="about-copy">**AI & Data Analyst**
+
+From exploring raw datasets to uncovering meaningful insights, I enjoy turning data into practical solutions.
+
+I've worked on **7+ projects**, including **HR Analytics, TalentIQ.ai, TrendTube, and LapPick**, using Python, SQL, Excel, Power BI, Machine Learning, Generative AI, and Backend Engineering.
+
+Currently, I'm building projects that combine Python, SQL, Generative AI, and Backend Engineering.
+
+A little into data, a lot into problem-solving, and always curious about turning ideas into practical solutions.
+
+**Got an interesting challenge?**
+Let's connect! 🤝
+</p>
       </section>
 
       <section className="sidebar-section skills-section">
