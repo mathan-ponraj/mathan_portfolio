@@ -158,16 +158,6 @@ function Sidebar() {
         </div>
      </section>
 
-    
-  <div className="availability-card">
-    <div className="availability-dot"></div>
-    <div>
-      <p className="availability-label">Open to opportunities</p>
-      <p className="availability-role">Data Analyst</p>
-    </div>
-  </div>
-</aside>
-
       <section className="sidebar-section skills-section">
         <p className="section-kicker">Skills</p>
         <div className="tag-list skills-list">
