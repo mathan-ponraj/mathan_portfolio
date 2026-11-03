@@ -151,18 +151,9 @@ function Sidebar() {
 
       <section className="sidebar-section about-section">
         <p className="section-kicker">About</p>
-        <p className="about-copy">**AI & Data Analyst**
+        <p className="about-copy">AI & Data Analyst
 
-From exploring raw datasets to uncovering meaningful insights, I enjoy turning data into practical solutions.
-
-I've worked on **7+ projects**, including **HR Analytics, TalentIQ.ai, TrendTube, and LapPick**, using Python, SQL, Excel, Power BI, Machine Learning, Generative AI, and Backend Engineering.
-
-Currently, I'm building projects that combine Python, SQL, Generative AI, and Backend Engineering.
-
-A little into data, a lot into problem-solving, and always curious about turning ideas into practical solutions.
-
-**Got an interesting challenge?**
-Let's connect! 🤝
+From exploring complex datasets to uncovering actionable insights, I thrive on turning raw data into high-impact, practical solutions. I've engineered over 7 end-to-end data systems and AI-powered applications utilizing Python, SQL, Advanced Excel, Power BI, Machine Learning, and Generative AI. Whether building automated ETL pipelines or designing intelligent recommendation and analytics workflows, I blend technical precision with a passion for problem-solving. Got an interesting challenge? Let's connect! 🤝
 </p>
       </section>
 
