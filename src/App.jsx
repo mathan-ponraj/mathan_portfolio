@@ -158,56 +158,7 @@ function Sidebar() {
         </div>
      </section>
 
-     <aside className="sidebar">
-  <div className="profile-top">
-    <div className="profile-fallback">MP</div>
-    <h1>Mathan Ponraj</h1>
-    <p className="profile-title">AI & Data Analyst</p>
-    <p className="profile-location"><span>●</span> Bengaluru, India</p>
     
-    <div className="social-links">
-      {/* Your social links here */}
-      <a href="mailto:your-email@example.com" className="email-pill">email me</a>
-    </div>
-  </div>
-
-  <div className="sidebar-section about-section">
-    <p className="section-kicker">About</p>
-    <p className="about-copy">
-      AI & Data Analyst<br /><br />
-      Through 7+ diverse builds covering machine learning models, automated data pipelines, and generative AI systems, I specialize in extracting meaningful narratives from complex datasets.<br /><br />
-      Equipped with a robust tech stack including Python, SQL, Power BI, and modern backend tools, I am always exploring innovative ways to solve technical problems.<br /><br />
-      Let's build something great together! 💡
-    </p>
-  </div>
-
-  <div className="sidebar-section skills-section">
-    <p className="section-kicker">Skills</p>
-    <div className="tag-list skills-list">
-      <span className="tag">SQL</span>
-      <span className="tag">Python</span>
-      <span className="tag">Power BI</span>
-      <span className="tag">Pandas</span>
-      <span className="tag">NumPy</span>
-      <span className="tag">Machine Learning</span>
-      <span className="tag">Scikit-learn</span>
-      <span className="tag">REST APIs</span>
-      <span className="tag">Deep Learning</span>
-      <span className="tag">PyTorch</span>
-      <span className="tag">NLP</span>
-      <span className="tag">Gen AI</span>
-      <span className="tag">LLM</span>
-      <span className="tag">RAG</span>
-      <span className="tag">HuggingFace</span>
-      <span className="tag">Java Script</span>
-      <span className="tag">React</span>
-      <span className="tag">NodeJS</span>
-      <span className="tag">HTML</span>
-      <span className="tag">CSS</span>
-      <span className="tag">C</span>
-    </div>
-  </div>
-
   <div className="availability-card">
     <div className="availability-dot"></div>
     <div>
