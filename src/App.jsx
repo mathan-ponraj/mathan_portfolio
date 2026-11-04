@@ -3,28 +3,35 @@ import './App.css';
 
 const profile = {
   name: "Mathan Ponraj",
-  title: "Backend & AI Systems Engineer",
-  tagline: "Engineering robust backend architectures, distributed data pipelines, and production-grade Generative AI (LLM/RAG) applications.",
+  title: "AI & Backend Developer · Fresher",
+  tagline: "Python, FastAPI and LLM/RAG applications. Looking for my first role in Bengaluru.",
   location: "Bengaluru, India",
-  phone: "+91 7339404085",
+  // Phone removed from the public page to avoid spam calls. Keep it on your resume instead.
+  // To show it again, set phone: "+91 7339404085"
+  phone: "",
   photo: "/images/portfolio photo.png",
   email: "mathanponraj03@gmail.com",
   linkedin: "https://www.linkedin.com/in/mathan03/",
-  github: "https://github.com/mathan-ponraj/mathan-ponraj-portfolio",
+  // Fixed: this used to point to the portfolio repo, not your GitHub profile.
+  github: "https://github.com/mathan-ponraj",
 };
 
 const skillGroups = [
   {
-    label: "Intelligent Systems & AI",
-    items: ["Generative AI", "RAG Systems", "LangChain", "Semantic Chunking", "OpenAI API", "Gemini API", "Prompt Engineering", "HuggingFace"],
+    label: "AI & LLM",
+    items: ["LangChain", "RAG", "OpenAI API", "Gemini API", "Prompt Engineering", "Hugging Face"],
   },
   {
-    label: "Backend & Architecture",
-    items: ["Python (Advanced OOP)", "FastAPI", "Flask", "REST APIs", "PostgreSQL", "SQLite", "Star Schema", "RBAC Middleware", "Postman"],
+    label: "Backend",
+    items: ["Python", "FastAPI", "Flask", "REST APIs", "SQL", "PostgreSQL", "SQLite", "Git & GitHub", "Postman"],
   },
   {
-    label: "Data & Machine Learning",
-    items: ["XGBoost", "Scikit-learn", "ML Pipelines", "ETL Architectures", "Pandas", "NumPy", "Feature Engineering", "Model Evaluation"],
+    label: "Frontend",
+    items: ["HTML", "CSS", "JavaScript", "React.js"],
+  },
+  {
+    label: "Data & ML",
+    items: ["Pandas", "NumPy", "Scikit-learn", "XGBoost", "Feature Engineering", "ETL", "Star Schema", "Power BI"],
   },
 ];
 
@@ -33,9 +40,9 @@ const projects = [
     number: "01",
     title: "TalentIQ AI",
     image: '/images/resume-interview-thumbnail.jpg',
-    imageAlt: "Resume documents and laptop on a desk",
-    tags: ["Python", "FastAPI", "LangChain", "React.js", "Vite", "Gemini API", "Vercel"],
-    description: "Engineered a decoupled full-stack ecosystem orchestrating a high-performance Python FastAPI service layer and an interactive React.js client interface. Implemented a production-grade Retrieval-Augmented Generation (RAG) pipeline utilizing LangChain to parse and compare complex PDF resumes against target JSON job description matrices. Developed a custom semantic text-chunking strategy that prevented technical skill cluster fragmentation across embedding vectors, boosting contextual accuracy by 35%. Hardened the gateway using strict CORS middleware configurations to protect cross-origin API tokens.",
+    imageAlt: "TalentIQ AI resume analysis and mock interview app",
+    tags: ["Python", "FastAPI", "LangChain", "React.js", "Vite", "Gemini API", "Vercel", "Render"],
+    description: "An app that helps job seekers prepare for a specific role. You upload a resume and a job description, and it shows the skill gaps, suggests resume improvements, and runs a mock interview at different difficulty levels. The backend is FastAPI with a LangChain RAG pipeline, and it uses semantic chunking so related skills stay together when the resume is split for embeddings.",
     github: "https://github.com/mathan-ponraj/talentiqai",
     live: 'https://talentiq-ai-two.vercel.app/',
     theme: 'resume',
@@ -44,18 +51,18 @@ const projects = [
     number: "02",
     title: "TrendTube",
     image: '/images/youtube-trendtube-thumbnail.jpg',
-    imageAlt: "Online video and digital media concept",
+    imageAlt: "TrendTube YouTube trending data pipeline",
     tags: ["Python", "PostgreSQL", "ETL", "YouTube Data API v3", "Pandas", "Psycopg", "Star Schema"],
-    description: "Built a modular, automated Python ETL pipeline that ingests high-frequency trending video data concurrently across 9 geographic regions via the RESTful YouTube Data API v3. Modeled a high-performance PostgreSQL database using a Star Schema layout consisting of four highly indexed dimension and fact tables (dim_video, dim_region, dim_date, fact_trending). Utilized Pandas to engineer custom data transformation scripts that calculate normalized engagement velocities (view-to-interaction velocity) to support rapid, low-latency analytical SQL querying.",
+    description: "A Python ETL pipeline that pulls trending YouTube videos from 9 regions through the YouTube Data API, cleans and validates them with Pandas, and loads them into PostgreSQL. The data is stored as a star schema (dim_video, dim_region, dim_date, fact_trending) with an engagement metric, so trends can be compared across regions with plain SQL.",
     github: "https://github.com/mathan-ponraj/Trendtube",
   },
   {
     number: "03",
     title: "EduHelpDesk",
     image: '/images/eduhelpdesk-thumbnail.jpg',
-    imageAlt: "Notebook and paperwork on a desk",
-    tags: ["Python", "Flask", "SQLite", "REST APIs", "RBAC", "State Machines", "Render"],
-    description: "Developed a centralized support tracking application utilizing a modular Flask microservice architecture. Configured backend Role-Based Access Control (RBAC) to enforce isolated, secure operational dashboards for distinct user states (Students, Staff, and Managers). Programmed a dedicated, timestamp-driven workflow engine that automatically calculates ticket aging, tracks remaining resolution milestones, and triggers system breach flags based on strict Service Level Agreements (SLAs), while maintaining an immutable transactional activity history log.",
+    imageAlt: "EduHelpDesk academic support ticketing system",
+    tags: ["Python", "Flask", "SQLite", "REST APIs", "RBAC", "Render"],
+    description: "A support ticket system for a college. Students raise tickets, staff resolve them, and managers monitor progress, each with their own role-based dashboard. It tracks ticket age against SLA deadlines, flags overdue tickets, and keeps a full history of every status change. Built with Flask and SQLite and deployed on Render.",
     github: "https://github.com/mathan-ponraj/EduHelpDesk",
     live: 'https://eduhelpdesk.onrender.com/',
     theme: 'helpdesk',
@@ -64,9 +71,11 @@ const projects = [
     number: "04",
     title: "LapPick",
     tags: ['Python', 'XGBoost', 'Scikit-Learn', 'Streamlit', 'Joblib', 'Feature Engineering'],
-    description: "Deployed a production-ready predictive machine learning and multi-attribute recommendation web service. Formed a unified Scikit-learn feature pipeline utilizing ColumnTransformer, OneHotEncoder, and StandardScaler to handle mixed categorical and numerical spec parameters flawlessly. Trained and hyperparameter-tuned an XGBoost regression model that achieved a precise verification metric of R² ≈ 0.96. Integrated 1st and 99th percentile price capping alongside target log transformations to insulate the model from extreme catalog volatility, serving instant predictions via Joblib binaries on an interactive Streamlit UI.",
+    // VERIFY the R² below against your notebook. Your site said 0.96, LinkedIn said 0.91, resume said 0.92.
+    description: "A laptop price predictor and recommender. An XGBoost model trained on about 1,300 laptop listings predicts price from specifications (R² ≈ 0.91), after cleaning outliers and encoding categories in a Scikit-learn pipeline. In the Streamlit app you filter by budget, RAM, CPU and storage to get recommendations.",
     image: '/images/lappick-thumbnail.svg',
     imageAlt: 'LapPick laptop price and recommendation system banner',
+    // VERIFY this repo link opens. Other places use a different repo name (Laptop-Price-And-Recommendation-System).
     github: 'https://github.com/mathan-ponraj/lappick',
     live: 'https://laptop-price-and-recommendation-system-icvhjjspmfrmmy2rfmtuaq.streamlit.app/',
     theme: 'lappick',
@@ -119,7 +128,7 @@ function Sidebar() {
         <p className="profile-title">{profile.title}</p>
         <p style={{ fontSize: '0.8rem', color: '#6b7280', lineHeight: 1.5, margin: '6px 0 10px' }}>{profile.tagline}</p>
         <p className="profile-location"><span aria-hidden="true">●</span> {profile.location}</p>
-        
+
         <div className="social-links">
           {profile.linkedin ? <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><SocialIcon type="linkedin" /></a> : <span className="social-placeholder" aria-label="LinkedIn link to add"><SocialIcon type="linkedin" /></span>}
           {profile.github ? <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub"><SocialIcon type="github" /></a> : <span className="social-placeholder" aria-label="GitHub link to add"><SocialIcon type="github" /></span>}
@@ -127,7 +136,6 @@ function Sidebar() {
           {profile.email ? <a className="email-pill" href={`mailto:${profile.email}`}>email me</a> : <span className="email-pill">email me</span>}
         </div>
 
-        {/* Small, clean phone number text placed right under all icons */}
         {profile.phone && (
           <p style={{ fontSize: '0.8rem', color: '#6b7280', marginTop: '10px', fontWeight: 500 }}>
             📞 <a href={`tel:${profile.phone}`} style={{ color: 'inherit', textDecoration: 'none' }}>{profile.phone}</a>
@@ -137,9 +145,9 @@ function Sidebar() {
       <section className="sidebar-section about-section">
         <p className="section-kicker">About</p>
         <div className="about-copy">
-          <p>I design and scale high-performance backend infrastructures and intelligent software layers. My engineering philosophy balances architectural clean-coding with runtime optimization—whether that means hardening asynchronous API endpoints, structuring normalized relational schemas, or optimizing vector chunking strategies to eliminate LLM retrieval latency. I bridge the gap between predictive modeling and stable production services for modern enterprise stakeholders.</p>
+          <p>Computer Science graduate (B.E. and M.E.) who builds backend services and AI applications in Python. I have built four projects end to end, from data and APIs to deployment: a RAG-based resume analyzer, a YouTube ETL pipeline, a role-based ticketing app, and a price-prediction model with a recommender. I am looking for a fresher Python Backend, GenAI or Data Engineering role in Bengaluru and can join immediately.</p>
         </div>
-     </section>
+      </section>
 
       <section className="sidebar-section skills-section">
         <p className="section-kicker">Skills</p>
@@ -155,8 +163,8 @@ function Sidebar() {
       <div className="availability-card" aria-label="Current job availability">
         <span className="availability-dot" aria-hidden="true" />
         <div>
-          <p className="availability-label">Open to opportunities</p>
-          <p className="availability-role">Backend &amp; AI Systems Engineer</p>
+          <p className="availability-label">Open to work · Immediate joiner</p>
+          <p className="availability-role">AI &amp; Backend Developer (Fresher)</p>
         </div>
       </div>
     </aside>
@@ -168,12 +176,15 @@ function BackgroundSections() {
     <section className="background-sections">
       <div className="background-column">
         <p className="section-kicker">Experience</p>
-        <p className="muted-line">Production Systems &amp; Engineering Consultancy · Nov 2025 – Present</p>
-        <h3>Generative AI &amp; Backend Developer (Independent Consultant)</h3>
-        <p className="background-description">Deployed custom Python backend microservices, real-time database schemas, and stateful RAG applications for independent small-to-mid enterprise clients. Specialized in debugging query runtime performance, hardening cross-platform RESTful API connectivity layers, and configuring custom machine learning models to meet specific operational delivery milestones.</p>
-        <div className="tag-list">
-          {['Python', 'FastAPI', 'RAG', 'PostgreSQL', 'REST APIs'].map((tag) => <span className="tag" key={tag}>{tag}</span>)}
-        </div>
+        {/* TODO: replace the title and dates below with the exact ones on your offer/experience letter. Check the company spelling too. */}
+        <p className="muted-line">Nymore Coretex · 1 year, alongside M.E.</p>
+        <h3>Associate – Web, Social Media &amp; Data</h3>
+        {/* TODO: say which page/site you built and what it does or what changed. Keep the title identical to your offer letter. */}
+        <p className="background-description">Worked across several areas at an early-stage startup. Built web pages using HTML, CSS and JavaScript, set up and managed the company's Instagram account and created content for it, collected and cleaned data, and prepared PowerPoint presentations for the team.</p>
+        <p className="muted-line" style={{ marginTop: '24px' }}>Rinex.ai · Mar 2025 – May 2025</p>
+        <h3>Data Science Intern</h3>
+        {/* TODO: replace this line with 1-2 specific things you actually did (dataset, model, tool, result). */}
+        <p className="background-description">Three-month internship working on data science tasks.</p>
       </div>
       <div className="background-column education-column">
         <p className="section-kicker">Education</p>
@@ -181,11 +192,12 @@ function BackgroundSections() {
           <p className="muted-line">2024 – 2026</p>
           <h3>M.E. in Computer Science &amp; Engineering</h3>
           <p className="background-description">Karpagam Academy of Higher Education, Coimbatore | CGPA: 8.85/10</p>
-          <p className="background-description">Core Scope: Specialized in high-performance database systems, advanced network protocols, and distributed software design paradigms. (All full-time structural coursework and technical examinations completed).</p>
+          <p className="background-description">Coursework: Database Systems, Data Warehousing, Data Mining, Machine Learning, AI and LLMs.</p>
         </div>
         <div className="education-entry">
           <p className="muted-line">2020 – 2024</p>
-          <h3>Bachelor of Engineering (B.E.) in Computer Science &amp; Engineering</h3>
+          <h3>B.E. in Computer Science &amp; Engineering</h3>
+          {/* TODO: add your B.E. CGPA or percentage. */}
           <p className="background-description">Government College of Engineering, Bodinayakanur</p>
         </div>
       </div>
