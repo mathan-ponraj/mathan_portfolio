@@ -3,12 +3,12 @@ import './App.css';
 
 const profile = {
   name: "Mathan Ponraj",
-  title: "AI & Backend Developer · Fresher",
-  tagline: "Python, FastAPI and LLM/RAG applications. Looking for my first role in Bengaluru.",
+  title: "AI Backend Developer",
+  tagline: "Python, FastAPI and LLM/RAG applications. Looking for Backend AI Engineer role in Bengaluru.",
   location: "Bengaluru, India",
   // Phone removed from the public page to avoid spam calls. Keep it on your resume instead.
   // To show it again, set phone: "+91 7339404085"
-  phone: "",
+  phone: "7339404085",
   photo: "/images/portfolio photo.png",
   email: "mathanponraj03@gmail.com",
   linkedin: "https://www.linkedin.com/in/mathan03/",
@@ -42,7 +42,7 @@ const projects = [
     image: '/images/resume-interview-thumbnail.jpg',
     imageAlt: "TalentIQ AI resume analysis and mock interview app",
     tags: ["Python", "FastAPI", "LangChain", "React.js", "Vite", "Gemini API", "Vercel", "Render"],
-    description: "An app that helps job seekers prepare for a specific role. You upload a resume and a job description, and it shows the skill gaps, suggests resume improvements, and runs a mock interview at different difficulty levels. The backend is FastAPI with a LangChain RAG pipeline, and it uses semantic chunking so related skills stay together when the resume is split for embeddings.",
+    description: "An app that helps job seekers prepare for a specific role. You upload a resume and choose job role the algorithm shows the skill gaps, suggests resume improvements, and runs a mock interview at different difficulty levels. The backend is FastAPI with a LangChain RAG pipeline, and it uses semantic chunking so related skills stay together when the resume is split for embeddings.",
     github: "https://github.com/mathan-ponraj/talentiqai",
     live: 'https://talentiq-ai-two.vercel.app/',
     theme: 'resume',
@@ -145,7 +145,16 @@ function Sidebar() {
       <section className="sidebar-section about-section">
         <p className="section-kicker">About</p>
         <div className="about-copy">
-          <p>Computer Science graduate (B.E. and M.E.) who builds backend services and AI applications in Python. I have built four projects end to end, from data and APIs to deployment: a RAG-based resume analyzer, a YouTube ETL pipeline, a role-based ticketing app, and a price-prediction model with a recommender. I am looking for a fresher Python Backend, GenAI or Data Engineering role in Bengaluru and can join immediately.</p>
+          <p>AI & Software Developer</p>
+          <p>From APIs and databases to AI apps that actually do something useful.</p>
+          
+          <p>I build with Python, FastAPI, React and LangChain. So far that's a RAG-powered resume and interview coach, a YouTube data pipeline, a support-ticket app with SLA tracking, and a laptop price predictor. Most of them live, all of them built end to end.</p>
+          
+          <p>A little into code, a lot into building things from scratch, and always up for learning something new.</p>
+          
+          <p>Based in Bengaluru, open to work, and can join right away.</p>
+          
+          <p>Got a role or an idea in mind? Let's talk 🤝</p>
         </div>
       </section>
 
@@ -164,7 +173,7 @@ function Sidebar() {
         <span className="availability-dot" aria-hidden="true" />
         <div>
           <p className="availability-label">Open to work · Immediate joiner</p>
-          <p className="availability-role">AI &amp; Backend Developer (Fresher)</p>
+          <p className="availability-role">AI Software Developer</p>
         </div>
       </div>
     </aside>
@@ -181,7 +190,7 @@ function BackgroundSections() {
         <h3>Associate – Web, Social Media &amp; Data</h3>
         {/* TODO: say which page/site you built and what it does or what changed. Keep the title identical to your offer letter. */}
         <p className="background-description">Worked across several areas at an early-stage startup. Built web pages using HTML, CSS and JavaScript, set up and managed the company's Instagram account and created content for it, collected and cleaned data, and prepared PowerPoint presentations for the team.</p>
-        <p className="muted-line" style={{ marginTop: '24px' }}>Rinex.ai · Mar 2025 – May 2025</p>
+        <p className="muted-line" style={{ marginTop: '24px' }}>Rinex.ai · Mar 2024 – May 2024</p>
         <h3>Data Science Intern</h3>
         {/* TODO: replace this line with 1-2 specific things you actually did (dataset, model, tool, result). */}
         <p className="background-description">Three-month internship working on data science tasks.</p>
@@ -212,7 +221,7 @@ export default function App() {
       <div className="main-content">
         <div className="projects-header">
           <p className="section-kicker">Projects</p>
-          <span>Selected work</span>
+          
         </div>
         <section className="projects-grid" aria-label="Selected projects">
           {projects.map((project) => <ProjectCard project={project} key={project.number} />)}
