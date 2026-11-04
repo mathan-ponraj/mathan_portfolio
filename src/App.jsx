@@ -146,15 +146,14 @@ function Sidebar() {
         <p className="section-kicker">About</p>
         <div className="about-copy">
           <p>AI & Software Developer</p>
-          <p>From APIs and databases to AI apps that actually do something useful.</p>
+          <p>Software Developer building intelligent applications, from APIs and databases to AI-powered solutions using Python, FastAPI, React, SQL, and LangChain.</p>
           
-          <p>I build with Python, FastAPI, React and LangChain. So far that's a RAG-powered resume and interview coach, a YouTube data pipeline, a support-ticket app with SLA tracking, and a laptop price predictor. Most of them live, all of them built end to end.</p>
+          <p>vBuilt 7+ end-to-end projects across Generative AI, RAG, Machine Learning, Data Pipelines, and Backend Development.</p>
           
           <p>A little into code, a lot into building things from scratch, and always up for learning something new.</p>
+        
           
-          <p>Based in Bengaluru, open to work, and can join right away.</p>
-          
-          <p>Got a role or an idea in mind? Let's talk 🤝</p>
+          <p>Based in Bengaluru | Open to Full-Time Opportunities | Immediate Joiner 🤝</p>
         </div>
       </section>
 
