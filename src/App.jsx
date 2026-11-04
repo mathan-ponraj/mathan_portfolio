@@ -3,8 +3,8 @@ import './App.css';
 
 const profile = {
   name: "Mathan Ponraj",
-  title: "AI Backend Developer",
-  tagline: "Python, FastAPI and LLM/RAG applications. Looking for Backend AI Engineer role in Bengaluru.",
+  title: "AI Software Developer",
+  tagline: "Python, FastAPI and LLM/RAG applications. Looking for AI Software Engineer role in Bengaluru.",
   location: "Bengaluru, India",
   // Phone removed from the public page to avoid spam calls. Keep it on your resume instead.
   // To show it again, set phone: "+91 7339404085"
