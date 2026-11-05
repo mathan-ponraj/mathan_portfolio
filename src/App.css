@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg-color: #fcf9f5;          /* Warm golden-white background for main content */
+  --bg-color: #f1ebd9;          /* Warm golden-desk surface background */
+  --page-bg: #fcf9f5;           /* Warm golden-white paper background */
   --panel-bg: #e0f2fe;          /* Crisp light blue for the left sidebar */
   --card-bg: #ffffff;           /* Clean white for project cards */
-  --border-color: rgba(186, 230, 253, 0.8); /* Soft light-blue border tint */
-  --border-hover: rgba(2, 132, 199, 0.5);   /* Vibrant blue accent border on hover */
+  --border-color: rgba(186, 230, 253, 0.8);
+  --border-hover: rgba(2, 132, 199, 0.5);
   --accent-glow: rgba(2, 132, 199, 0.12);
-  --text-main: #0f172a;         /* Deep rich dark text for high readability */
-  --text-muted: #334155;        /* Balanced medium-dark gray text */
+  --text-main: #0f172a;
+  --text-muted: #334155;
 }
 
 * {
@@ -22,33 +23,47 @@ body {
   background-color: var(--bg-color);
   color: var(--text-main);
   min-height: 100vh;
+  padding: 40px 24px; /* Creates the outer desk margins around the page */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow-x: hidden;
 }
 
-/* 3D Shell Layout */
+/* 3D Master Sheet / "Xerox Paper" Frame Layer */
 .portfolio-shell {
   display: flex;
-  min-height: 100vh;
-  max-width: 1550px;
-  margin: 0 auto;
+  min-height: calc(100vh - 80px);
+  width: 100%;
+  max-width: 1480px;
+  background-color: var(--page-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  transform-style: preserve-3d;
   perspective: 1200px;
+  /* Deep multi-layered 3D shadow giving a physical paper/xerox elevation effect */
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.08), 
+    0 30px 60px rgba(217, 119, 6, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
 }
 
-/* Sidebar / Left Column (Light Blue Theme with increased vertical gap) */
+/* Sidebar / Left Column (Light Blue Theme) */
 .sidebar {
   width: 390px;
   background: var(--panel-bg);
   border-right: 1px solid var(--border-color);
-  padding: 32px 26px;
+  padding: 36px 26px;
   display: flex;
   flex-direction: column;
-  gap: 28px; /* Increased space between sidebar sections */
+  gap: 28px;
   position: sticky;
   top: 0;
   height: 100vh;
   overflow-y: auto;
   z-index: 10;
-  box-shadow: 10px 0 30px rgba(2, 132, 199, 0.05);
+  box-shadow: 5px 0 20px rgba(2, 132, 199, 0.03);
 }
 
 .sidebar::-webkit-scrollbar {
@@ -62,7 +77,7 @@ body {
 /* Main Content / Right Column */
 .main-content {
   flex: 1;
-  padding: 36px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -173,11 +188,11 @@ body {
   box-shadow: 0 0 15px rgba(2, 132, 199, 0.4);
 }
 
-/* Sidebar Sections with Line Spacing */
+/* Sidebar Sections */
 .sidebar-section {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Increased gap inside sections */
+  gap: 10px;
 }
 
 .section-kicker {
@@ -191,7 +206,7 @@ body {
 
 .about-copy {
   font-size: 0.84rem;
-  line-height: 1.65; /* Added breathable line height */
+  line-height: 1.65;
   color: var(--text-muted);
 }
 
@@ -203,11 +218,11 @@ body {
   font-weight: 600;
 }
 
-/* Skills tags with spacing */
+/* Skills tags */
 .tag-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px; /* Space between tags */
+  gap: 6px;
 }
 
 .tag {
@@ -397,8 +412,12 @@ body {
 
 /* Responsive breakpoint */
 @media (max-width: 1024px) {
+  body {
+    padding: 10px;
+  }
   .portfolio-shell {
     flex-direction: column;
+    max-height: none;
   }
   .sidebar {
     width: 100%;
