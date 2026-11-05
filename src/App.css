@@ -266,11 +266,7 @@ body {
   height: 100%;
   object-fit: cover;
   image-rendering: -webkit-optimize-contrast;
-  transition: transform 0.5s ease;
-}
-
-.project-card:hover .project-image img {
-  transform: scale(1.05);
+  /* Image scaling animation completely removed to prevent quality distortion */
 }
 
 .project-heading {
@@ -323,7 +319,7 @@ body {
   color: #f59e0b;
 }
 
-/* Background Sections (Achievements & Education - Flat layout without card containers) */
+/* Background Sections (Achievements & Education) */
 .background-sections {
   display: grid;
   grid-template-columns: 1fr 1fr;
