@@ -34,15 +34,15 @@ body {
   perspective: 1200px;
 }
 
-/* Sidebar / Left Column (Light Blue Theme) */
+/* Sidebar / Left Column (Light Blue Theme with increased vertical gap) */
 .sidebar {
-  width: 380px;
+  width: 390px;
   background: var(--panel-bg);
   border-right: 1px solid var(--border-color);
-  padding: 28px 24px;
+  padding: 32px 26px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 28px; /* Increased space between sidebar sections */
   position: sticky;
   top: 0;
   height: 100vh;
@@ -115,7 +115,7 @@ body {
   gap: 6px;
   font-size: 0.8rem;
   color: var(--text-muted);
-  margin-top: 6px;
+  margin-top: 8px;
 }
 .profile-location span {
   color: #059669;
@@ -127,7 +127,7 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 .social-links a, .social-placeholder {
@@ -173,11 +173,11 @@ body {
   box-shadow: 0 0 15px rgba(2, 132, 199, 0.4);
 }
 
-/* Sidebar Sections */
+/* Sidebar Sections with Line Spacing */
 .sidebar-section {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px; /* Increased gap inside sections */
 }
 
 .section-kicker {
@@ -185,33 +185,34 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #0369a1; /* Deep blue header for light sidebar */
+  color: #0369a1;
+  margin-bottom: 2px;
 }
 
 .about-copy {
-  font-size: 0.83rem;
-  line-height: 1.55;
+  font-size: 0.84rem;
+  line-height: 1.65; /* Added breathable line height */
   color: var(--text-muted);
 }
 
 .muted-line {
   font-size: 0.72rem;
   color: #475569;
-  margin-top: 8px;
-  margin-bottom: 3px;
+  margin-top: 10px;
+  margin-bottom: 5px;
   font-weight: 600;
 }
 
-/* Skills tags */
+/* Skills tags with spacing */
 .tag-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 6px; /* Space between tags */
 }
 
 .tag {
   font-size: 0.72rem;
-  padding: 3px 8px;
+  padding: 4px 9px;
   background: #ffffff;
   border: 1px solid var(--border-color);
   border-radius: 6px;
@@ -351,7 +352,7 @@ body {
   gap: 12px;
   background: rgba(5, 150, 105, 0.08);
   border: 1px solid rgba(5, 150, 105, 0.25);
-  padding: 10px 14px;
+  padding: 12px 14px;
   border-radius: 10px;
   margin-top: auto;
 }
@@ -383,6 +384,7 @@ body {
   font-size: 0.82rem;
   font-weight: 700;
   color: var(--text-main);
+  margin-top: 2px;
 }
 
 .footer {
