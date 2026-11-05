@@ -121,7 +121,7 @@ function Sidebar() {
         <div className="profile-fallback" aria-hidden="true">MP</div>
         <h1>{profile.name}</h1>
         <p className="profile-title">{profile.title}</p>
-        <p style={{ fontSize: '0.8rem', color: '#94a3b8', lineHeight: 1.4, margin: '4px 0 8px' }}>{profile.tagline}</p>
+        <p style={{ fontSize: '0.8rem', color: '#334155', lineHeight: 1.4, margin: '4px 0 8px' }}>{profile.tagline}</p>
         <p className="profile-location"><span aria-hidden="true">●</span> {profile.location}</p>
 
         <div className="social-links">
@@ -132,7 +132,7 @@ function Sidebar() {
         </div>
 
         {profile.phone && (
-          <p style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '8px', fontWeight: 500 }}>
+          <p style={{ fontSize: '0.78rem', color: '#334155', marginTop: '8px', fontWeight: 500 }}>
             📞 <a href={`tel:${profile.phone}`} style={{ color: 'inherit', textDecoration: 'none' }}>{profile.phone}</a>
           </p>
         )}
@@ -148,13 +148,13 @@ function Sidebar() {
       <section className="sidebar-section philosophy-section">
         <p className="section-kicker">Vision & Mission</p>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '6px', marginTop: '6px' }}>
-          <div style={{ padding: '8px 10px', background: 'rgba(245, 158, 11, 0.03)', border: '1px solid rgba(245, 158, 11, 0.15)', borderRadius: '8px' }}>
-            <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#fbbf24', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Omnicompetent</span>
-            <p style={{ fontSize: '0.82rem', color: '#e2e8f0', marginTop: '2px', fontWeight: 500 }}>Limitless capacity.</p>
+          <div style={{ padding: '8px 10px', background: 'rgba(217, 119, 6, 0.04)', border: '1px solid rgba(217, 119, 6, 0.2)', borderRadius: '8px' }}>
+            <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#d97706', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Omnicompetent</span>
+            <p style={{ fontSize: '0.82rem', color: '#0f172a', marginTop: '2px', fontWeight: 500 }}>Limitless capacity.</p>
           </div>
-          <div style={{ padding: '8px 10px', background: 'rgba(245, 158, 11, 0.03)', border: '1px solid rgba(245, 158, 11, 0.15)', borderRadius: '8px' }}>
-            <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#fbbf24', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Objective</span>
-            <p style={{ fontSize: '0.82rem', color: '#e2e8f0', marginTop: '2px' }}>Give the best experience for intelligent products with high satisfaction.</p>
+          <div style={{ padding: '8px 10px', background: 'rgba(217, 119, 6, 0.04)', border: '1px solid rgba(217, 119, 6, 0.2)', borderRadius: '8px' }}>
+            <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#d97706', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Objective</span>
+            <p style={{ fontSize: '0.82rem', color: '#0f172a', marginTop: '2px' }}>Give the best experience for intelligent products with high satisfaction.</p>
           </div>
         </div>
       </section>
@@ -189,15 +189,15 @@ function AchievementsAndEducation() {
         <p className="section-kicker" style={{ marginBottom: '12px' }}>Achievements</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div>
-            <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#f8fafc', marginBottom: '2px' }}>🚀 Live Product Deployments</h3>
+            <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#0f172a', marginBottom: '2px' }}>🚀 Live Product Deployments</h3>
             <p className="background-description">Successfully completed and hosted 3+ live production web applications combining scalable backend engineering and AI components.</p>
           </div>
           <div>
-            <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#f8fafc', marginBottom: '2px' }}>💼 Freelance Leadership</h3>
+            <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#0f172a', marginBottom: '2px' }}>💼 Freelance Leadership</h3>
             <p className="background-description">Successfully ran 1 year of freelance operations, leading a 3-member technical team (ongoing).</p>
           </div>
           <div>
-            <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#f8fafc', marginBottom: '2px' }}>🎨 Full-Stack &amp; Content Execution</h3>
+            <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#0f172a', marginBottom: '2px' }}>🎨 Full-Stack &amp; Content Execution</h3>
             <p className="background-description">Developed and deployed static and dynamic web pages while managing end-to-end Instagram content creation, including professional video editing and Photoshop design.</p>
           </div>
         </div>
@@ -206,14 +206,15 @@ function AchievementsAndEducation() {
         <p className="section-kicker" style={{ marginBottom: '12px' }}>Education</p>
         <div className="education-entry">
           <p className="muted-line">2024 – 2026</p>
-          <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#f8fafc' }}>M.E. in Computer Science &amp; Engineering</h3>
-          <p className="background-description">Karpagam Academy of Higher Education, Coimbatore | CGPA: 8.85/10</p>
-          <p className="background-description" style={{ marginTop: '3px' }}>Coursework: Database Systems, Data Warehousing, Data Mining, Machine Learning, AI and LLMs.</p>
+          <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#0f172a' }}>M.E. in Computer Science &amp; Engineering</h3>
+          <p className="background-description">Karpagam Academy of Higher Education, Coimbatore</p>
+          <p className="background-description" style={{ marginTop: '2px', fontWeight: 500, color: '#d97706' }}>First Class</p>
         </div>
         <div className="education-entry" style={{ marginTop: '16px' }}>
           <p className="muted-line">2020 – 2024</p>
-          <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#f8fafc' }}>B.E. in Computer Science &amp; Engineering</h3>
+          <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#0f172a' }}>B.E. in Computer Science &amp; Engineering</h3>
           <p className="background-description">Government College of Engineering, Bodinayakanur</p>
+          <p className="background-description" style={{ marginTop: '2px', fontWeight: 500, color: '#d97706' }}>First Class</p>
         </div>
       </div>
     </section>
@@ -232,7 +233,7 @@ export default function App() {
           {projects.map((project) => <ProjectCard project={project} key={project.number} />)}
         </section>
         <AchievementsAndEducation />
-        <footer className="footer">Designed and built by Mathan Ponraj.</footer>
+        <footer className="footer">Designed and built by Mathan Ponraj</footer>
       </div>
     </main>
   );
