@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg-color: #0b0f19;
-  --panel-bg: #111827;
-  --card-bg: #151d30;
+  --bg-color: #070b14;
+  --panel-bg: #0f1626;
+  --card-bg: #141c2f;
   --border-color: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(245, 158, 11, 0.5);
-  --accent-glow: rgba(245, 158, 11, 0.15);
+  --border-hover: rgba(56, 189, 248, 0.4); /* LinkedIn Light Blue Glow */
+  --accent-glow: rgba(56, 189, 248, 0.12);
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
 }
@@ -76,15 +76,15 @@ body {
   border-radius: 50%;
   object-fit: cover;
   image-rendering: -webkit-optimize-contrast;
-  border: 2px solid #f59e0b;
-  box-shadow: 0 0 20px rgba(245, 158, 11, 0.35);
+  border: 2px solid #38bdf8; /* LinkedIn Light Blue border */
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
 }
 
 .profile-fallback {
   width: 84px;
   height: 84px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #f59e0b, #ea580c);
+  background: linear-gradient(135deg, #38bdf8, #0284c7);
   display: none;
   place-items: center;
   font-weight: 700;
@@ -100,7 +100,7 @@ body {
 }
 
 .profile-title {
-  background: linear-gradient(135deg, #fbbf24, #f97316);
+  background: linear-gradient(135deg, #38bdf8, #fbbf24); /* LinkedIn Light Blue to Warm Bright Gold */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
@@ -142,11 +142,11 @@ body {
 }
 
 .social-links a:hover {
-  background: #f59e0b;
-  color: white;
-  border-color: #fbbf24;
+  background: #38bdf8;
+  color: #070b14;
+  border-color: #7dd3fc;
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 10px 20px rgba(245, 158, 11, 0.4);
+  box-shadow: 0 10px 20px rgba(56, 189, 248, 0.4);
 }
 
 .social-links svg {
@@ -157,9 +157,9 @@ body {
 
 .email-pill {
   padding: 6px 12px;
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.25);
-  color: #fbbf24;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: #38bdf8;
   font-size: 0.75rem;
   font-weight: 600;
   border-radius: 8px;
@@ -167,9 +167,9 @@ body {
   transition: all 0.3s ease;
 }
 .email-pill:hover {
-  background: #f59e0b;
-  color: white;
-  box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+  background: #38bdf8;
+  color: #070b14;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
 }
 
 /* Sidebar Sections */
@@ -184,7 +184,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #fbbf24;
+  color: #38bdf8; /* LinkedIn Light Blue headers */
 }
 
 .about-copy {
@@ -219,13 +219,13 @@ body {
   transition: all 0.2s ease;
 }
 .tag:hover {
-  border-color: #f59e0b;
-  background: rgba(245, 158, 11, 0.12);
-  color: #fbbf24;
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
   transform: translateY(-2px);
 }
 
-/* 3D Compact Project Cards with Warm Backlight */
+/* 3D Compact Project Cards with Properly Aligned Images */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -233,7 +233,7 @@ body {
 }
 
 .project-card {
-  background: linear-gradient(145deg, #151d30, #1a1625);
+  background: linear-gradient(145deg, #141c2f, #101726);
   border: 1px solid var(--border-color);
   border-radius: 14px;
   padding: 20px;
@@ -243,7 +243,7 @@ body {
   position: relative;
   transform-style: preserve-3d;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 25px rgba(245, 158, 11, 0.04);
+  box-shadow: 0 4px 25px rgba(56, 189, 248, 0.04);
 }
 
 .project-card:hover {
@@ -252,21 +252,25 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--accent-glow);
 }
 
+/* Fixed Image Container to prevent cutoff/distortion */
 .project-image {
   width: 100%;
-  height: 150px;
+  height: 160px;
   border-radius: 8px;
   overflow: hidden;
   position: relative;
   border: 1px solid var(--border-color);
+  background: #090e1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .project-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* Ensures entire image is visible without cropping */
   image-rendering: -webkit-optimize-contrast;
-  /* Image scaling animation completely removed to prevent quality distortion */
 }
 
 .project-heading {
@@ -284,11 +288,11 @@ body {
 .project-number {
   font-size: 0.75rem;
   font-weight: 700;
-  color: #fbbf24;
-  background: rgba(245, 158, 11, 0.1);
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
   padding: 2px 6px;
   border-radius: 4px;
-  border: 1px solid rgba(245, 158, 11, 0.2);
+  border: 1px solid rgba(56, 189, 248, 0.2);
 }
 
 .project-description {
@@ -308,7 +312,7 @@ body {
 .project-links a {
   font-size: 0.78rem;
   font-weight: 600;
-  color: #fbbf24;
+  color: #38bdf8;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -316,7 +320,7 @@ body {
   transition: color 0.2s ease;
 }
 .project-links a:hover {
-  color: #f59e0b;
+  color: #7dd3fc;
 }
 
 /* Background Sections (Achievements & Education) */
