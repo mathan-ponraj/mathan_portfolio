@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg-color: #070b14;
-  --panel-bg: #0f1626;
-  --card-bg: #141c2f;
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(56, 189, 248, 0.4); /* LinkedIn Light Blue Glow */
-  --accent-glow: rgba(56, 189, 248, 0.12);
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
+  --bg-color: #fcf9f5;          /* Warm golden-white / cream background */
+  --panel-bg: #ffffff;          /* Clean white sidebar & card panels */
+  --card-bg: #f5f0ea;           /* Soft warm tinted card surface */
+  --border-color: rgba(203, 213, 225, 0.6); /* Soft subtle border */
+  --border-hover: rgba(2, 132, 199, 0.5);   /* Vibrant blue accent border */
+  --accent-glow: rgba(2, 132, 199, 0.12);
+  --text-main: #0f172a;         /* Deep rich dark text for high readability */
+  --text-muted: #475569;        /* Balanced medium-dark gray text */
 }
 
 * {
@@ -48,14 +48,14 @@ body {
   height: 100vh;
   overflow-y: auto;
   z-index: 10;
-  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.04);
 }
 
 .sidebar::-webkit-scrollbar {
   width: 4px;
 }
 .sidebar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.15);
   border-radius: 4px;
 }
 
@@ -76,15 +76,15 @@ body {
   border-radius: 50%;
   object-fit: cover;
   image-rendering: -webkit-optimize-contrast;
-  border: 2px solid #38bdf8; /* LinkedIn Light Blue border */
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+  border: 2px solid #0284c7;
+  box-shadow: 0 0 20px rgba(2, 132, 199, 0.25);
 }
 
 .profile-fallback {
   width: 84px;
   height: 84px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #38bdf8, #0284c7);
+  background: linear-gradient(135deg, #0284c7, #f59e0b);
   display: none;
   place-items: center;
   font-weight: 700;
@@ -97,10 +97,11 @@ body {
   font-weight: 700;
   margin-top: 10px;
   letter-spacing: -0.025em;
+  color: #0f172a;
 }
 
 .profile-title {
-  background: linear-gradient(135deg, #38bdf8, #fbbf24); /* LinkedIn Light Blue to Warm Bright Gold */
+  background: linear-gradient(135deg, #0284c7, #d97706);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
@@ -117,7 +118,7 @@ body {
   margin-top: 6px;
 }
 .profile-location span {
-  color: #10b981;
+  color: #059669;
   font-size: 0.6rem;
 }
 
@@ -133,7 +134,7 @@ body {
   width: 34px;
   height: 34px;
   border-radius: 8px;
-  background: var(--card-bg);
+  background: #f1f5f9;
   border: 1px solid var(--border-color);
   display: grid;
   place-items: center;
@@ -142,11 +143,11 @@ body {
 }
 
 .social-links a:hover {
-  background: #38bdf8;
-  color: #070b14;
-  border-color: #7dd3fc;
+  background: #0284c7;
+  color: white;
+  border-color: #0284c7;
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 10px 20px rgba(56, 189, 248, 0.4);
+  box-shadow: 0 10px 20px rgba(2, 132, 199, 0.3);
 }
 
 .social-links svg {
@@ -157,9 +158,9 @@ body {
 
 .email-pill {
   padding: 6px 12px;
-  background: rgba(56, 189, 248, 0.1);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  color: #38bdf8;
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.2);
+  color: #0369a1;
   font-size: 0.75rem;
   font-weight: 600;
   border-radius: 8px;
@@ -167,9 +168,9 @@ body {
   transition: all 0.3s ease;
 }
 .email-pill:hover {
-  background: #38bdf8;
-  color: #070b14;
-  box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+  background: #0284c7;
+  color: white;
+  box-shadow: 0 0 15px rgba(2, 132, 199, 0.4);
 }
 
 /* Sidebar Sections */
@@ -184,7 +185,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #38bdf8; /* LinkedIn Light Blue headers */
+  color: #d97706; /* Warm golden header */
 }
 
 .about-copy {
@@ -195,7 +196,7 @@ body {
 
 .muted-line {
   font-size: 0.72rem;
-  color: #94a3b8;
+  color: #64748b;
   margin-top: 8px;
   margin-bottom: 3px;
   font-weight: 600;
@@ -211,21 +212,21 @@ body {
 .tag {
   font-size: 0.72rem;
   padding: 3px 8px;
-  background: rgba(255, 255, 255, 0.03);
+  background: #f8fafc;
   border: 1px solid var(--border-color);
   border-radius: 6px;
-  color: #cbd5e1;
+  color: #334155;
   font-weight: 500;
   transition: all 0.2s ease;
 }
 .tag:hover {
-  border-color: #38bdf8;
-  background: rgba(56, 189, 248, 0.12);
-  color: #38bdf8;
+  border-color: #0284c7;
+  background: rgba(2, 132, 199, 0.08);
+  color: #0369a1;
   transform: translateY(-2px);
 }
 
-/* 3D Compact Project Cards with Properly Aligned Images */
+/* 3D Compact Project Cards with Warm Golden-White Surface */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -233,7 +234,7 @@ body {
 }
 
 .project-card {
-  background: linear-gradient(145deg, #141c2f, #101726);
+  background: var(--panel-bg);
   border: 1px solid var(--border-color);
   border-radius: 14px;
   padding: 20px;
@@ -243,16 +244,15 @@ body {
   position: relative;
   transform-style: preserve-3d;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 25px rgba(56, 189, 248, 0.04);
+  box-shadow: 0 4px 20px rgba(217, 119, 6, 0.06);
 }
 
 .project-card:hover {
   transform: translateY(-6px) rotateX(1.5deg) rotateY(-1.5deg);
   border-color: var(--border-hover);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--accent-glow);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 0 30px var(--accent-glow);
 }
 
-/* Fixed Image Container to prevent cutoff/distortion */
 .project-image {
   width: 100%;
   height: 160px;
@@ -260,7 +260,7 @@ body {
   overflow: hidden;
   position: relative;
   border: 1px solid var(--border-color);
-  background: #090e1a;
+  background: #f1f5f9;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -269,7 +269,7 @@ body {
 .project-image img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Ensures entire image is visible without cropping */
+  object-fit: contain;
   image-rendering: -webkit-optimize-contrast;
 }
 
@@ -282,17 +282,17 @@ body {
 .project-heading h2 {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-main);
 }
 
 .project-number {
   font-size: 0.75rem;
   font-weight: 700;
-  color: #38bdf8;
-  background: rgba(56, 189, 248, 0.1);
+  color: #d97706;
+  background: rgba(217, 119, 6, 0.08);
   padding: 2px 6px;
   border-radius: 4px;
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(217, 119, 6, 0.2);
 }
 
 .project-description {
@@ -312,7 +312,7 @@ body {
 .project-links a {
   font-size: 0.78rem;
   font-weight: 600;
-  color: #38bdf8;
+  color: #0284c7;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -320,7 +320,7 @@ body {
   transition: color 0.2s ease;
 }
 .project-links a:hover {
-  color: #7dd3fc;
+  color: #0369a1;
 }
 
 /* Background Sections (Achievements & Education) */
@@ -349,8 +349,8 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(16, 185, 129, 0.05);
-  border: 1px solid rgba(16, 185, 129, 0.2);
+  background: rgba(5, 150, 105, 0.06);
+  border: 1px solid rgba(5, 150, 105, 0.2);
   padding: 10px 14px;
   border-radius: 10px;
   margin-top: auto;
@@ -359,22 +359,22 @@ body {
 .availability-dot {
   width: 9px;
   height: 9px;
-  background-color: #10b981;
+  background-color: #059669;
   border-radius: 50%;
-  box-shadow: 0 0 10px #10b981;
+  box-shadow: 0 0 10px #059669;
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(5, 150, 105, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); }
 }
 
 .availability-label {
   font-size: 0.68rem;
   font-weight: 600;
-  color: #34d399;
+  color: #047857;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -382,13 +382,13 @@ body {
 .availability-role {
   font-size: 0.82rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-main);
 }
 
 .footer {
   text-align: center;
   font-size: 0.78rem;
-  color: #94a3b8;
+  color: var(--text-muted);
   padding: 16px 0;
   border-top: 1px solid var(--border-color);
 }
