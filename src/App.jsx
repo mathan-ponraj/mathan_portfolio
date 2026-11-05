@@ -3,16 +3,13 @@ import './App.css';
 
 const profile = {
   name: "Mathan Ponraj",
-  title: "AI Software Developer",
-  tagline: "Python, FastAPI and LLM/RAG applications. Looking for AI Software Engineer role in Bengaluru.",
+  title: "Python AI Developer",
+  tagline: "Beyond Innovation — Looking for Python AI Developer roles in Bengaluru.",
   location: "Bengaluru, India",
-  // Phone removed from the public page to avoid spam calls. Keep it on your resume instead.
-  // To show it again, set phone: "+91 7339404085"
   phone: "7339404085",
   photo: "/images/portfolio photo.png",
   email: "mathanponraj03@gmail.com",
   linkedin: "https://www.linkedin.com/in/mathan03/",
-  // Fixed: this used to point to the portfolio repo, not your GitHub profile.
   github: "https://github.com/mathan-ponraj",
 };
 
@@ -71,11 +68,9 @@ const projects = [
     number: "04",
     title: "LapPick",
     tags: ['Python', 'XGBoost', 'Scikit-Learn', 'Streamlit', 'Joblib', 'Feature Engineering'],
-    // VERIFY the R² below against your notebook. Your site said 0.96, LinkedIn said 0.91, resume said 0.92.
     description: "A laptop price predictor and recommender. An XGBoost model trained on about 1,300 laptop listings predicts price from specifications (R² ≈ 0.91), after cleaning outliers and encoding categories in a Scikit-learn pipeline. In the Streamlit app you filter by budget, RAM, CPU and storage to get recommendations.",
     image: '/images/lappick-thumbnail.svg',
     imageAlt: 'LapPick laptop price and recommendation system banner',
-    // VERIFY this repo link opens. Other places use a different repo name (Laptop-Price-And-Recommendation-System).
     github: 'https://github.com/mathan-ponraj/lappick',
     live: 'https://laptop-price-and-recommendation-system-icvhjjspmfrmmy2rfmtuaq.streamlit.app/',
     theme: 'lappick',
@@ -142,18 +137,25 @@ function Sidebar() {
           </p>
         )}
       </div>
+
       <section className="sidebar-section about-section">
         <p className="section-kicker">About</p>
         <div className="about-copy">
-          <p>AI & Software Developer</p>
-          <p>Software Developer building intelligent applications, from APIs and databases to AI-powered solutions using Python, FastAPI, React, SQL, and LangChain.</p>
-          
-          <p>vBuilt 7+ end-to-end projects across Generative AI, RAG, Machine Learning, Data Pipelines, and Backend Development.</p>
-          
-          <p>A little into code, a lot into building things from scratch, and always up for learning something new.</p>
-        
-          
-          <p>Based in Bengaluru | Open to Full-Time Opportunities | Immediate Joiner 🤝</p>
+          <p>I am a Python AI Developer building intelligent applications, from high-performance REST APIs and databases to advanced GenAI and RAG solutions using Python, FastAPI, and LangChain. Passionate about solving complex operational challenges, I transform raw ideas into production-ready software with a commitment to excellence. Based in Bengaluru and actively seeking full-time opportunities. 🤝</p>
+        </div>
+      </section>
+
+      <section className="sidebar-section philosophy-section">
+        <p className="section-kicker">Vision & Mission</p>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '8px', marginTop: '8px' }}>
+          <div style={{ padding: '10px 12px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '8px' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#818cf8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Omnicompetent</span>
+            <p style={{ fontSize: '0.85rem', color: '#e2e8f0', marginTop: '2px', fontWeight: 500 }}>Limitless capacity.</p>
+          </div>
+          <div style={{ padding: '10px 12px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '8px' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#818cf8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Objective</span>
+            <p style={{ fontSize: '0.85rem', color: '#e2e8f0', marginTop: '2px' }}>Give the best experience for intelligent products with high satisfaction.</p>
+          </div>
         </div>
       </section>
 
@@ -168,31 +170,37 @@ function Sidebar() {
           </div>
         ))}
       </section>
+
       <div className="availability-card" aria-label="Current job availability">
         <span className="availability-dot" aria-hidden="true" />
         <div>
           <p className="availability-label">Open to work · Immediate joiner</p>
-          <p className="availability-role">AI Software Developer</p>
+          <p className="availability-role">Python AI Developer</p>
         </div>
       </div>
     </aside>
   );
 }
 
-function BackgroundSections() {
+function AchievementsAndEducation() {
   return (
     <section className="background-sections">
       <div className="background-column">
-        <p className="section-kicker">Experience</p>
-        {/* TODO: replace the title and dates below with the exact ones on your offer/experience letter. Check the company spelling too. */}
-        <p className="muted-line">Nymore Coretex · 1 year, alongside M.E.</p>
-        <h3>Associate – Web, Social Media &amp; Data</h3>
-        {/* TODO: say which page/site you built and what it does or what changed. Keep the title identical to your offer letter. */}
-        <p className="background-description">Worked across several areas at an early-stage startup. Built web pages using HTML, CSS and JavaScript, set up and managed the company's Instagram account and created content for it, collected and cleaned data, and prepared PowerPoint presentations for the team.</p>
-        <p className="muted-line" style={{ marginTop: '24px' }}>Rinex.ai · Mar 2024 – May 2024</p>
-        <h3>Data Science Intern</h3>
-        {/* TODO: replace this line with 1-2 specific things you actually did (dataset, model, tool, result). */}
-        <p className="background-description">Three-month internship working on data science tasks.</p>
+        <p className="section-kicker">Achievements</p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div>
+            <h3 style={{ fontSize: '1rem', fontWeight: 600, color: '#f8fafc', marginBottom: '4px' }}>🚀 Live Product Deployments</h3>
+            <p className="background-description">Successfully completed and hosted 3+ live production web applications combining scalable backend engineering and AI components.</p>
+          </div>
+          <div>
+            <h3 style={{ fontSize: '1rem', fontWeight: 600, color: '#f8fafc', marginBottom: '4px' }}>💼 Freelance Leadership</h3>
+            <p className="background-description">Successfully ran 1 year of freelance operations, leading a 3-member technical team (ongoing).</p>
+          </div>
+          <div>
+            <h3 style={{ fontSize: '1rem', fontWeight: 600, color: '#f8fafc', marginBottom: '4px' }}>🎨 Full-Stack &amp; Content Execution</h3>
+            <p className="background-description">Developed and deployed static and dynamic web pages while managing end-to-end Instagram content creation, including professional video editing and Photoshop design.</p>
+          </div>
+        </div>
       </div>
       <div className="background-column education-column">
         <p className="section-kicker">Education</p>
@@ -202,10 +210,9 @@ function BackgroundSections() {
           <p className="background-description">Karpagam Academy of Higher Education, Coimbatore | CGPA: 8.85/10</p>
           <p className="background-description">Coursework: Database Systems, Data Warehousing, Data Mining, Machine Learning, AI and LLMs.</p>
         </div>
-        <div className="education-entry">
+        <div className="education-entry" style={{ marginTop: '24px' }}>
           <p className="muted-line">2020 – 2024</p>
           <h3>B.E. in Computer Science &amp; Engineering</h3>
-          {/* TODO: add your B.E. CGPA or percentage. */}
           <p className="background-description">Government College of Engineering, Bodinayakanur</p>
         </div>
       </div>
@@ -220,12 +227,11 @@ export default function App() {
       <div className="main-content">
         <div className="projects-header">
           <p className="section-kicker">Projects</p>
-          
         </div>
         <section className="projects-grid" aria-label="Selected projects">
           {projects.map((project) => <ProjectCard project={project} key={project.number} />)}
         </section>
-        <BackgroundSections />
+        <AchievementsAndEducation />
         <footer className="footer">Designed and built by Mathan Ponraj.</footer>
       </div>
     </main>
