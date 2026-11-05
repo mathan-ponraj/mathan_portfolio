@@ -2,7 +2,7 @@
 
 :root {
   --bg-color: #fcf9f5;          /* Warm golden-white / cream background */
-  --panel-bg: #ffffff;          /* Clean white sidebar & card panels */
+  --panel-bg: #fff;          /* Clean white sidebar & card panels */
   --card-bg: #f5f0ea;           /* Soft warm tinted card surface */
   --border-color: rgba(203, 213, 225, 0.6); /* Soft subtle border */
   --border-hover: rgba(2, 132, 199, 0.5);   /* Vibrant blue accent border */
