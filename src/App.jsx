@@ -4,8 +4,8 @@ import './App.css';
 const profile = {
   name: "Mathan Ponraj",
   title: "Python AI Developer",
-  tagline: "Beyond Innovation — Looking for Python AI Developer roles in Bengaluru.",
-  location: "Bengaluru, India",
+  tagline: "Seeking Python AI Developer roles in Bengaluru",
+  location: "HSR Layout, Bengaluru, Karnataka 560102",
   phone: "7339404085",
   photo: "/images/portfolio photo.png",
   email: "mathanponraj03@gmail.com",
@@ -39,7 +39,7 @@ const projects = [
     image: '/images/resume-interview-thumbnail.jpg',
     imageAlt: "TalentIQ AI resume analysis and mock interview app",
     tags: ["Python", "FastAPI", "LangChain", "React.js", "Vite", "Gemini API", "Vercel", "Render"],
-    description: "An app that helps job seekers prepare for a specific role. You upload a resume and choose job role the algorithm shows the skill gaps, suggests resume improvements, and runs a mock interview at different difficulty levels. The backend is FastAPI with a LangChain RAG pipeline, and it uses semantic chunking so related skills stay together when the resume is split for embeddings.",
+    description: "A GenAI career-prep app that closes the gap between a resume and a target job role. Upload your resume, pick a role, and it runs NLP-driven data analysis to surface skill gaps, suggest sharper resume improvements, and host mock interviews at different difficulty levels. Built on FastAPI and a LangChain RAG pipeline, with semantic chunking so related skills stay together in the embeddings.",
     github: "https://github.com/mathan-ponraj/talentiqai",
     live: 'https://talentiq-ai-two.vercel.app/',
     theme: 'resume',
@@ -50,7 +50,7 @@ const projects = [
     image: '/images/youtube-trendtube-thumbnail.jpg',
     imageAlt: "TrendTube YouTube trending data pipeline",
     tags: ["Python", "PostgreSQL", "ETL", "YouTube Data API v3", "Pandas", "Psycopg", "Star Schema"],
-    description: "A Python ETL pipeline that pulls trending YouTube videos from 9 regions through the YouTube Data API, cleans and validates them with Pandas, and loads them into PostgreSQL. The data is stored as a star schema (dim_video, dim_region, dim_date, fact_trending) with an engagement metric, so trends can be compared across regions with plain SQL.",
+    description: "A data engineering project that tracks what is trending on YouTube across 9 regions. A Python ETL pipeline pulls videos from the YouTube Data API, cleans and validates them with Pandas, and loads them into PostgreSQL as a star schema (dim_video, dim_region, dim_date, fact_trending). An engagement metric makes regional trends easy to compare with plain SQL for data analysis.",
     github: "https://github.com/mathan-ponraj/Trendtube",
   },
   {
@@ -59,7 +59,7 @@ const projects = [
     image: '/images/eduhelpdesk-thumbnail.jpg',
     imageAlt: "EduHelpDesk academic support ticketing system",
     tags: ["Python", "Flask", "SQLite", "REST APIs", "RBAC", "Render"],
-    description: "A support ticket system for a college. Students raise tickets, staff resolve them, and managers monitor progress, each with their own role-based dashboard. It tracks ticket age against SLA deadlines, flags overdue tickets, and keeps a full history of every status change. Built with Flask and SQLite and deployed on Render.",
+    description: "A role-based ticketing platform that helps a college resolve student issues on time. Students raise tickets, staff resolve them, and managers track progress on their own dashboards. It measures ticket age against SLA deadlines, flags overdue cases, and keeps a full history of every status change, turning ticket data into clear SLA insights. Built with Flask and SQLite, deployed on Render.",
     github: "https://github.com/mathan-ponraj/EduHelpDesk",
     live: 'https://eduhelpdesk.onrender.com/',
     theme: 'helpdesk',
@@ -68,7 +68,7 @@ const projects = [
     number: "04",
     title: "LapPick",
     tags: ['Python', 'XGBoost', 'Scikit-Learn', 'Streamlit', 'Joblib', 'Feature Engineering'],
-    description: "A laptop price predictor and recommender. An XGBoost model trained on about 1,300 laptop listings predicts price from specifications (R² ≈ 0.91), after cleaning outliers and encoding categories in a Scikit-learn pipeline. In the Streamlit app you filter by budget, RAM, CPU and storage to get recommendations.",
+    description: "A data science project that predicts laptop prices and recommends the best fit for your budget. An XGBoost model trained on about 1,300 listings predicts price from specifications (R² ≈ 0.91), after outlier cleaning and category encoding in a Scikit-learn pipeline. In the Streamlit app, you filter by budget, RAM, CPU and storage to get smart recommendations.",
     image: '/images/lappick-thumbnail.svg',
     imageAlt: 'LapPick laptop price and recommendation system banner',
     github: 'https://github.com/mathan-ponraj/lappick',
@@ -117,23 +117,22 @@ function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="profile-top">
-        <img className="profile-photo" src={profile.photo} alt="Mathan Ponraj" onError={(event) => { event.currentTarget.style.display = 'none'; const fallback = event.currentTarget.parentElement.querySelector('.profile-fallback'); if (fallback) fallback.style.display = 'grid'; }} />
+        <img className="profile-photo" src={profile.photo} alt="Mathan Ponraj, Python AI Developer in Bengaluru" onError={(event) => { event.currentTarget.style.display = 'none'; const fallback = event.currentTarget.parentElement.querySelector('.profile-fallback'); if (fallback) fallback.style.display = 'grid'; }} />
         <div className="profile-fallback" aria-hidden="true">MP</div>
         <h1>{profile.name}</h1>
         <p className="profile-title">{profile.title}</p>
-        <p style={{ fontSize: '0.8rem', color: '#334155', lineHeight: 1.4, margin: '4px 0 8px' }}>{profile.tagline}</p>
+        <p className="profile-tagline">{profile.tagline}</p>
         <p className="profile-location"><span aria-hidden="true">●</span> {profile.location}</p>
 
         <div className="social-links">
           {profile.linkedin ? <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><SocialIcon type="linkedin" /></a> : <span className="social-placeholder" aria-label="LinkedIn link to add"><SocialIcon type="linkedin" /></span>}
           {profile.github ? <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub"><SocialIcon type="github" /></a> : <span className="social-placeholder" aria-label="GitHub link to add"><SocialIcon type="github" /></span>}
-          {profile.email ? <a href={`mailto:${profile.email}`} aria-label="Email"><SocialIcon type="mail" /></a> : <span className="social-placeholder" aria-label="Email link to add"><SocialIcon type="mail" /></span>}
-          {profile.email ? <a className="email-pill" href={`mailto:${profile.email}`}>email me</a> : <span className="email-pill">email me</span>}
+          {profile.email ? <a href={`mailto:${profile.email}`} aria-label="Email me"><SocialIcon type="mail" /></a> : <span className="social-placeholder" aria-label="Email link to add"><SocialIcon type="mail" /></span>}
         </div>
 
         {profile.phone && (
-          <p style={{ fontSize: '0.78rem', color: '#334155', marginTop: '8px', fontWeight: 500 }}>
-            📞 <a href={`tel:${profile.phone}`} style={{ color: 'inherit', textDecoration: 'none' }}>{profile.phone}</a>
+          <p className="profile-phone">
+            📞 <a href={`tel:${profile.phone}`}>{profile.phone}</a>
           </p>
         )}
       </div>
@@ -141,20 +140,23 @@ function Sidebar() {
       <section className="sidebar-section about-section">
         <p className="section-kicker">About</p>
         <div className="about-copy">
-          <p>I am a Python AI Developer building intelligent applications, from high-performance REST APIs and databases to advanced GenAI and RAG solutions using Python, FastAPI, and LangChain. Passionate about solving complex operational challenges, I transform raw ideas into production-ready software with a commitment to excellence. Based in Bengaluru and actively seeking full-time opportunities. 🤝</p>
+          <p>I'm a Python AI Developer who turns ideas into production-ready intelligent products. I build high-performance REST APIs with FastAPI, engineer clean data pipelines, and ship GenAI and RAG applications on LangChain and modern LLM APIs.</p>
+          <p>I enjoy turning complex operational challenges into simple, dependable software, taking an idea from raw data all the way to a fast, deployed product.</p>
+          <p>Based in Bengaluru and actively seeking full-time opportunities. 🤝</p>
         </div>
       </section>
 
       <section className="sidebar-section philosophy-section">
         <p className="section-kicker">Vision & Mission</p>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '6px', marginTop: '6px' }}>
-          <div style={{ padding: '8px 10px', background: 'rgba(217, 119, 6, 0.04)', border: '1px solid rgba(217, 119, 6, 0.2)', borderRadius: '8px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '10px', marginTop: '6px' }}>
+          <div style={{ padding: '10px 12px', background: 'rgba(217, 119, 6, 0.04)', border: '1px solid rgba(217, 119, 6, 0.2)', borderRadius: '8px' }}>
             <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#d97706', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Omnicompetent</span>
-            <p style={{ fontSize: '0.82rem', color: '#0f172a', marginTop: '2px', fontWeight: 500 }}>Limitless capacity.</p>
+            <p style={{ fontSize: '0.82rem', color: '#0f172a', marginTop: '4px', fontWeight: 500 }}>Limitless capacity.</p>
           </div>
-          <div style={{ padding: '8px 10px', background: 'rgba(217, 119, 6, 0.04)', border: '1px solid rgba(217, 119, 6, 0.2)', borderRadius: '8px' }}>
-            <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#d97706', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Objective</span>
-            <p style={{ fontSize: '0.82rem', color: '#0f172a', marginTop: '2px' }}>Give the best experience for intelligent products with high satisfaction.</p>
+          <div style={{ padding: '10px 12px', background: 'rgba(217, 119, 6, 0.04)', border: '1px solid rgba(217, 119, 6, 0.2)', borderRadius: '8px' }}>
+            <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#d97706', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Mission</span>
+            <p style={{ fontSize: '0.82rem', color: '#0f172a', marginTop: '4px', lineHeight: 1.6 }}>To build intelligent products that deliver an exceptional, high-satisfaction user experience.</p>
+            <p className="beyond-line">Beyond Innovation</p>
           </div>
         </div>
       </section>
@@ -162,7 +164,7 @@ function Sidebar() {
       <section className="sidebar-section skills-section">
         <p className="section-kicker">Skills</p>
         {skillGroups.map((group) => (
-          <div key={group.label} style={{ marginBottom: '6px' }}>
+          <div key={group.label} style={{ marginBottom: '8px' }}>
             <p className="muted-line">{group.label}</p>
             <div className="tag-list skills-list">
               {group.items.map((skill) => <span className="tag" key={skill}>{skill}</span>)}

@@ -10,6 +10,16 @@
   --accent-glow: rgba(2, 132, 199, 0.12);
   --text-main: #0f172a;
   --text-muted: #334155;
+
+  /* Outer desk margins around the page (bigger, scales with screen) */
+  --page-pad-y: clamp(24px, 4.5vw, 72px);
+  --page-pad-x: clamp(24px, 5vw, 80px);
+
+  /* Champagne gold finish for clicks / focus */
+  --gold-1: #f8ecc9;
+  --gold-2: #e3c37f;
+  --gold-3: #b98f45;
+  --gold-glow: rgba(227, 195, 127, 0.55);
 }
 
 * {
@@ -18,22 +28,33 @@
   padding: 0;
 }
 
+html {
+  -webkit-tap-highlight-color: rgba(227, 195, 127, 0.3);
+}
+
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-main);
   min-height: 100vh;
-  padding: 40px 24px; /* Creates the outer desk margins around the page */
+  padding: var(--page-pad-y) var(--page-pad-x);
   display: flex;
   justify-content: center;
   align-items: center;
   overflow-x: hidden;
+  caret-color: var(--gold-3);
+}
+
+/* Champagne gold text selection */
+::selection {
+  background: rgba(227, 195, 127, 0.6);
+  color: #1f1604;
 }
 
 /* 3D Master Sheet / "Xerox Paper" Frame Layer */
 .portfolio-shell {
   display: flex;
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - (var(--page-pad-y) * 2));
   width: 100%;
   max-width: 1480px;
   background-color: var(--page-bg);
@@ -49,39 +70,29 @@ body {
     inset 0 0 0 1px rgba(255, 255, 255, 0.8);
 }
 
-/* Sidebar / Left Column (Light Blue Theme) */
+/* Sidebar / Left Column (Light Blue Theme) - slimmer, no inner scrollbar */
 .sidebar {
-  width: 390px;
+  width: 345px;
+  flex-shrink: 0;
   background: var(--panel-bg);
   border-right: 1px solid var(--border-color);
   padding: 36px 26px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow-y: auto;
+  gap: 30px;
+  position: relative;
   z-index: 10;
   box-shadow: 5px 0 20px rgba(2, 132, 199, 0.03);
-}
-
-.sidebar::-webkit-scrollbar {
-  width: 4px;
-}
-.sidebar::-webkit-scrollbar-thumb {
-  background: rgba(2, 132, 199, 0.2);
-  border-radius: 4px;
 }
 
 /* Main Content / Right Column */
 .main-content {
   flex: 1;
-  padding: 40px;
+  min-width: 0;
+  padding: 40px 44px;
   display: flex;
   flex-direction: column;
   gap: 32px;
-  overflow-y: auto;
 }
 
 /* Crystal Clear Profile Photo */
@@ -91,7 +102,7 @@ body {
   border-radius: 50%;
   object-fit: cover;
   image-rendering: -webkit-optimize-contrast;
-  border: 2px solid #0284c7;
+  border: 2px solid #54c9ec;
   box-shadow: 0 0 20px rgba(2, 132, 199, 0.25);
 }
 
@@ -110,7 +121,7 @@ body {
 .sidebar h1 {
   font-size: 1.4rem;
   font-weight: 700;
-  margin-top: 10px;
+  margin-top: 14px;
   letter-spacing: -0.025em;
   color: #0f172a;
 }
@@ -121,7 +132,14 @@ body {
   -webkit-text-fill-color: transparent;
   font-weight: 700;
   font-size: 0.9rem;
-  margin-top: 2px;
+  margin-top: 6px;
+}
+
+.profile-tagline {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-top: 8px;
 }
 
 .profile-location {
@@ -129,12 +147,25 @@ body {
   align-items: center;
   gap: 6px;
   font-size: 0.8rem;
+  line-height: 1.5;
   color: var(--text-muted);
-  margin-top: 8px;
+  margin-top: 12px;
 }
 .profile-location span {
   color: #059669;
   font-size: 0.6rem;
+}
+
+.profile-phone {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 16px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.profile-phone a {
+  color: inherit;
+  text-decoration: none;
 }
 
 /* Social Icons */
@@ -142,7 +173,7 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 14px;
+  margin-top: 18px;
 }
 
 .social-links a, .social-placeholder {
@@ -171,28 +202,11 @@ body {
   fill: currentColor;
 }
 
-.email-pill {
-  padding: 6px 12px;
-  background: rgba(2, 132, 199, 0.1);
-  border: 1px solid rgba(2, 132, 199, 0.25);
-  color: #0369a1;
-  font-size: 0.75rem;
-  font-weight: 600;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-.email-pill:hover {
-  background: #0284c7;
-  color: white;
-  box-shadow: 0 0 15px rgba(2, 132, 199, 0.4);
-}
-
 /* Sidebar Sections */
 .sidebar-section {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .section-kicker {
@@ -205,16 +219,28 @@ body {
 }
 
 .about-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   font-size: 0.84rem;
-  line-height: 1.65;
+  line-height: 1.75;
   color: var(--text-muted);
+}
+
+.beyond-line {
+  margin-top: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-3);
 }
 
 .muted-line {
   font-size: 0.72rem;
   color: #475569;
-  margin-top: 10px;
-  margin-bottom: 5px;
+  margin-top: 12px;
+  margin-bottom: 6px;
   font-weight: 600;
 }
 
@@ -242,21 +268,21 @@ body {
   transform: translateY(-2px);
 }
 
-/* 3D Compact Project Cards */
+/* 3D Compact Project Cards (smaller) */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
 }
 
 .project-card {
   background: var(--card-bg);
   border: 1px solid rgba(203, 213, 225, 0.8);
   border-radius: 14px;
-  padding: 20px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   position: relative;
   transform-style: preserve-3d;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -269,23 +295,24 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 0 30px var(--accent-glow);
 }
 
+/* Banner images now fill the frame edge to edge (no empty bars) */
 .project-image {
+  display: block;
   width: 100%;
-  height: 160px;
+  aspect-ratio: 3.8 / 1;
   border-radius: 8px;
   overflow: hidden;
   position: relative;
   border: 1px solid rgba(203, 213, 225, 0.6);
   background: #f8fafc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .project-image img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  display: block;
+  object-fit: cover;
+  object-position: center;
   image-rendering: -webkit-optimize-contrast;
 }
 
@@ -296,7 +323,7 @@ body {
 }
 
 .project-heading h2 {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-main);
 }
@@ -313,7 +340,7 @@ body {
 
 .project-description {
   font-size: 0.82rem;
-  line-height: 1.55;
+  line-height: 1.65;
   color: var(--text-muted);
 }
 
@@ -410,13 +437,98 @@ body {
   border-top: 1px solid rgba(203, 213, 225, 0.6);
 }
 
-/* Responsive breakpoint */
+/* ==========================================================
+   Champagne gold click / focus finish
+   ========================================================== */
+
+/* Gold keyboard-focus ring with a soft glow (replaces default blue ring) */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--gold-2);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(227, 195, 127, 0.28), 0 0 18px var(--gold-glow);
+}
+
+/* Elements that get the light-sweep shine on click */
+.social-links a,
+.project-links a,
+.project-image,
+.tag {
+  position: relative;
+  overflow: hidden;
+}
+
+.social-links a::after,
+.project-links a::after,
+.project-image::after,
+.tag::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 246, 220, 0.9) 50%, transparent 70%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+
+.social-links a:active::after,
+.social-links a:focus-visible::after,
+.project-links a:active::after,
+.project-links a:focus-visible::after,
+.project-image:active::after,
+.project-image:focus-visible::after,
+.tag:active::after {
+  animation: gold-shine 0.7s ease;
+}
+
+@keyframes gold-shine {
+  to { transform: translateX(120%); }
+}
+
+/* Pressed states: champagne gold */
+.social-links a:active {
+  background: linear-gradient(135deg, var(--gold-1), var(--gold-2) 55%, var(--gold-3));
+  color: #2a1d05;
+  border-color: var(--gold-2);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 0 0 3px rgba(227, 195, 127, 0.35), 0 8px 22px rgba(185, 143, 69, 0.45);
+}
+
+.project-links a:active {
+  color: var(--gold-3);
+  text-shadow: 0 0 12px var(--gold-glow);
+}
+
+.tag:active {
+  background: linear-gradient(135deg, var(--gold-1), var(--gold-2));
+  border-color: var(--gold-2);
+  color: #3a2a08;
+  box-shadow: 0 0 12px var(--gold-glow);
+}
+
+.project-image:active {
+  border-color: var(--gold-2);
+  box-shadow: 0 0 0 3px rgba(227, 195, 127, 0.4), 0 0 24px var(--gold-glow);
+}
+
+.project-card:active {
+  border-color: var(--gold-2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 0 32px var(--gold-glow);
+}
+
+/* Responsive breakpoints */
+@media (min-width: 1025px) and (max-width: 1180px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 1024px) {
   body {
-    padding: 10px;
+    padding: 16px;
   }
   .portfolio-shell {
     flex-direction: column;
+    min-height: auto;
     max-height: none;
   }
   .sidebar {
@@ -426,5 +538,23 @@ body {
   }
   .background-sections {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .main-content {
+    padding: 28px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-links a::after,
+  .project-links a::after,
+  .project-image::after,
+  .tag::after {
+    animation: none !important;
   }
 }
