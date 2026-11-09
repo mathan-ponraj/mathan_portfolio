@@ -14,7 +14,7 @@ const profile = {
   github: "https://github.com/mathan-ponraj",
 };
 
-const whatsappLink = `https://wa.me/91${profile.phone}?text=${encodeURIComponent('Hi Mathan, I saw your portfolio.')}`;
+const whatsappLink = `https://wa.me/91${profile.phone}?text=${encodeURIComponent('Hi Mathan, When are you available to join?')}`;
 
 const skillGroups = [
   {
