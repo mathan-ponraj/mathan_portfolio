@@ -296,7 +296,6 @@ export default function App() {
           {projects.map((project) => <ProjectCard project={project} key={project.number} />)}
         </section>
         <AchievementsAndEducation />
-        <footer className="footer">Designed and built by Mathan Ponraj</footer>
       </div>
     </main>
   );
