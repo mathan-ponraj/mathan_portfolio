@@ -41,8 +41,12 @@ const projects = [
     title: "TalentIQ AI",
     image: '/images/resume-interview-thumbnail.jpg',
     imageAlt: "TalentIQ AI resume analysis and mock interview app",
-    tags: ["Python", "FastAPI", "LangChain", "React.js", "Vite", "Gemini API", "Vercel", "Render"],
-    description: "A GenAI career-prep app that closes the gap between a resume and a target job role. Upload your resume, pick a role, and it runs NLP-driven data analysis to surface skill gaps, suggest sharper resume improvements, and host mock interviews at different difficulty levels. Built on FastAPI and a LangChain RAG pipeline, with semantic chunking so related skills stay together in the embeddings.",
+    tags: ["Python", "FastAPI", "LangChain", "React.js", "Vite", "Gemini API", "Render"],
+    highlights: [
+      "GenAI career-prep app analyzing resume fit against target roles using Gemini API",
+      "LangChain RAG pipeline with semantic chunking for contextual skill matching",
+      "Multi-level AI-simulated mock interview suite with automated feedback scoring"
+    ],
     github: "https://github.com/mathan-ponraj/talentiqai",
     live: 'https://talentiq-ai-two.vercel.app/',
     theme: 'resume',
@@ -52,9 +56,14 @@ const projects = [
     title: "TrendTube",
     image: '/images/youtube-trendtube-thumbnail.jpg',
     imageAlt: "TrendTube YouTube trending data pipeline",
-    tags: ["Python", "PostgreSQL", "ETL", "YouTube Data API v3", "Pandas", "Psycopg", "Star Schema"],
-    description: "A data engineering project that tracks what is trending on YouTube across 9 regions. A Python ETL pipeline pulls videos from the YouTube Data API, cleans and validates them with Pandas, and loads them into PostgreSQL as a star schema (dim_video, dim_region, dim_date, fact_trending). An engagement metric makes regional trends easy to compare with plain SQL for data analysis.",
+    tags: ["Python", "PostgreSQL", "ETL", "YouTube Data API v3", "Pandas", "Star Schema"],
+    highlights: [
+      "Automated ETL pipeline aggregating video trends across 9 global regions via YouTube API",
+      "Pandas-driven data cleaning loading into PostgreSQL Star Schema data model",
+      "Custom SQL engagement metrics for real-time cross-regional trend diagnosis"
+    ],
     github: "https://github.com/mathan-ponraj/Trendtube",
+    theme: 'trendtube',
   },
   {
     number: "03",
@@ -62,7 +71,11 @@ const projects = [
     image: '/images/eduhelpdesk-thumbnail.jpg',
     imageAlt: "EduHelpDesk academic support ticketing system",
     tags: ["Python", "Flask", "SQLite", "REST APIs", "RBAC", "Render"],
-    description: "A role-based ticketing platform that helps a college resolve student issues on time. Students raise tickets, staff resolve them, and managers track progress on their own dashboards. It measures ticket age against SLA deadlines, flags overdue cases, and keeps a full history of every status change, turning ticket data into clear SLA insights. Built with Flask and SQLite, deployed on Render.",
+    highlights: [
+      "Role-Based Access Control (RBAC) support portal for student/staff ticket management",
+      "Automated SLA tracking engine calculating aging and flagging overdue escalations",
+      "Full audit trail logging status change histories with administrative analytics"
+    ],
     github: "https://github.com/mathan-ponraj/EduHelpDesk",
     live: 'https://eduhelpdesk.onrender.com/',
     theme: 'helpdesk',
@@ -70,10 +83,14 @@ const projects = [
   {
     number: "04",
     title: "LapPick",
-    tags: ['Python', 'XGBoost', 'Scikit-Learn', 'Streamlit', 'Joblib', 'Feature Engineering'],
-    description: "A data science project that predicts laptop prices and recommends the best fit for your budget. An XGBoost model trained on about 1,300 listings predicts price from specifications (R² ≈ 0.91), after outlier cleaning and category encoding in a Scikit-learn pipeline. In the Streamlit app, you filter by budget, RAM, CPU and storage to get smart recommendations.",
     image: '/images/lappick-thumbnail.svg',
     imageAlt: 'LapPick laptop price and recommendation system banner',
+    tags: ['Python', 'XGBoost', 'Scikit-Learn', 'Streamlit', 'Feature Engineering'],
+    highlights: [
+      "Hardware price predictor & recommendation engine achieving R² ≈ 0.91 accuracy",
+      "Scikit-learn pipeline handling outlier cleaning and multi-category feature encoding",
+      "Interactive Streamlit app filtering recommendations by budget, RAM, CPU, and storage"
+    ],
     github: 'https://github.com/mathan-ponraj/lappick',
     live: 'https://laptop-price-and-recommendation-system-icvhjjspmfrmmy2rfmtuaq.streamlit.app/',
     theme: 'lappick',
@@ -103,17 +120,33 @@ function ProjectCard({ project }) {
         <img src={project.image} alt={project.imageAlt} loading="lazy" />
         <span className="image-shade" />
       </a>
+      
       <div className="project-heading">
         <h2>{project.title}</h2>
         <span className="project-number">{project.number}</span>
       </div>
-      <div className="tag-list" aria-label="Technologies">
-        {project.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}
-      </div>
-      <p className="project-description">{project.description}</p>
-      <div className="project-links">
-        <a href={project.github} target="_blank" rel="noreferrer">GitHub Repository <span aria-hidden="true">↗</span></a>
-        {project.live && <a href={project.live} target="_blank" rel="noreferrer">Live Demo <span aria-hidden="true">↗</span></a>}
+
+      <ul className="project-bullets">
+        {project.highlights.map((point, index) => (
+          <li key={index}>{point}</li>
+        ))}
+      </ul>
+
+      <div className="project-card-footer">
+        <div className="tag-list" aria-label="Technologies">
+          {project.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}
+        </div>
+        
+        <div className="project-links">
+          <a href={project.github} target="_blank" rel="noreferrer" className="link-btn secondary">
+            GitHub <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path fill="currentColor" d="M3.75 2h8.5a.75.75 0 0 1 .75.75v8.5a.75.75 0 0 1-1.5 0V4.31L4.03 11.78a.75.75 0 0 1-1.06-1.06L10.44 3.25H3.75a.75.75 0 0 1 0-1.5Z"/></svg>
+          </a>
+          {project.live && (
+            <a href={project.live} target="_blank" rel="noreferrer" className="link-btn primary">
+              Live Demo <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path fill="currentColor" d="M3.75 2h8.5a.75.75 0 0 1 .75.75v8.5a.75.75 0 0 1-1.5 0V4.31L4.03 11.78a.75.75 0 0 1-1.06-1.06L10.44 3.25H3.75a.75.75 0 0 1 0-1.5Z"/></svg>
+            </a>
+          )}
+        </div>
       </div>
     </article>
   );
@@ -151,8 +184,8 @@ function Sidebar() {
         <p className="section-kicker">About</p>
         <div className="about-copy">
          <p>I’m an AI Full-Stack Developer who likes turning messy data into working, intelligent software.
-           My background spans database design, ETL pipelines, and handling datasets over 100K records, alongside building out modern web applications. Currently, I'm zeroing in on scaling AI workflows with Python, AWS, and Docker. 
-           Based in Bengaluru, I'm looking for a full-time Python AI Developer role where I can build reliable systems with a solid engineering team.</p>
+            My background spans database design, ETL pipelines, and handling datasets over 100K records, alongside building out modern web applications. Currently, I'm zeroing in on scaling AI workflows with Python, AWS, and Docker. 
+            Based in Bengaluru, I'm looking for a full-time Python AI Developer role where I can build reliable systems with a solid engineering team.</p>
         </div>
       </section>
 
