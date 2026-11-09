@@ -150,17 +150,7 @@ function Sidebar() {
       <section className="sidebar-section about-section">
         <p className="section-kicker">About</p>
         <div className="about-copy">
-          <p>I'm an AI Full-Stack Developer, and what interests me most is designing and deploying intelligent software solutions.</p>
-
-          <p>What sets me apart is my hands-on experience in designing reliable database schemas, building ETL/ELT pipelines, integrating APIs, and processing datasets containing over 100K records to generate actionable business insights.</p>
-        
-          <p>I'm particularly interested in developing and deploying advanced AI applications using technologies like AWS and Docker.</p>
-        
-          <p>I currently use Git and GitHub for version control, React and Vite for frontend development, Vercel for deployment, and VS Code for coding and development.</p>
-        
-          <p>I'm based in Bengaluru and looking for full-time opportunities as a Python AI Developer, where I can apply Agile methodologies, collaborate with engineering teams, and build reliable, scalable, production-ready AI solutions.</p>
-        
-          <p>Let's connect and explore opportunities to build something meaningful.</p>
+         <p>"I’m an AI Full-Stack Developer who likes turning messy data into working, intelligent software. My background spans database design, ETL pipelines, and handling datasets over 100K records, alongside building out modern web applications. Currently, I'm zeroing in on scaling AI workflows with Python, AWS, and Docker. Based in Bengaluru, I'm looking for a full-time Python AI Developer role where I can build reliable systems with a solid engineering team."</p>
         </div>
       </section>
 
