@@ -558,3 +558,43 @@ button:focus-visible {
     animation: none !important;
   }
 }
+.contact-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid #25d366;
+  border-radius: 8px;
+  background: #e7f8ee;
+  color: #0b6b4f;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wa-btn:hover {
+  background: #d3f3df;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.25);
+}
+
+.wa-btn:focus-visible {
+  outline: 2px solid #128c7e;
+  outline-offset: 2px;
+}
+
+.wa-btn svg {
+  width: 15px;
+  height: 15px;
+  fill: #25d366;
+  flex-shrink: 0;
+}
