@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './ResumeButton.css';
 
 const profile = {
   name: "Mathan Ponraj",
@@ -232,9 +233,27 @@ function AchievementsAndEducation() {
   );
 }
 
+function ResumeButton() {
+  return (
+    <a
+      className="resume-btn"
+      href="/Mathan_Ponraj_Resume.pdf"
+      download="Mathan_Ponraj_Resume.pdf"
+      aria-label="Get my resume (PDF download)"
+    >
+      <span className="resume-dots" aria-hidden="true"><i /><i /><i /></span>
+      <span>Get my resume</span>
+      <svg className="resume-arrow" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3v12m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </a>
+  );
+}
+
 export default function App() {
   return (
     <main className="portfolio-shell">
+      <ResumeButton />
       <Sidebar />
       <div className="main-content">
         <div className="projects-header">
