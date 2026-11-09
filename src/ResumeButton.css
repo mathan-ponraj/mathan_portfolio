@@ -9,36 +9,39 @@
   gap: 10px;
   padding: 10px 16px 10px 14px;
   overflow: hidden;
-  border: 2px solid #0f172a;
+  border: 1.5px solid #d6b875;
   border-radius: 999px;
-  background: #0f172a;
-  color: #ffffff;
+  background: linear-gradient(135deg, #fffdf7, #f5e9c9);
+  color: #315b91;
   font-family: inherit;
   font-size: 0.82rem;
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.02em;
   text-decoration: none;
-  box-shadow: 4px 4px 0 #d97706;
+  box-shadow: 3px 3px 0 #8bbcf0;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .resume-btn:hover {
   transform: translate(-2px, -2px) rotate(-2deg);
-  box-shadow: 7px 7px 0 #0b7bbf;
+  background: linear-gradient(135deg, #ffffff, #eaf4ff);
+  border-color: #83b8ef;
+  color: #1769aa;
+  box-shadow: 6px 6px 0 #d6b875;
 }
 
 .resume-btn:active {
   transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0 #d97706;
+  box-shadow: 1px 1px 0 #8bbcf0;
 }
 
 .resume-btn:focus-visible {
-  outline: 3px solid #2dd4bf;
+  outline: 3px solid #7db9f2;
   outline-offset: 3px;
 }
 
-/* shine sweep on hover */
+/* Shine sweep */
 .resume-btn::after {
   content: "";
   position: absolute;
@@ -46,7 +49,12 @@
   left: -60%;
   width: 40%;
   height: 100%;
-  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.7),
+    transparent
+  );
   transform: skewX(-20deg);
   transition: left 0.5s ease;
   pointer-events: none;
@@ -56,7 +64,7 @@
   left: 130%;
 }
 
-/* three small dots: blue, amber, teal */
+/* Animated dots */
 .resume-dots {
   display: inline-flex;
   gap: 5px;
@@ -71,16 +79,16 @@
 }
 
 .resume-dots i:nth-child(1) {
-  background: #38bdf8;
+  background: #3999ed;
 }
 
 .resume-dots i:nth-child(2) {
-  background: #f59e0b;
+  background: #d6b875;
   animation-delay: 0.15s;
 }
 
 .resume-dots i:nth-child(3) {
-  background: #2dd4bf;
+  background: #75c9c1;
   animation-delay: 0.3s;
 }
 
@@ -95,8 +103,7 @@
 }
 
 @keyframes resume-bounce {
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0);
   }
   50% {
@@ -105,8 +112,7 @@
 }
 
 @keyframes resume-down {
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(-1px);
   }
   50% {
@@ -120,7 +126,7 @@
     right: 12px;
     padding: 8px 12px 8px 10px;
     font-size: 0.75rem;
-    box-shadow: 3px 3px 0 #d97706;
+    box-shadow: 3px 3px 0 #8bbcf0;
   }
 }
 
