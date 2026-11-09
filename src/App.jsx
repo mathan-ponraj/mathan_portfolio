@@ -150,7 +150,9 @@ function Sidebar() {
       <section className="sidebar-section about-section">
         <p className="section-kicker">About</p>
         <div className="about-copy">
-         <p>"I’m an AI Full-Stack Developer who likes turning messy data into working, intelligent software. My background spans database design, ETL pipelines, and handling datasets over 100K records, alongside building out modern web applications. Currently, I'm zeroing in on scaling AI workflows with Python, AWS, and Docker. Based in Bengaluru, I'm looking for a full-time Python AI Developer role where I can build reliable systems with a solid engineering team."</p>
+         <p>I’m an AI Full-Stack Developer who likes turning messy data into working, intelligent software.
+           My background spans database design, ETL pipelines, and handling datasets over 100K records, alongside building out modern web applications. Currently, I'm zeroing in on scaling AI workflows with Python, AWS, and Docker. 
+           Based in Bengaluru, I'm looking for a full-time Python AI Developer role where I can build reliable systems with a solid engineering team.</p>
         </div>
       </section>
 
