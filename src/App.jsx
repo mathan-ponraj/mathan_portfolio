@@ -150,9 +150,17 @@ function Sidebar() {
       <section className="sidebar-section about-section">
         <p className="section-kicker">About</p>
         <div className="about-copy">
-          <p>I'm a Python AI Developer who turns ideas into production-ready intelligent products. I build high-performance REST APIs with FastAPI, engineer clean data pipelines, and ship GenAI and RAG applications on LangChain and modern LLM APIs.</p>
-          <p>I enjoy turning complex operational challenges into simple, dependable software, taking an idea from raw data all the way to a fast, deployed product.</p>
-          <p>Based in Bengaluru and actively seeking full-time opportunities. 🤝</p>
+          <p>I'm an AI Full-Stack Developer, and what interests me most is designing and deploying intelligent software solutions.</p>
+
+          <p>What sets me apart is my hands-on experience in designing reliable database schemas, building ETL/ELT pipelines, integrating APIs, and processing datasets containing over 100K records to generate actionable business insights.</p>
+        
+          <p>I'm particularly interested in developing and deploying advanced AI applications using technologies like AWS and Docker.</p>
+        
+          <p>I currently use Git and GitHub for version control, React and Vite for frontend development, Vercel for deployment, and VS Code for coding and development.</p>
+        
+          <p>I'm based in Bengaluru and looking for full-time opportunities as a Python AI Developer, where I can apply Agile methodologies, collaborate with engineering teams, and build reliable, scalable, production-ready AI solutions.</p>
+        
+          <p>Let's connect and explore opportunities to build something meaningful.</p>
         </div>
       </section>
 
