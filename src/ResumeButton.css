@@ -1,0 +1,137 @@
+
+.resume-btn {
+  position: fixed;
+  top: 22px;
+  right: 28px;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px 10px 14px;
+  overflow: hidden;
+  border: 2px solid #0f172a;
+  border-radius: 999px;
+  background: #0f172a;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  box-shadow: 4px 4px 0 #d97706;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.resume-btn:hover {
+  transform: translate(-2px, -2px) rotate(-2deg);
+  box-shadow: 7px 7px 0 #0b7bbf;
+}
+
+.resume-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #d97706;
+}
+
+.resume-btn:focus-visible {
+  outline: 3px solid #2dd4bf;
+  outline-offset: 3px;
+}
+
+/* shine sweep on hover */
+.resume-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.resume-btn:hover::after {
+  left: 130%;
+}
+
+/* three small dots: blue, amber, teal */
+.resume-dots {
+  display: inline-flex;
+  gap: 5px;
+}
+
+.resume-dots i {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: resume-bounce 1.2s ease-in-out infinite;
+}
+
+.resume-dots i:nth-child(1) {
+  background: #38bdf8;
+}
+
+.resume-dots i:nth-child(2) {
+  background: #f59e0b;
+  animation-delay: 0.15s;
+}
+
+.resume-dots i:nth-child(3) {
+  background: #2dd4bf;
+  animation-delay: 0.3s;
+}
+
+.resume-arrow {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.resume-btn:hover .resume-arrow {
+  animation: resume-down 0.6s ease-in-out infinite;
+}
+
+@keyframes resume-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes resume-down {
+  0%,
+  100% {
+    transform: translateY(-1px);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+@media (max-width: 640px) {
+  .resume-btn {
+    top: 12px;
+    right: 12px;
+    padding: 8px 12px 8px 10px;
+    font-size: 0.75rem;
+    box-shadow: 3px 3px 0 #d97706;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resume-dots i,
+  .resume-btn:hover .resume-arrow {
+    animation: none;
+  }
+
+  .resume-btn,
+  .resume-btn::after {
+    transition: none;
+  }
+}
