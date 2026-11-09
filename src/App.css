@@ -1,21 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg-color: #f1ebd9;          /* Warm golden-desk surface background */
-  --page-bg: #fcf9f5;            /* Warm golden-white paper background */
-  --panel-bg: #e0f2fe;          /* Crisp light blue for the left sidebar */
-  --card-bg: #ffffff;           /* Clean white for project cards */
+  --bg-color: #f1ebd9;
+  --page-bg: #fcf9f5;
+  --panel-bg: #e0f2fe;
+  --card-bg: #ffffff;
   --border-color: rgba(186, 230, 253, 0.8);
   --border-hover: rgba(2, 132, 199, 0.5);
   --accent-glow: rgba(2, 132, 199, 0.12);
   --text-main: #0f172a;
-  --text-muted: #334155;
+  --text-muted: #1e293b; /* Darker for high readability */
 
-  /* Outer desk margins around the page */
   --page-pad-y: clamp(24px, 4.5vw, 72px);
   --page-pad-x: clamp(24px, 5vw, 80px);
 
-  /* Champagne gold finish for clicks / focus */
   --gold-1: #f8ecc9;
   --gold-2: #e3c37f;
   --gold-3: #b98f45;
@@ -67,29 +65,29 @@ body {
     inset 0 0 0 1px rgba(255, 255, 255, 0.8);
 }
 
-/* Sidebar / Left Column (Preserved Exactly) */
+/* Enhanced Sidebar Readability */
 .sidebar {
-  width: 345px;
+  width: 350px;
   flex-shrink: 0;
   background: var(--panel-bg);
   border-right: 1px solid var(--border-color);
-  padding: 36px 26px;
+  padding: 36px 28px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 32px;
   position: relative;
   z-index: 10;
   box-shadow: 5px 0 20px rgba(2, 132, 199, 0.03);
 }
 
-/* Main Content Column */
+/* Main Content Column with generous vertical spacing */
 .main-content {
   flex: 1;
   min-width: 0;
-  padding: 40px 44px;
+  padding: 44px 50px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 52px; /* Generous breathing room between projects and next sections */
 }
 
 .profile-photo {
@@ -115,7 +113,7 @@ body {
 }
 
 .sidebar h1 {
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   font-weight: 700;
   margin-top: 14px;
   letter-spacing: -0.025em;
@@ -127,25 +125,27 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   margin-top: 6px;
 }
 
 .profile-tagline {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
-  line-height: 1.5;
+  line-height: 1.55;
   margin-top: 8px;
+  font-weight: 500;
 }
 
 .profile-location {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   line-height: 1.5;
   color: var(--text-muted);
   margin-top: 12px;
+  font-weight: 500;
 }
 .profile-location span {
   color: #059669;
@@ -153,10 +153,10 @@ body {
 }
 
 .profile-phone {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
   margin-top: 16px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.01em;
 }
 .profile-phone a {
@@ -172,8 +172,8 @@ body {
 }
 
 .social-links a, .social-placeholder {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: 8px;
   background: #ffffff;
   border: 1px solid var(--border-color);
@@ -204,7 +204,7 @@ body {
 }
 
 .section-kicker {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -216,9 +216,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  font-size: 0.84rem;
-  line-height: 1.75;
+  font-size: 0.86rem;
+  line-height: 1.8;
   color: var(--text-muted);
+  font-weight: 450;
 }
 
 .beyond-line {
@@ -231,11 +232,11 @@ body {
 }
 
 .muted-line {
-  font-size: 0.72rem;
-  color: #475569;
+  font-size: 0.74rem;
+  color: #334155;
   margin-top: 12px;
   margin-bottom: 6px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .tag-list {
@@ -245,12 +246,12 @@ body {
 }
 
 .tag {
-  font-size: 0.7rem;
-  padding: 3px 8px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  font-size: 0.72rem;
+  padding: 4px 9px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
   border-radius: 6px;
-  color: #334155;
+  color: #1e293b;
   font-weight: 500;
   transition: all 0.2s ease;
 }
@@ -260,21 +261,18 @@ body {
   color: #0369a1;
 }
 
-/* ==========================================================
-   Refactored Project Cards Grid & Layout
-   ========================================================== */
-
+/* Project Cards Grid & Layout */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+  gap: 22px;
 }
 
 .project-card {
   background: var(--card-bg);
   border: 1px solid rgba(226, 232, 240, 0.9);
   border-radius: 14px;
-  padding: 16px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -331,7 +329,6 @@ body {
   border: 1px solid rgba(2, 132, 199, 0.2);
 }
 
-/* Scannable Bullet Points */
 .project-bullets {
   list-style: none;
   display: flex;
@@ -345,9 +342,9 @@ body {
 .project-bullets li {
   position: relative;
   padding-left: 14px;
-  font-size: 0.8rem;
-  line-height: 1.5;
-  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: #334155;
 }
 
 .project-bullets li::before {
@@ -361,7 +358,6 @@ body {
   background-color: #0284c7;
 }
 
-/* Footer & Buttons */
 .project-card-footer {
   display: flex;
   flex-direction: column;
@@ -417,7 +413,7 @@ body {
 .background-sections {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  gap: 36px;
   padding-top: 10px;
 }
 
@@ -428,9 +424,9 @@ body {
 }
 
 .background-description {
-  font-size: 0.83rem;
+  font-size: 0.84rem;
   color: var(--text-muted);
-  line-height: 1.55;
+  line-height: 1.6;
   margin-top: 3px;
 }
 
@@ -474,14 +470,6 @@ body {
   font-weight: 700;
   color: var(--text-main);
   margin-top: 2px;
-}
-
-.footer {
-  text-align: center;
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  padding: 16px 0;
-  border-top: 1px solid rgba(203, 213, 225, 0.6);
 }
 
 /* Focus and Click Effects */
@@ -532,5 +520,6 @@ button:focus-visible {
   }
   .main-content {
     padding: 28px 20px;
+    gap: 36px;
   }
 }
