@@ -3,7 +3,7 @@ import './App.css';
 
 const profile = {
   name: "Mathan Ponraj",
-  title: "Python AI Developer",
+  title: "Python AI Fullstack Developer",
   tagline: "Seeking Python AI Developer roles in Bengaluru",
   location: "HSR Layout, Bengaluru, Karnataka 560102",
   phone: "7339404085",
@@ -28,7 +28,7 @@ const skillGroups = [
   },
   {
     label: "Data & ML",
-    items: ["Pandas", "NumPy", "Scikit-learn", "XGBoost", "Feature Engineering", "ETL", "Star Schema", "Power BI"],
+    items: ["Pandas", "NumPy", "Scikit-learn", "XGBoost", "Feature Engineering", "ETL", "Star Schema", "Power BI", "Excel"],
   },
 ];
 
