@@ -4,8 +4,7 @@ import './ResumeButton.css';
 
 const profile = {
   name: "Mathan Ponraj",
-  title: "Python AI Fullstack Developer",
-  tagline: "Seeking Python AI Developer roles in Bengaluru",
+  title: "Python + React.js Developer",
   location: "HSR Layout, Bengaluru, Karnataka 560102",
   phone: "7339404085",
   photo: "/images/portfolio photo.png",
@@ -97,6 +96,59 @@ const projects = [
   },
 ];
 
+// Proof links are built from your live project URLs.
+// To add proof to another achievement, fill its `proof` array, e.g.
+// proof: [{ label: "Instagram", href: "https://instagram.com/yourpage" }]
+const achievements = [
+  {
+    title: "Live Production Deployments",
+    description: "Shipped 3 production web applications that combine scalable backend engineering with AI and ML components. All three are publicly accessible.",
+    proof: projects.filter((p) => p.live).map((p) => ({ label: p.title, href: p.live })),
+  },
+  {
+    title: "Freelance Technical Leadership",
+    description: "Ran freelance operations for 1 year while leading a 3-member technical team (ongoing).",
+    proof: [],
+  },
+  {
+    title: "Full-Stack and Content Delivery",
+    description: "Built and deployed static and dynamic web pages, and handled end-to-end Instagram content production, including professional video editing and Photoshop design.",
+    proof: [],
+  },
+];
+
+// Add a credential link in `credential` to show a "View credential" link on the card.
+const certifications = [
+  {
+    mark: "R",
+    title: "Data Science and Machine Learning",
+    issuer: "Rinex",
+    type: "Certification",
+    credential: "",
+  },
+  {
+    mark: "R",
+    title: "Python Programming",
+    issuer: "Rinex",
+    type: "Certification",
+    credential: "",
+  },
+  {
+    mark: "D",
+    title: "Deloitte Virtual Data Analytics Internship",
+    issuer: "Deloitte",
+    type: "Virtual Internship",
+    credential: "",
+  },
+  {
+    mark: "S",
+    title: "Advanced SQL and Excel for Data Analysis",
+    issuer: "Sitaara Academy",
+    type: "Certification",
+    credential: "",
+  },
+];
+
 function SocialIcon({ type }) {
   if (type === 'linkedin') {
     return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 3.5a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4ZM3.3 9.4h3.8v11.3H3.3V9.4Zm6.1 0H13v1.5h.1c.5-.9 1.7-1.9 3.5-1.9 3.8 0 4.5 2.5 4.5 5.7v6h-3.8v-5.3c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9v5.4H9.4V9.4Z"/></svg>;
@@ -116,36 +168,39 @@ function SocialIcon({ type }) {
 function ProjectCard({ project }) {
   return (
     <article className="project-card">
-      <a className={`project-image ${project.theme}`} href={project.live || project.github} target="_blank" rel="noreferrer" aria-label={`Open ${project.title}`}>
-        <img src={project.image} alt={project.imageAlt} loading="lazy" />
-        <span className="image-shade" />
-      </a>
-      
-      <div className="project-heading">
-        <h2>{project.title}</h2>
-        <span className="project-number">{project.number}</span>
+      <div className="project-media">
+        <a className={`project-image ${project.theme}`} href={project.live || project.github} target="_blank" rel="noreferrer" aria-label={`Open ${project.title}`}>
+          <img src={project.image} alt={project.imageAlt} loading="lazy" />
+          <span className="image-shade" />
+        </a>
+        <div className="project-heading">
+          <h2>{project.title}</h2>
+          <span className="project-number">{project.number}</span>
+        </div>
       </div>
 
-      <ul className="project-bullets">
-        {project.highlights.map((point, index) => (
-          <li key={index}>{point}</li>
-        ))}
-      </ul>
+      <div className="project-body">
+        <ul className="project-bullets">
+          {project.highlights.map((point, index) => (
+            <li key={index}>{point}</li>
+          ))}
+        </ul>
 
-      <div className="project-card-footer">
-        <div className="tag-list" aria-label="Technologies">
-          {project.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}
-        </div>
-        
-        <div className="project-links">
-          <a href={project.github} target="_blank" rel="noreferrer" className="link-btn secondary">
-            GitHub <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path fill="currentColor" d="M3.75 2h8.5a.75.75 0 0 1 .75.75v8.5a.75.75 0 0 1-1.5 0V4.31L4.03 11.78a.75.75 0 0 1-1.06-1.06L10.44 3.25H3.75a.75.75 0 0 1 0-1.5Z"/></svg>
-          </a>
-          {project.live && (
-            <a href={project.live} target="_blank" rel="noreferrer" className="link-btn primary">
-              Live Demo <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path fill="currentColor" d="M3.75 2h8.5a.75.75 0 0 1 .75.75v8.5a.75.75 0 0 1-1.5 0V4.31L4.03 11.78a.75.75 0 0 1-1.06-1.06L10.44 3.25H3.75a.75.75 0 0 1 0-1.5Z"/></svg>
+        <div className="project-card-footer">
+          <div className="tag-list" aria-label="Technologies">
+            {project.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}
+          </div>
+
+          <div className="project-links">
+            <a href={project.github} target="_blank" rel="noreferrer" className="link-btn secondary">
+              GitHub <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path fill="currentColor" d="M3.75 2h8.5a.75.75 0 0 1 .75.75v8.5a.75.75 0 0 1-1.5 0V4.31L4.03 11.78a.75.75 0 0 1-1.06-1.06L10.44 3.25H3.75a.75.75 0 0 1 0-1.5Z"/></svg>
             </a>
-          )}
+            {project.live && (
+              <a href={project.live} target="_blank" rel="noreferrer" className="link-btn primary">
+                Live Demo <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path fill="currentColor" d="M3.75 2h8.5a.75.75 0 0 1 .75.75v8.5a.75.75 0 0 1-1.5 0V4.31L4.03 11.78a.75.75 0 0 1-1.06-1.06L10.44 3.25H3.75a.75.75 0 0 1 0-1.5Z"/></svg>
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </article>
@@ -159,15 +214,18 @@ function ProjectsScroller() {
     const track = trackRef.current;
     if (!track) return;
     const card = track.querySelector('.project-card');
-    const step = card ? card.offsetWidth + 22 : 360;
+    const step = card ? card.offsetWidth + 22 : 540;
     track.scrollBy({ left: direction * step, behavior: 'smooth' });
   };
 
   return (
     <div className="projects-scroller">
-      <div className="scroll-controls">
-        <button type="button" onClick={() => scrollByCard(-1)} aria-label="Scroll projects left">‹</button>
-        <button type="button" onClick={() => scrollByCard(1)} aria-label="Scroll projects right">›</button>
+      <div className="projects-head">
+        <p className="section-kicker">Projects</p>
+        <div className="scroll-controls">
+          <button type="button" onClick={() => scrollByCard(-1)} aria-label="Scroll projects left">‹</button>
+          <button type="button" onClick={() => scrollByCard(1)} aria-label="Scroll projects right">›</button>
+        </div>
       </div>
       <section className="projects-track" ref={trackRef} aria-label="Selected projects">
         {projects.map((project) => <ProjectCard project={project} key={project.number} />)}
@@ -176,118 +234,17 @@ function ProjectsScroller() {
   );
 }
 
-function Sidebar() {
+function AboutSection() {
   return (
-    <aside className="sidebar">
-      <div className="profile-top">
-        <img className="profile-photo" src={profile.photo} alt="Mathan Ponraj, Python AI Developer in Bengaluru" onError={(event) => { event.currentTarget.style.display = 'none'; const fallback = event.currentTarget.parentElement.querySelector('.profile-fallback'); if (fallback) fallback.style.display = 'grid'; }} />
-        <div className="profile-fallback" aria-hidden="true">MP</div>
-        <h1>{profile.name}</h1>
-        <p className="profile-title">{profile.title}</p>
-        <p className="profile-tagline">{profile.tagline}</p>
-        <p className="profile-location"><span aria-hidden="true">●</span> {profile.location}</p>
-
-        <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
-        <div className="social-links">
-          {profile.linkedin ? <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><SocialIcon type="linkedin" /></a> : <span className="social-placeholder" aria-label="LinkedIn link to add"><SocialIcon type="linkedin" /></span>}
-          {profile.github ? <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub"><SocialIcon type="github" /></a> : <span className="social-placeholder" aria-label="GitHub link to add"><SocialIcon type="github" /></span>}
-          {profile.email ? <a href={`mailto:${profile.email}`} aria-label="Email me"><SocialIcon type="mail" /></a> : <span className="social-placeholder" aria-label="Email link to add"><SocialIcon type="mail" /></span>}
-          <a href={whatsappLink} target="_blank" rel="noreferrer" aria-label="Catch me on WhatsApp" title="Catch me on WhatsApp"><SocialIcon type="whatsapp" /></a>
-        </div>
-        <a href={whatsappLink} target="_blank" rel="noreferrer" style={{ fontSize: '0.8rem', fontWeight: 600, color: '#128c7e', textDecoration: 'none' }}>Catch me</a>
-        </div>
-
-        {profile.phone && (
-          <p className="profile-phone">
-            📞 <a href={`tel:${profile.phone}`}>{profile.phone}</a>
-          </p>
-        )}
-      </div>
-
-      <section className="sidebar-section about-section">
-        <p className="section-kicker">About</p>
-        <div className="about-copy">
-         <p style={{ textAlign: 'left', wordSpacing: 'normal', textJustify: 'inter-word' }}>
-           I am an AI Full-Stack Developer who loves turning messy data into working, intelligent software. 
-           My background spans database design, ETL pipelines, and handling datasets over 100K records, alongside building modern web applications. 
-           Currently, I am zeroing in on scaling AI workflows with Python, AWS, and Docker. 
-           Based in Bengaluru, I am looking for a full-time Python AI Developer role where I can build reliable systems with a solid engineering team.
-         </p>
-        </div>
-      </section>
-
-      <section className="sidebar-section philosophy-section">
-        <p className="section-kicker">Vision & Mission</p>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '10px', marginTop: '6px' }}>
-          <div style={{ padding: '10px 12px', background: 'rgba(217, 119, 6, 0.04)', border: '1px solid rgba(217, 119, 6, 0.2)', borderRadius: '8px' }}>
-            <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#d97706', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Omnicompetent</span>
-            <p style={{ fontSize: '0.82rem', color: '#0f172a', marginTop: '4px', fontWeight: 500 }}>Limitless capacity.</p>
-          </div>
-          <div style={{ padding: '10px 12px', background: 'rgba(217, 119, 6, 0.04)', border: '1px solid rgba(217, 119, 6, 0.2)', borderRadius: '8px' }}>
-            <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#d97706', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Mission</span>
-            <p style={{ fontSize: '0.82rem', color: '#0f172a', marginTop: '4px', lineHeight: 1.6 }}>To build intelligent products that deliver an exceptional, high-satisfaction user experience.</p>
-            <p className="beyond-line">Beyond Innovation</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="sidebar-section skills-section">
-        <p className="section-kicker">Skills</p>
-        {skillGroups.map((group) => (
-          <div key={group.label} style={{ marginBottom: '8px' }}>
-            <p className="muted-line">{group.label}</p>
-            <div className="tag-list skills-list">
-              {group.items.map((skill) => <span className="tag" key={skill}>{skill}</span>)}
-            </div>
-          </div>
-        ))}
-      </section>
-
-      <div className="availability-card" aria-label="Current job availability">
-        <span className="availability-dot" aria-hidden="true" />
-        <div>
-          <p className="availability-label">Open to work · Immediate joiner</p>
-          <p className="availability-role">Python AI Developer</p>
-        </div>
-      </div>
-    </aside>
-  );
-}
-
-function AchievementsAndEducation() {
-  return (
-    <section className="background-sections">
-      <div className="background-column">
-        <p className="section-kicker" style={{ marginBottom: '12px' }}>Achievements</p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div>
-            <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#0f172a', marginBottom: '2px' }}>🚀 Live Product Deployments</h3>
-            <p className="background-description">Successfully completed and hosted 3+ live production web applications combining scalable backend engineering and AI components.</p>
-          </div>
-          <div>
-            <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#0f172a', marginBottom: '2px' }}>💼 Freelance Leadership</h3>
-            <p className="background-description">Successfully ran 1 year of freelance operations, leading a 3-member technical team (ongoing).</p>
-          </div>
-          <div>
-            <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#0f172a', marginBottom: '2px' }}>🎨 Full-Stack &amp; Content Execution</h3>
-            <p className="background-description">Developed and deployed static and dynamic web pages while managing end-to-end Instagram content creation, including professional video editing and Photoshop design.</p>
-          </div>
-        </div>
-      </div>
-      <div className="background-column education-column">
-        <p className="section-kicker" style={{ marginBottom: '12px' }}>Education</p>
-        <div className="education-entry">
-          <p className="muted-line">2024 – 2026</p>
-          <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#0f172a' }}>M.E. in Computer Science &amp; Engineering</h3>
-          <p className="background-description">Karpagam Academy of Higher Education, Coimbatore</p>
-          <p className="background-description" style={{ marginTop: '2px', fontWeight: 500, color: '#d97706' }}>First Class</p>
-        </div>
-        <div className="education-entry" style={{ marginTop: '16px' }}>
-          <p className="muted-line">2020 – 2024</p>
-          <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#0f172a' }}>B.E. in Computer Science &amp; Engineering</h3>
-          <p className="background-description">Government College of Engineering, Bodinayakanur</p>
-          <p className="background-description" style={{ marginTop: '2px', fontWeight: 500, color: '#d97706' }}>First Class</p>
-        </div>
+    <section className="main-about" aria-label="About">
+      <p className="section-kicker">About</p>
+      <div className="about-copy">
+        <p>
+          I am an AI Full-Stack Developer who loves turning messy data into working, intelligent software.
+          My background spans database design, ETL pipelines, and handling datasets over 100K records, alongside building modern web applications.
+          Currently, I am zeroing in on scaling AI workflows with Python, AWS, and Docker.
+          Based in Bengaluru, I am looking for a full-time Python AI Developer role where I can build reliable systems with a solid engineering team.
+        </p>
       </div>
     </section>
   );
@@ -310,17 +267,152 @@ function ResumeButton() {
   );
 }
 
+function Sidebar() {
+  return (
+    <aside className="sidebar">
+      <div className="profile-top">
+        <img className="profile-photo" src={profile.photo} alt="Mathan Ponraj, Python and React.js Developer in Bengaluru" onError={(event) => { event.currentTarget.style.display = 'none'; const fallback = event.currentTarget.parentElement.querySelector('.profile-fallback'); if (fallback) fallback.style.display = 'grid'; }} />
+        <div className="profile-fallback" aria-hidden="true">MP</div>
+        <h1>{profile.name}</h1>
+        <p className="profile-title">{profile.title}</p>
+        <p className="profile-location"><span aria-hidden="true">●</span> {profile.location}</p>
+
+        <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+        <div className="social-links">
+          {profile.linkedin ? <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><SocialIcon type="linkedin" /></a> : <span className="social-placeholder" aria-label="LinkedIn link to add"><SocialIcon type="linkedin" /></span>}
+          {profile.github ? <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub"><SocialIcon type="github" /></a> : <span className="social-placeholder" aria-label="GitHub link to add"><SocialIcon type="github" /></span>}
+          {profile.email ? <a href={`mailto:${profile.email}`} aria-label="Email me"><SocialIcon type="mail" /></a> : <span className="social-placeholder" aria-label="Email link to add"><SocialIcon type="mail" /></span>}
+          <a href={whatsappLink} target="_blank" rel="noreferrer" aria-label="Catch me on WhatsApp" title="Catch me on WhatsApp"><SocialIcon type="whatsapp" /></a>
+        </div>
+        <a href={whatsappLink} target="_blank" rel="noreferrer" style={{ fontSize: '0.8rem', fontWeight: 600, color: '#128c7e', textDecoration: 'none' }}>Catch me</a>
+        </div>
+
+        {profile.phone && (
+          <p className="profile-phone">
+            📞 <a href={`tel:${profile.phone}`}>{profile.phone}</a>
+          </p>
+        )}
+
+        <div className="sidebar-resume">
+          <ResumeButton />
+        </div>
+      </div>
+
+      <section className="sidebar-section skills-section">
+        <p className="section-kicker">Skills</p>
+        {skillGroups.map((group) => (
+          <div key={group.label} style={{ marginBottom: '8px' }}>
+            <p className="muted-line">{group.label}</p>
+            <div className="tag-list skills-list">
+              {group.items.map((skill) => <span className="tag" key={skill}>{skill}</span>)}
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <section className="sidebar-section philosophy-section">
+        <p className="section-kicker">Vision & Mission</p>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '10px', marginTop: '6px' }}>
+          <div style={{ padding: '10px 12px', background: 'rgba(217, 119, 6, 0.04)', border: '1px solid rgba(217, 119, 6, 0.2)', borderRadius: '8px' }}>
+            <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#d97706', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Omnicompetent</span>
+            <p style={{ fontSize: '0.82rem', color: '#0f172a', marginTop: '4px', fontWeight: 500 }}>Limitless capacity.</p>
+          </div>
+          <div style={{ padding: '10px 12px', background: 'rgba(217, 119, 6, 0.04)', border: '1px solid rgba(217, 119, 6, 0.2)', borderRadius: '8px' }}>
+            <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#d97706', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Mission</span>
+            <p style={{ fontSize: '0.82rem', color: '#0f172a', marginTop: '4px', lineHeight: 1.6 }}>To build intelligent products that deliver an exceptional, high-satisfaction user experience.</p>
+            <p className="beyond-line">Beyond Innovation</p>
+          </div>
+        </div>
+      </section>
+
+      <div className="availability-card" aria-label="Current job availability">
+        <span className="availability-dot" aria-hidden="true" />
+        <div>
+          <p className="availability-label">Open to work · Immediate joiner</p>
+          <p className="availability-role">Python AI Developer</p>
+        </div>
+      </div>
+    </aside>
+  );
+}
+
+function AchievementsAndEducation() {
+  return (
+    <section className="background-sections">
+      <div className="background-column">
+        <p className="section-kicker" style={{ marginBottom: '12px' }}>Achievements</p>
+        <div className="achievement-list">
+          {achievements.map((item) => (
+            <div className="achievement-item" key={item.title}>
+              <h3 className="achievement-title">{item.title}</h3>
+              <p className="background-description">{item.description}</p>
+              {item.proof.length > 0 && (
+                <div className="proof-row">
+                  <span className="proof-label">Proof</span>
+                  {item.proof.map((link) => (
+                    <a className="proof-link" href={link.href} target="_blank" rel="noreferrer" key={link.label}>
+                      {link.label} <span aria-hidden="true">↗</span>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="background-column education-column">
+        <p className="section-kicker" style={{ marginBottom: '12px' }}>Education</p>
+        <div className="education-entry">
+          <p className="muted-line">2024 – 2026</p>
+          <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#0f172a' }}>M.E. in Computer Science &amp; Engineering</h3>
+          <p className="background-description">Karpagam Academy of Higher Education, Coimbatore</p>
+          <p className="background-description" style={{ marginTop: '2px', fontWeight: 500, color: '#d97706' }}>First Class</p>
+        </div>
+        <div className="education-entry" style={{ marginTop: '16px' }}>
+          <p className="muted-line">2020 – 2024</p>
+          <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#0f172a' }}>B.E. in Computer Science &amp; Engineering</h3>
+          <p className="background-description">Government College of Engineering, Bodinayakanur</p>
+          <p className="background-description" style={{ marginTop: '2px', fontWeight: 500, color: '#d97706' }}>First Class</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Certifications() {
+  return (
+    <section className="certifications" aria-label="Certifications">
+      <p className="section-kicker">Certifications</p>
+      <div className="cert-grid">
+        {certifications.map((cert) => (
+          <article className="cert-card" key={cert.title}>
+            <span className="cert-mark" aria-hidden="true">{cert.mark}</span>
+            <div className="cert-info">
+              <p className="cert-type">{cert.type}</p>
+              <h3 className="cert-title">{cert.title}</h3>
+              <p className="cert-issuer">{cert.issuer}</p>
+              {cert.credential && (
+                <a className="proof-link" href={cert.credential} target="_blank" rel="noreferrer">
+                  View credential <span aria-hidden="true">↗</span>
+                </a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function App() {
   return (
     <main className="portfolio-shell">
-      <ResumeButton />
       <Sidebar />
       <div className="main-content">
-        <div className="projects-header">
-          <p className="section-kicker">Projects</p>
-        </div>
+        <AboutSection />
         <ProjectsScroller />
         <AchievementsAndEducation />
+        <Certifications />
       </div>
     </main>
   );
