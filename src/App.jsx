@@ -4,7 +4,7 @@ import './ResumeButton.css';
 
 const profile = {
   name: "Mathan Ponraj",
-  title: "Python + React.js Developer (AI/ ML)",
+  title: "Python + React Developer (AI/ ML)",
   location: "HSR Layout, Bengaluru, Karnataka 560102",
   phone: "7339404085",
   photo: "/images/portfolio photo.png",
