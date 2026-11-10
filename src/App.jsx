@@ -224,28 +224,40 @@ function ProjectsScroller() {
   );
 }
 
-function TopBar() {
+function TitleBar() {
   return (
-    <div className="topbar">
+    <div className="titlebar">
+      <div className="tb-nav" aria-hidden="true">
+        <span className="tb-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" /></svg>
+        </span>
+        <span className="tb-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" /></svg>
+        </span>
+        <span className="tb-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.4-5.7M20 4v5h-5" /></svg>
+        </span>
+      </div>
+
       <div className="search-pill">
-        <svg className="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <svg className="search-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M15.5 14h-.8l-.3-.3A6.5 6.5 0 1 0 14 15.5l.3.3v.8l5 5 1.5-1.5-5-5Zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9Z" />
         </svg>
         <span className="search-text">Python + React.js Developer | AI/ML | Data Analyst</span>
-        <svg className="search-mic" viewBox="0 0 24 24" aria-hidden="true">
+        <svg className="search-mic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-3.1A7 7 0 0 0 19 11h-2Z" />
         </svg>
       </div>
 
       <div className="window-controls" aria-hidden="true">
         <span className="wc-btn">
-          <svg viewBox="0 0 12 12"><path d="M2 6h8" /></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6h8" /></svg>
         </span>
         <span className="wc-btn">
-          <svg viewBox="0 0 12 12"><rect x="2.2" y="2.2" width="7.6" height="7.6" rx="0.8" /></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12"><rect x="2.2" y="2.2" width="7.6" height="7.6" rx="0.8" /></svg>
         </span>
         <span className="wc-btn wc-close">
-          <svg viewBox="0 0 12 12"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7" /></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7" /></svg>
         </span>
       </div>
     </div>
@@ -415,13 +427,15 @@ function Certifications() {
 export default function App() {
   return (
     <main className="portfolio-shell">
-      <Sidebar />
-      <div className="main-content">
-        <TopBar />
-        <AboutSection />
-        <ProjectsScroller />
-        <AchievementsAndEducation />
-        <Certifications />
+      <TitleBar />
+      <div className="shell-body">
+        <Sidebar />
+        <div className="main-content">
+          <AboutSection />
+          <ProjectsScroller />
+          <AchievementsAndEducation />
+          <Certifications />
+        </div>
       </div>
     </main>
   );
