@@ -43,6 +43,21 @@ body {
   caret-color: var(--gold-3);
 }
 
+/* Blurred background glow */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -10%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(40% 45% at 12% 18%, rgba(125, 196, 242, 0.60), transparent 70%),
+    radial-gradient(38% 42% at 88% 14%, rgba(227, 195, 127, 0.65), transparent 70%),
+    radial-gradient(42% 48% at 80% 88%, rgba(117, 201, 193, 0.50), transparent 70%),
+    radial-gradient(36% 40% at 10% 86%, rgba(248, 236, 201, 0.85), transparent 70%);
+  filter: blur(40px);
+}
+
 ::selection {
   background: rgba(227, 195, 127, 0.6);
   color: #1f1604;
@@ -53,15 +68,20 @@ body {
   min-height: calc(100vh - (var(--page-pad-y) * 2));
   width: 100%;
   max-width: 1480px;
-  background-color: var(--page-bg);
+  background-color: rgba(252, 249, 245, 0.84);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  backdrop-filter: blur(24px) saturate(140%);
   border-radius: 20px;
   overflow: hidden;
   position: relative;
   transform-style: preserve-3d;
   perspective: 1200px;
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.08), 
-    0 30px 60px rgba(217, 119, 6, 0.08),
+  box-shadow:
+    0 10px 0 -3px rgba(252, 249, 245, 0.75),
+    0 20px 0 -6px rgba(252, 249, 245, 0.5),
+    0 30px 60px rgba(15, 23, 42, 0.18),
+    0 60px 120px rgba(217, 119, 6, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
     inset 0 0 0 1px rgba(255, 255, 255, 0.8);
 }
 
@@ -69,7 +89,7 @@ body {
 .sidebar {
   width: 350px;
   flex-shrink: 0;
-  background: var(--panel-bg);
+  background: rgba(224, 242, 254, 0.78);
   border-right: 1px solid var(--border-color);
   padding: 36px 28px;
   display: flex;
@@ -77,7 +97,7 @@ body {
   gap: 32px;
   position: relative;
   z-index: 10;
-  box-shadow: 5px 0 20px rgba(2, 132, 199, 0.03);
+  box-shadow: 10px 0 32px rgba(2, 132, 199, 0.10), inset -1px 0 0 rgba(255, 255, 255, 0.7);
 }
 
 /* Main Content Column with generous vertical spacing */
@@ -165,8 +185,8 @@ body {
 
 .sidebar-resume .resume-btn {
   position: relative !important;
-  overflow: hidden;
   inset: auto !important;
+  overflow: hidden;
   display: inline-flex;
   margin: 0;
 }
@@ -238,7 +258,9 @@ body {
 
 .main-about .about-copy {
   font-size: 0.94rem;
-  max-width: 860px;
+  max-width: none;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .beyond-line {
@@ -321,7 +343,7 @@ body {
   flex-wrap: nowrap;
   gap: 22px;
   overflow-x: auto;
-  padding: 10px 6px 18px; /* room so hover-lift and shadow aren't clipped */
+  padding: 14px 8px 34px; /* room so the deeper hover shadow is not clipped */
   scroll-snap-type: x mandatory;
   scroll-padding-left: 6px;
   scroll-behavior: smooth;
@@ -357,7 +379,7 @@ body {
   overflow: hidden;
   position: relative;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05), 0 12px 26px rgba(15, 23, 42, 0.09), 0 26px 40px -14px rgba(2, 132, 199, 0.16);
 }
 
 /* thin champagne-gold accent along the top edge */
@@ -373,9 +395,9 @@ body {
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
+  transform: perspective(1000px) translateY(-8px) rotateX(2.5deg);
   border-color: #0284c7;
-  box-shadow: 0 14px 30px rgba(2, 132, 199, 0.14);
+  box-shadow: 0 4px 8px rgba(15, 23, 42, 0.06), 0 22px 40px rgba(15, 23, 42, 0.14), 0 36px 50px -16px rgba(2, 132, 199, 0.28);
 }
 
 .project-media {
@@ -643,15 +665,15 @@ body {
   border-left: 3px solid var(--gold-2);
   border-radius: 12px;
   padding: 16px;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04), 0 10px 22px rgba(15, 23, 42, 0.07);
   transition: all 0.25s ease;
 }
 
 .cert-card:hover {
-  transform: translateY(-3px);
+  transform: perspective(900px) translateY(-5px) rotateX(2deg);
   border-color: #0284c7;
   border-left-color: var(--gold-3);
-  box-shadow: 0 10px 24px rgba(2, 132, 199, 0.12);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.13), 0 24px 36px -14px rgba(2, 132, 199, 0.24);
 }
 
 .cert-mark {
@@ -790,5 +812,13 @@ button:focus-visible {
   }
   .cert-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card:hover,
+  .cert-card:hover {
+    transform: none;
   }
 }
