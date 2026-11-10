@@ -341,16 +341,6 @@ function AchievementsAndEducation() {
             <div className="achievement-item" key={item.title}>
               <h3 className="achievement-title">{item.title}</h3>
               <p className="background-description">{item.description}</p>
-              {item.proof.length > 0 && (
-                <div className="proof-row">
-                  <span className="proof-label">Proof</span>
-                  {item.proof.map((link) => (
-                    <a className="proof-link" href={link.href} target="_blank" rel="noreferrer" key={link.label}>
-                      {link.label} <span aria-hidden="true">↗</span>
-                    </a>
-                  ))}
-                </div>
-              )}
             </div>
           ))}
         </div>
