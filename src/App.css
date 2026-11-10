@@ -159,7 +159,8 @@ body {
 /* Resume button now lives in the sidebar.
    These overrides cancel any absolute positioning from ResumeButton.css */
 .sidebar-resume {
-  margin-top: 18px;
+  margin-top: 22px;
+  margin-bottom: 6px;
 }
 
 .sidebar-resume .resume-btn {
