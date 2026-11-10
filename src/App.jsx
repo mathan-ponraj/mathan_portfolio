@@ -22,9 +22,8 @@ const skillGroups = [
   },
   {
     label: "FullStack Development",
-    items: ["Python","HTML", "CSS", "JavaScript", "React.js", "FastAPI", "REST APIs", "SQL", "PostgreSQL", "Git & GitHub", "Postman"],
+    items: ["Python", "HTML", "CSS", "JavaScript", "React.js", "FastAPI", "REST APIs", "SQL", "PostgreSQL", "Git & GitHub", "Postman"],
   },
-  
   {
     label: "Data & ML",
     items: ["Pandas", "NumPy", "Scikit-learn", "Feature Engineering", "Model Evaluation", "ETL", "Data Modelling", "Power BI", "Excel"],
@@ -93,26 +92,22 @@ const projects = [
   },
 ];
 
-
 const achievements = [
   {
     title: "Live Product Deployments",
     description: "Successfully completed and hosted 3+ live production web applications combining scalable backend engineering and AI components.",
-    
   },
   {
     title: "Freelance Leadership",
     description: "Successfully ran 1 year of freelance operations, leading a 3-member technical team (ongoing).",
-    
   },
   {
     title: "Full-Stack & Content Execution",
     description: "Developed and deployed static and dynamic web pages while managing end-to-end Instagram content creation, including professional video editing and Photoshop design.",
-   
   },
 ];
 
-
+// Add a credential link in `credential` to show a "View credential" link on the card.
 const certifications = [
   {
     mark: "R",
@@ -225,6 +220,34 @@ function ProjectsScroller() {
       <section className="projects-track" ref={trackRef} aria-label="Selected projects">
         {projects.map((project) => <ProjectCard project={project} key={project.number} />)}
       </section>
+    </div>
+  );
+}
+
+function TopBar() {
+  return (
+    <div className="topbar">
+      <div className="search-pill">
+        <svg className="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M15.5 14h-.8l-.3-.3A6.5 6.5 0 1 0 14 15.5l.3.3v.8l5 5 1.5-1.5-5-5Zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9Z" />
+        </svg>
+        <span className="search-text">Python + React.js Developer | AI/ML | Data Analyst</span>
+        <svg className="search-mic" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-3.1A7 7 0 0 0 19 11h-2Z" />
+        </svg>
+      </div>
+
+      <div className="window-controls" aria-hidden="true">
+        <span className="wc-btn">
+          <svg viewBox="0 0 12 12"><path d="M2 6h8" /></svg>
+        </span>
+        <span className="wc-btn">
+          <svg viewBox="0 0 12 12"><rect x="2.2" y="2.2" width="7.6" height="7.6" rx="0.8" /></svg>
+        </span>
+        <span className="wc-btn wc-close">
+          <svg viewBox="0 0 12 12"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7" /></svg>
+        </span>
+      </div>
     </div>
   );
 }
@@ -394,6 +417,7 @@ export default function App() {
     <main className="portfolio-shell">
       <Sidebar />
       <div className="main-content">
+        <TopBar />
         <AboutSection />
         <ProjectsScroller />
         <AchievementsAndEducation />
