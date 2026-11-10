@@ -164,7 +164,8 @@ body {
 }
 
 .sidebar-resume .resume-btn {
-  position: static !important;
+  position: relative !important;
+  overflow: hidden;
   inset: auto !important;
   display: inline-flex;
   margin: 0;
