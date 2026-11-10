@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './App.css';
 import './ResumeButton.css';
 
@@ -152,6 +152,30 @@ function ProjectCard({ project }) {
   );
 }
 
+function ProjectsScroller() {
+  const trackRef = useRef(null);
+
+  const scrollByCard = (direction) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const card = track.querySelector('.project-card');
+    const step = card ? card.offsetWidth + 22 : 360;
+    track.scrollBy({ left: direction * step, behavior: 'smooth' });
+  };
+
+  return (
+    <div className="projects-scroller">
+      <div className="scroll-controls">
+        <button type="button" onClick={() => scrollByCard(-1)} aria-label="Scroll projects left">‹</button>
+        <button type="button" onClick={() => scrollByCard(1)} aria-label="Scroll projects right">›</button>
+      </div>
+      <section className="projects-track" ref={trackRef} aria-label="Selected projects">
+        {projects.map((project) => <ProjectCard project={project} key={project.number} />)}
+      </section>
+    </div>
+  );
+}
+
 function Sidebar() {
   return (
     <aside className="sidebar">
@@ -295,9 +319,7 @@ export default function App() {
         <div className="projects-header">
           <p className="section-kicker">Projects</p>
         </div>
-        <section className="projects-grid" aria-label="Selected projects">
-          {projects.map((project) => <ProjectCard project={project} key={project.number} />)}
-        </section>
+        <ProjectsScroller />
         <AchievementsAndEducation />
       </div>
     </main>
