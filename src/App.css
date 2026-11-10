@@ -261,11 +261,68 @@ body {
   color: #0369a1;
 }
 
-/* Project Cards Grid & Layout */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+/* Project Cards: Horizontal Scroller */
+.projects-scroller {
+  min-width: 0;
+}
+
+.scroll-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.scroll-controls button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(185, 143, 69, 0.5);
+  background: #ffffff;
+  color: var(--gold-3);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.scroll-controls button:hover {
+  background: linear-gradient(135deg, var(--gold-1), var(--gold-2));
+  color: #1f1604;
+  box-shadow: 0 0 14px var(--gold-glow);
+}
+
+.projects-track {
+  display: flex;
+  flex-wrap: nowrap;
   gap: 22px;
+  overflow-x: auto;
+  padding: 10px 6px 18px; /* room so hover-lift, shadow and focus glow aren't clipped */
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 6px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-2) rgba(15, 23, 42, 0.08);
+}
+
+.projects-track::-webkit-scrollbar {
+  height: 8px;
+}
+
+.projects-track::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.08);
+  border-radius: 999px;
+}
+
+.projects-track::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, var(--gold-2), var(--gold-3));
+  border-radius: 999px;
+}
+
+.projects-track .project-card {
+  flex: 0 0 min(380px, 85%);
+  scroll-snap-align: start;
 }
 
 .project-card {
@@ -489,12 +546,6 @@ button:focus-visible {
 }
 
 /* Responsive Media Queries */
-@media (min-width: 1025px) and (max-width: 1180px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (max-width: 1024px) {
   body {
     padding: 16px;
@@ -515,11 +566,14 @@ button:focus-visible {
 }
 
 @media (max-width: 720px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
   .main-content {
     padding: 28px 20px;
     gap: 36px;
+  }
+  .scroll-controls {
+    display: none; /* swipe on phones instead */
+  }
+  .projects-track .project-card {
+    flex-basis: 88%;
   }
 }
