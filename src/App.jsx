@@ -243,7 +243,7 @@ function TitleBar() {
         <svg className="search-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M15.5 14h-.8l-.3-.3A6.5 6.5 0 1 0 14 15.5l.3.3v.8l5 5 1.5-1.5-5-5Zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9Z" />
         </svg>
-        <span className="search-text">Python + React.js Developer | AI/ML | Data Analyst</span>
+        <span className="search-text">404: Limits Not Found</span>
         <svg className="search-mic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-3.1A7 7 0 0 0 19 11h-2Z" />
         </svg>
