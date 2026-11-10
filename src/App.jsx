@@ -4,7 +4,7 @@ import './ResumeButton.css';
 
 const profile = {
   name: "Mathan Ponraj",
-  title: "Python + React.js Developer",
+  title: "Python + React.js Developer (AI/ ML)",
   location: "HSR Layout, Bengaluru, Karnataka 560102",
   phone: "7339404085",
   photo: "/images/portfolio photo.png",
@@ -17,20 +17,17 @@ const whatsappLink = `https://wa.me/91${profile.phone}?text=${encodeURIComponent
 
 const skillGroups = [
   {
-    label: "AI & LLM",
+    label: "AI",
     items: ["LangChain", "RAG", "OpenAI API", "Gemini API", "Prompt Engineering", "Hugging Face"],
   },
   {
-    label: "Backend",
-    items: ["Python", "FastAPI", "Flask", "REST APIs", "SQL", "PostgreSQL", "SQLite", "Git & GitHub", "Postman"],
+    label: "FullStack Development",
+    items: ["Python","HTML", "CSS", "JavaScript", "React.js", "FastAPI", "REST APIs", "SQL", "PostgreSQL", "Git & GitHub", "Postman"],
   },
-  {
-    label: "Frontend",
-    items: ["HTML", "CSS", "JavaScript", "React.js"],
-  },
+  
   {
     label: "Data & ML",
-    items: ["Pandas", "NumPy", "Scikit-learn", "XGBoost", "Feature Engineering", "ETL", "Star Schema", "Power BI", "Excel"],
+    items: ["Pandas", "NumPy", "Scikit-learn", "Feature Engineering", "Model Evaluation", "ETL", "Data Modelling", "Power BI", "Excel"],
   },
 ];
 
@@ -96,28 +93,26 @@ const projects = [
   },
 ];
 
-// Proof links are built from your live project URLs.
-// To add proof to another achievement, fill its `proof` array, e.g.
-// proof: [{ label: "Instagram", href: "https://instagram.com/yourpage" }]
+
 const achievements = [
   {
     title: "Live Product Deployments",
     description: "Successfully completed and hosted 3+ live production web applications combining scalable backend engineering and AI components.",
-    proof: projects.filter((p) => p.live).map((p) => ({ label: p.title, href: p.live })),
+    
   },
   {
     title: "Freelance Leadership",
     description: "Successfully ran 1 year of freelance operations, leading a 3-member technical team (ongoing).",
-    proof: [],
+    p
   },
   {
     title: "Full-Stack & Content Execution",
     description: "Developed and deployed static and dynamic web pages while managing end-to-end Instagram content creation, including professional video editing and Photoshop design.",
-    proof: [],
+   
   },
 ];
 
-// Add a credential link in `credential` to show a "View credential" link on the card.
+
 const certifications = [
   {
     mark: "R",
@@ -240,8 +235,8 @@ function AboutSection() {
       <p className="section-kicker">About</p>
       <div className="about-copy">
         <p>
-          I am an AI Full-Stack Developer who loves turning messy data into working, intelligent software.
-          My background spans database design, ETL pipelines, and handling datasets over 100K records, alongside building modern web applications.
+          AI Developer who loves turning messy data into working, intelligent software. Specialized in build responsive, user-friendly interfaces. Integrate AI/ML models and AI-powered features into applications.
+          My background spans database design, ETL pipelines, and handling datasets over 100K records, alongside building modern web applications with Genetic AI.
           Currently, I am zeroing in on scaling AI workflows with Python, AWS, and Docker.
           Based in Bengaluru, I am looking for a full-time Python AI Developer role where I can build reliable systems with a solid engineering team.
         </p>
