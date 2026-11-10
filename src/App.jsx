@@ -101,18 +101,18 @@ const projects = [
 // proof: [{ label: "Instagram", href: "https://instagram.com/yourpage" }]
 const achievements = [
   {
-    title: "Live Production Deployments",
-    description: "Shipped 3 production web applications that combine scalable backend engineering with AI and ML components. All three are publicly accessible.",
+    title: "Live Product Deployments",
+    description: "Successfully completed and hosted 3+ live production web applications combining scalable backend engineering and AI components.",
     proof: projects.filter((p) => p.live).map((p) => ({ label: p.title, href: p.live })),
   },
   {
-    title: "Freelance Technical Leadership",
-    description: "Ran freelance operations for 1 year while leading a 3-member technical team (ongoing).",
+    title: "Freelance Leadership",
+    description: "Successfully ran 1 year of freelance operations, leading a 3-member technical team (ongoing).",
     proof: [],
   },
   {
-    title: "Full-Stack and Content Delivery",
-    description: "Built and deployed static and dynamic web pages, and handled end-to-end Instagram content production, including professional video editing and Photoshop design.",
+    title: "Full-Stack & Content Execution",
+    description: "Developed and deployed static and dynamic web pages while managing end-to-end Instagram content creation, including professional video editing and Photoshop design.",
     proof: [],
   },
 ];
