@@ -103,7 +103,7 @@ const achievements = [
   {
     title: "Freelance Leadership",
     description: "Successfully ran 1 year of freelance operations, leading a 3-member technical team (ongoing).",
-    p
+    
   },
   {
     title: "Full-Stack & Content Execution",
