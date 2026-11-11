@@ -1,31 +1,131 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="380" viewBox="0 0 1200 380">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800" role="img" aria-label="LapPick laptop price prediction and recommendation system">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#071a3c"/><stop offset=".55" stop-color="#0a3d80"/><stop offset="1" stop-color="#70b7f6"/></linearGradient>
-    <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8be9ff"/><stop offset=".5" stop-color="#7e83ff"/><stop offset="1" stop-color="#ffb4d5"/></linearGradient>
-    <linearGradient id="base" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eaf4ff"/><stop offset="1" stop-color="#92b7e2"/></linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#00102a" flood-opacity=".35"/></filter>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e0f12"/>
+      <stop offset="1" stop-color="#050506"/>
+    </linearGradient>
+    <radialGradient id="glowRed" cx="0.72" cy="0.35" r="0.6">
+      <stop offset="0" stop-color="#e5384a" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#e5384a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowTeal" cx="0.05" cy="0.95" r="0.5">
+      <stop offset="0" stop-color="#1d7a8c" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#1d7a8c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="lid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a2b30"/>
+      <stop offset="1" stop-color="#141417"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#111216"/>
+      <stop offset="1" stop-color="#0a0a0c"/>
+    </linearGradient>
+    <linearGradient id="base" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#34353b"/>
+      <stop offset="1" stop-color="#1a1a1e"/>
+    </linearGradient>
+    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="22"/></filter>
   </defs>
-  <rect width="1200" height="380" rx="26" fill="url(#bg)"/>
-  <circle cx="1080" cy="20" r="260" fill="#5ab6ff" opacity=".13"/><circle cx="1010" cy="360" r="220" fill="#b9e7ff" opacity=".12"/>
-  <path d="M0 300 Q250 230 470 380 H0Z" fill="#07152e" opacity=".28"/>
-  <g transform="translate(70 80)">
-    <rect x="0" y="0" width="52" height="39" rx="5" fill="none" stroke="#38d9ff" stroke-width="5"/><path d="M-7 46 H60 L52 53 H1Z" fill="#38d9ff"/>
-    <text x="76" y="38" font-family="Inter,Arial,sans-serif" font-size="58" font-weight="800" fill="#ffffff">Lap</text><text x="190" y="38" font-family="Inter,Arial,sans-serif" font-size="58" font-weight="800" fill="#8b9bff">Pick</text>
-    <text x="0" y="100" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="500" fill="#e9f4ff">Find Your Perfect Laptop</text>
-    <g transform="translate(0 145)" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="600">
-      <rect width="112" height="37" rx="18" fill="#153f78" stroke="#3e85d8"/><text x="56" y="24" fill="#e9f4ff" text-anchor="middle">◆ Compare</text>
-      <rect x="124" width="138" height="37" rx="18" fill="#153f78" stroke="#3e85d8"/><text x="193" y="24" fill="#e9f4ff" text-anchor="middle">✦ Recommend</text>
-      <rect x="274" width="130" height="37" rx="18" fill="#153f78" stroke="#3e85d8"/><text x="339" y="24" fill="#e9f4ff" text-anchor="middle">✓ Best Price</text>
+
+  <rect width="1280" height="800" fill="url(#bg)"/>
+  <rect width="1280" height="800" fill="url(#glowRed)"/>
+  <rect width="1280" height="800" fill="url(#glowTeal)"/>
+
+  <!-- laptop shadow -->
+  <ellipse cx="800" cy="650" rx="360" ry="28" fill="#000" opacity="0.65" filter="url(#blur)"/>
+
+  <!-- laptop lid -->
+  <g>
+    <rect x="520" y="196" width="560" height="360" rx="16" fill="url(#lid)" stroke="#44454c" stroke-width="2"/>
+    <rect x="538" y="212" width="524" height="328" rx="6" fill="url(#screen)"/>
+
+    <!-- screen UI: streamlit-like recommendation app -->
+    <rect x="538" y="212" width="524" height="30" rx="6" fill="#16171b"/>
+    <circle cx="558" cy="227" r="4" fill="#e5384a"/>
+    <circle cx="574" cy="227" r="4" fill="#d9b97a"/>
+    <circle cx="590" cy="227" r="4" fill="#6ec8be"/>
+
+    <!-- sidebar filters -->
+    <rect x="548" y="252" width="130" height="278" rx="4" fill="#15161a"/>
+    <g font-family="DejaVu Sans Mono, Courier New, monospace" font-size="9" fill="#8a867d" letter-spacing="1">
+      <text x="560" y="274">BUDGET</text>
+      <text x="560" y="322">RAM</text>
+      <text x="560" y="370">CPU</text>
+      <text x="560" y="418">STORAGE</text>
+    </g>
+    <rect x="560" y="284" width="106" height="5" rx="2.5" fill="#2a2b31"/>
+    <rect x="560" y="284" width="68" height="5" rx="2.5" fill="#e5384a"/>
+    <circle cx="628" cy="286.5" r="6" fill="#fff"/>
+    <rect x="560" y="332" width="106" height="22" rx="3" fill="#23242a"/>
+    <text x="568" y="347" font-family="DejaVu Sans Mono, Courier New, monospace" font-size="10" fill="#eee">16 GB</text>
+    <rect x="560" y="380" width="106" height="22" rx="3" fill="#23242a"/>
+    <text x="568" y="395" font-family="DejaVu Sans Mono, Courier New, monospace" font-size="10" fill="#eee">Intel i7</text>
+    <rect x="560" y="428" width="106" height="22" rx="3" fill="#23242a"/>
+    <text x="568" y="443" font-family="DejaVu Sans Mono, Courier New, monospace" font-size="10" fill="#eee">512 GB SSD</text>
+
+    <!-- predicted price -->
+    <g font-family="Georgia, 'Times New Roman', serif">
+      <text x="702" y="288" font-size="12" fill="#8a867d" font-family="DejaVu Sans Mono, Courier New, monospace" letter-spacing="1.5">PREDICTED PRICE</text>
+      <text x="702" y="338" font-size="46" fill="#f4f1ec">₹ 68,450</text>
+    </g>
+    <rect x="702" y="352" width="140" height="22" rx="11" fill="none" stroke="#e5384a" stroke-width="1.2"/>
+    <text x="772" y="367" text-anchor="middle" font-family="DejaVu Sans Mono, Courier New, monospace" font-size="10" fill="#e5384a">R² ≈ 0.91</text>
+
+    <!-- recommendation cards -->
+    <g>
+      <rect x="702" y="392" width="170" height="64" rx="5" fill="#18191d" stroke="#2a2b31"/>
+      <rect x="714" y="404" width="60" height="6" rx="3" fill="#c9c5bc"/>
+      <rect x="714" y="418" width="100" height="5" rx="2.5" fill="#4a4b52"/>
+      <text x="714" y="445" font-family="DejaVu Sans Mono, Courier New, monospace" font-size="10" fill="#e5384a">₹ 64,990</text>
+
+      <rect x="884" y="392" width="170" height="64" rx="5" fill="#18191d" stroke="#2a2b31"/>
+      <rect x="896" y="404" width="70" height="6" rx="3" fill="#c9c5bc"/>
+      <rect x="896" y="418" width="90" height="5" rx="2.5" fill="#4a4b52"/>
+      <text x="896" y="445" font-family="DejaVu Sans Mono, Courier New, monospace" font-size="10" fill="#e5384a">₹ 71,200</text>
+
+      <rect x="702" y="468" width="170" height="60" rx="5" fill="#18191d" stroke="#2a2b31"/>
+      <rect x="714" y="480" width="64" height="6" rx="3" fill="#c9c5bc"/>
+      <rect x="714" y="494" width="96" height="5" rx="2.5" fill="#4a4b52"/>
+      <text x="714" y="518" font-family="DejaVu Sans Mono, Courier New, monospace" font-size="10" fill="#e5384a">₹ 66,500</text>
+
+      <rect x="884" y="468" width="170" height="60" rx="5" fill="#18191d" stroke="#2a2b31"/>
+      <rect x="896" y="480" width="66" height="6" rx="3" fill="#c9c5bc"/>
+      <rect x="896" y="494" width="84" height="5" rx="2.5" fill="#4a4b52"/>
+      <text x="896" y="518" font-family="DejaVu Sans Mono, Courier New, monospace" font-size="10" fill="#e5384a">₹ 69,800</text>
     </g>
   </g>
-  <g transform="translate(690 34) rotate(-3 220 150)" filter="url(#shadow)">
-    <rect x="68" y="0" width="370" height="240" rx="17" fill="#142642" stroke="#d4e7ff" stroke-width="4"/>
-    <rect x="82" y="14" width="342" height="212" rx="8" fill="url(#screen)"/>
-    <path d="M82 155 L182 75 L242 126 L330 45 L424 120 V226 H82Z" fill="#ffffff" opacity=".24"/>
-    <rect x="108" y="42" width="110" height="12" rx="6" fill="#ffffff" opacity=".65"/><rect x="108" y="64" width="75" height="8" rx="4" fill="#ffffff" opacity=".45"/>
-    <circle cx="338" cy="55" r="23" fill="#ffffff" opacity=".28"/>
-    <path d="M43 241 H462 L506 280 Q508 291 491 293 H17 Q1 291 7 280Z" fill="url(#base)" stroke="#d7eaff" stroke-width="3"/>
-    <rect x="190" y="250" width="122" height="8" rx="4" fill="#7d9fc8"/>
-    <path d="M0 295 H512" stroke="#d8eaff" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+
+  <!-- laptop base -->
+  <path d="M470 560 H1130 L1160 596 Q1162 612 1146 612 H454 Q438 612 440 596 Z" fill="url(#base)" stroke="#44454c" stroke-width="2"/>
+  <rect x="740" y="566" width="120" height="10" rx="5" fill="#0c0c0e"/>
+
+  <!-- floating price tag -->
+  <g transform="translate(1010 150) rotate(12)">
+    <path d="M0 0 H150 L190 40 L150 80 H0 Z" fill="#e5384a"/>
+    <circle cx="26" cy="40" r="9" fill="#0a0a0a"/>
+    <text x="52" y="50" font-family="DejaVu Sans Mono, Courier New, monospace" font-size="26" font-weight="700" fill="#fff">BEST FIT</text>
   </g>
+
+  <!-- feature chips -->
+  <g font-family="DejaVu Sans Mono, Courier New, monospace" font-size="15" letter-spacing="2">
+    <g transform="translate(110 520)">
+      <rect width="168" height="40" fill="none" stroke="#ffffff" stroke-opacity="0.22"/>
+      <text x="84" y="26" text-anchor="middle" fill="#cfcac0">XGBOOST</text>
+    </g>
+    <g transform="translate(110 574)">
+      <rect width="168" height="40" fill="none" stroke="#ffffff" stroke-opacity="0.22"/>
+      <text x="84" y="26" text-anchor="middle" fill="#cfcac0">SCIKIT-LEARN</text>
+    </g>
+    <g transform="translate(110 628)">
+      <rect width="168" height="40" fill="none" stroke="#ffffff" stroke-opacity="0.22"/>
+      <text x="84" y="26" text-anchor="middle" fill="#cfcac0">STREAMLIT</text>
+    </g>
+  </g>
+
+  <!-- title -->
+  <text x="110" y="200" font-family="DejaVu Sans Mono, Courier New, monospace" font-size="16" letter-spacing="3" fill="#e5384a">ML / RECOMMENDATION ENGINE</text>
+  <text x="108" y="310" font-family="Georgia, 'Times New Roman', serif" font-size="108" fill="#f4f1ec" letter-spacing="-2">LapPick</text>
+  <text x="110" y="378" font-family="DejaVu Sans Mono, Courier New, monospace" font-size="16" letter-spacing="3" fill="#8a867d">PRICE PREDICTION  /  SMART PICKS</text>
+
+  <rect x="0" y="0" width="1280" height="800" fill="none" stroke="#ffffff" stroke-opacity="0.04"/>
 </svg>

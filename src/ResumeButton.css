@@ -1,43 +1,39 @@
-
+/* Resume button — dark theme, red accent. Matches the Reelhouse-style layout. */
 .resume-btn {
-  position: fixed;
-  top: 22px;
-  right: 28px;
-  z-index: 50;
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 16px 10px 14px;
+  gap: 12px;
+  padding: 15px 22px 15px 18px;
   overflow: hidden;
-  border: 1.5px solid #d6b875;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #fffdf7, #f5e9c9);
-  color: #315b91;
-  font-family: inherit;
-  font-size: 0.82rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: transparent;
+  color: #f4f1ec;
+  font-family: 'Space Mono', 'Roboto Mono', ui-monospace, monospace;
+  font-size: 0.64rem;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   text-decoration: none;
-  box-shadow: 3px 3px 0 #8bbcf0;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 5px 5px 0 #a8222f;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
 }
 
 .resume-btn:hover {
-  transform: translate(-2px, -2px) rotate(-2deg);
-  background: linear-gradient(135deg, #ffffff, #eaf4ff);
-  border-color: #83b8ef;
-  color: #1769aa;
-  box-shadow: 6px 6px 0 #d6b875;
+  transform: translate(-2px, -2px);
+  border-color: #e5384a;
+  background: rgba(229, 56, 74, 0.08);
+  box-shadow: 8px 8px 0 #e5384a;
 }
 
 .resume-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0 #8bbcf0;
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 #a8222f;
 }
 
 .resume-btn:focus-visible {
-  outline: 3px solid #7db9f2;
+  outline: 2px solid #e5384a;
   outline-offset: 3px;
 }
 
@@ -49,12 +45,7 @@
   left: -60%;
   width: 40%;
   height: 100%;
-  background: linear-gradient(
-    100deg,
-    transparent,
-    rgba(255, 255, 255, 0.7),
-    transparent
-  );
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.14), transparent);
   transform: skewX(-20deg);
   transition: left 0.5s ease;
   pointer-events: none;
@@ -72,29 +63,18 @@
 
 .resume-dots i {
   display: block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+  width: 6px;
+  height: 6px;
   animation: resume-bounce 1.2s ease-in-out infinite;
 }
 
-.resume-dots i:nth-child(1) {
-  background: #3999ed;
-}
-
-.resume-dots i:nth-child(2) {
-  background: #d6b875;
-  animation-delay: 0.15s;
-}
-
-.resume-dots i:nth-child(3) {
-  background: #75c9c1;
-  animation-delay: 0.3s;
-}
+.resume-dots i:nth-child(1) { background: #e5384a; }
+.resume-dots i:nth-child(2) { background: #d9b97a; animation-delay: 0.15s; }
+.resume-dots i:nth-child(3) { background: #f4f1ec; animation-delay: 0.3s; }
 
 .resume-arrow {
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
 }
 
@@ -103,30 +83,20 @@
 }
 
 @keyframes resume-bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
 @keyframes resume-down {
-  0%, 100% {
-    transform: translateY(-1px);
-  }
-  50% {
-    transform: translateY(3px);
-  }
+  0%, 100% { transform: translateY(-1px); }
+  50% { transform: translateY(3px); }
 }
 
 @media (max-width: 640px) {
   .resume-btn {
-    top: 12px;
-    right: 12px;
-    padding: 8px 12px 8px 10px;
-    font-size: 0.75rem;
-    box-shadow: 3px 3px 0 #8bbcf0;
+    padding: 13px 16px 13px 14px;
+    font-size: 0.58rem;
+    box-shadow: 4px 4px 0 #a8222f;
   }
 }
 

@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import './ResumeButton.css';
 
 const profile = {
   name: "Mathan Ponraj",
-  title: "Python + React Developer (AI/ ML)",
+  title: "Python + React Developer (AI / ML)",
   location: "HSR Layout, Bengaluru, Karnataka 560102",
   phone: "7339404085",
   photo: "/images/portfolio photo.png",
@@ -14,6 +14,13 @@ const profile = {
 };
 
 const whatsappLink = `https://wa.me/91${profile.phone}?text=${encodeURIComponent('Hi Mathan, When are you available to join?')}`;
+
+const navItems = [
+  { id: 'work', num: '01', label: 'Selected Work' },
+  { id: 'about', num: '02', label: 'About Me' },
+  { id: 'skills', num: '03', label: 'What I Do' },
+  { id: 'contact', num: '04', label: 'Start a Project' },
+];
 
 const skillGroups = [
   {
@@ -34,6 +41,8 @@ const projects = [
   {
     number: "01",
     title: "TalentIQ AI",
+    kind: "GenAI / Career Prep",
+    tagline: "Know your fit. Ace the interview.",
     image: '/images/resume-interview-thumbnail.jpg',
     imageAlt: "TalentIQ AI resume analysis and mock interview app",
     tags: ["Python", "FastAPI", "LangChain", "React.js", "Vite", "Gemini API", "Render"],
@@ -44,11 +53,13 @@ const projects = [
     ],
     github: "https://github.com/mathan-ponraj/talentiqai",
     live: 'https://talentiq-ai-two.vercel.app/',
-    theme: 'resume',
+    size: 'wide',
   },
   {
     number: "02",
     title: "TrendTube",
+    kind: "Data Engineering / ETL",
+    tagline: "Nine regions. One pipeline.",
     image: '/images/youtube-trendtube-thumbnail.jpg',
     imageAlt: "TrendTube YouTube trending data pipeline",
     tags: ["Python", "PostgreSQL", "ETL", "YouTube Data API v3", "Pandas", "Star Schema"],
@@ -58,11 +69,13 @@ const projects = [
       "Custom SQL engagement metrics for real-time cross-regional trend diagnosis"
     ],
     github: "https://github.com/mathan-ponraj/Trendtube",
-    theme: 'trendtube',
+    size: 'tall',
   },
   {
     number: "03",
     title: "EduHelpDesk",
+    kind: "Full-Stack / Support System",
+    tagline: "Every ticket, on the clock.",
     image: '/images/eduhelpdesk-thumbnail.jpg',
     imageAlt: "EduHelpDesk academic support ticketing system",
     tags: ["Python", "Flask", "SQLite", "REST APIs", "RBAC", "Render"],
@@ -73,11 +86,13 @@ const projects = [
     ],
     github: "https://github.com/mathan-ponraj/EduHelpDesk",
     live: 'https://eduhelpdesk.onrender.com/',
-    theme: 'helpdesk',
+    size: 'tall',
   },
   {
     number: "04",
     title: "LapPick",
+    kind: "Machine Learning / Streamlit",
+    tagline: "The right laptop, priced right.",
     image: '/images/lappick-thumbnail.svg',
     imageAlt: 'LapPick laptop price and recommendation system banner',
     tags: ['Python', 'XGBoost', 'Scikit-Learn', 'Streamlit', 'Feature Engineering'],
@@ -88,7 +103,7 @@ const projects = [
     ],
     github: 'https://github.com/mathan-ponraj/lappick',
     live: 'https://laptop-price-and-recommendation-system-icvhjjspmfrmmy2rfmtuaq.streamlit.app/',
-    theme: 'lappick',
+    size: 'wide',
   },
 ];
 
@@ -107,183 +122,55 @@ const achievements = [
   },
 ];
 
-// Add a credential link in `credential` to show a "View credential" link on the card.
-const certifications = [
+const education = [
   {
-    mark: "R",
-    title: "Data Science and Machine Learning",
-    issuer: "Rinex",
-    type: "Certification",
-    credential: "",
+    years: "2024 – 2026",
+    degree: "M.E. in Computer Science & Engineering",
+    school: "Karpagam Academy of Higher Education, Coimbatore",
+    grade: "First Class",
   },
   {
-    mark: "R",
-    title: "Python Programming",
-    issuer: "Rinex",
-    type: "Certification",
-    credential: "",
-  },
-  {
-    mark: "D",
-    title: "Deloitte Virtual Data Analytics Internship",
-    issuer: "Deloitte",
-    type: "Virtual Internship",
-    credential: "",
-  },
-  {
-    mark: "S",
-    title: "Advanced SQL and Excel for Data Analysis",
-    issuer: "Sitaara Academy",
-    type: "Certification",
-    credential: "",
+    years: "2020 – 2024",
+    degree: "B.E. in Computer Science & Engineering",
+    school: "Government College of Engineering, Bodinayakanur",
+    grade: "First Class",
   },
 ];
 
+// Add a credential link in `credential` to show a "View credential" link on the card.
+const certifications = [
+  { mark: "R", title: "Data Science and Machine Learning", issuer: "Rinex", type: "Certification", credential: "" },
+  { mark: "R", title: "Python Programming", issuer: "Rinex", type: "Certification", credential: "" },
+  { mark: "D", title: "Deloitte Virtual Data Analytics Internship", issuer: "Deloitte", type: "Virtual Internship", credential: "" },
+  { mark: "S", title: "Advanced SQL and Excel for Data Analysis", issuer: "Sitaara Academy", type: "Certification", credential: "" },
+];
+
+const Arrow = ({ size = 12 }) => (
+  <svg viewBox="0 0 16 16" width={size} height={size} aria-hidden="true">
+    <path fill="currentColor" d="M3.75 2h8.5a.75.75 0 0 1 .75.75v8.5a.75.75 0 0 1-1.5 0V4.31L4.03 11.78a.75.75 0 0 1-1.06-1.06L10.44 3.25H3.75a.75.75 0 0 1 0-1.5Z" />
+  </svg>
+);
+
 function SocialIcon({ type }) {
   if (type === 'linkedin') {
-    return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 3.5a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4ZM3.3 9.4h3.8v11.3H3.3V9.4Zm6.1 0H13v1.5h.1c.5-.9 1.7-1.9 3.5-1.9 3.8 0 4.5 2.5 4.5 5.7v6h-3.8v-5.3c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9v5.4H9.4V9.4Z"/></svg>;
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 3.5a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4ZM3.3 9.4h3.8v11.3H3.3V9.4Zm6.1 0H13v1.5h.1c.5-.9 1.7-1.9 3.5-1.9 3.8 0 4.5 2.5 4.5 5.7v6h-3.8v-5.3c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9v5.4H9.4V9.4Z" /></svg>;
   }
   if (type === 'github') {
-    return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.5 21.6c.6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.6-1.3-1.6-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.3.8 1 .8 2v3c0 .3.2.7.8.6A11.1 11.1 0 0 0 12 .9Z"/></svg>;
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.5 21.6c.6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.6-1.3-1.6-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.3.8 1 .8 2v3c0 .3.2.7.8.6A11.1 11.1 0 0 0 12 .9Z" /></svg>;
   }
   if (type === 'mail') {
-    return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.2 5.5h17.6c.9 0 1.7.8 1.7 1.7v9.6c0 .9-.8 1.7-1.7 1.7H3.2c-.9 0-1.7-.8-1.7-1.7V7.2c0-.9.8-1.7 1.7-1.7Zm.1 2 8.7 6.1 8.7-6.1H3.3Zm17.4 9V9.5L12 15.4 3.3 9.5v7h17.4Z"/></svg>;
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.2 5.5h17.6c.9 0 1.7.8 1.7 1.7v9.6c0 .9-.8 1.7-1.7 1.7H3.2c-.9 0-1.7-.8-1.7-1.7V7.2c0-.9.8-1.7 1.7-1.7Zm.1 2 8.7 6.1 8.7-6.1H3.3Zm17.4 9V9.5L12 15.4 3.3 9.5v7h17.4Z" /></svg>;
   }
   if (type === 'whatsapp') {
-    return <svg viewBox="0 0 24 24" aria-hidden="true" style={{ fill: '#25d366' }}><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>;
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" /></svg>;
   }
   return null;
 }
 
-function ProjectCard({ project }) {
-  return (
-    <article className="project-card">
-      <div className="project-media">
-        <a className={`project-image ${project.theme}`} href={project.live || project.github} target="_blank" rel="noreferrer" aria-label={`Open ${project.title}`}>
-          <img src={project.image} alt={project.imageAlt} loading="lazy" />
-          <span className="image-shade" />
-        </a>
-        <div className="project-heading">
-          <h2>{project.title}</h2>
-          <span className="project-number">{project.number}</span>
-        </div>
-      </div>
-
-      <div className="project-body">
-        <ul className="project-bullets">
-          {project.highlights.map((point, index) => (
-            <li key={index}>{point}</li>
-          ))}
-        </ul>
-
-        <div className="project-card-footer">
-          <div className="tag-list" aria-label="Technologies">
-            {project.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}
-          </div>
-
-          <div className="project-links">
-            <a href={project.github} target="_blank" rel="noreferrer" className="link-btn secondary">
-              GitHub <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path fill="currentColor" d="M3.75 2h8.5a.75.75 0 0 1 .75.75v8.5a.75.75 0 0 1-1.5 0V4.31L4.03 11.78a.75.75 0 0 1-1.06-1.06L10.44 3.25H3.75a.75.75 0 0 1 0-1.5Z"/></svg>
-            </a>
-            {project.live && (
-              <a href={project.live} target="_blank" rel="noreferrer" className="link-btn primary">
-                Live Demo <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path fill="currentColor" d="M3.75 2h8.5a.75.75 0 0 1 .75.75v8.5a.75.75 0 0 1-1.5 0V4.31L4.03 11.78a.75.75 0 0 1-1.06-1.06L10.44 3.25H3.75a.75.75 0 0 1 0-1.5Z"/></svg>
-              </a>
-            )}
-          </div>
-        </div>
-      </div>
-    </article>
-  );
-}
-
-function ProjectsScroller() {
-  const trackRef = useRef(null);
-
-  const scrollByCard = (direction) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const card = track.querySelector('.project-card');
-    const step = card ? card.offsetWidth + 22 : 540;
-    track.scrollBy({ left: direction * step, behavior: 'smooth' });
-  };
-
-  return (
-    <div className="projects-scroller">
-      <div className="projects-head">
-        <p className="section-kicker">Projects</p>
-        <div className="scroll-controls">
-          <button type="button" onClick={() => scrollByCard(-1)} aria-label="Scroll projects left">‹</button>
-          <button type="button" onClick={() => scrollByCard(1)} aria-label="Scroll projects right">›</button>
-        </div>
-      </div>
-      <section className="projects-track" ref={trackRef} aria-label="Selected projects">
-        {projects.map((project) => <ProjectCard project={project} key={project.number} />)}
-      </section>
-    </div>
-  );
-}
-
-function TitleBar() {
-  return (
-    <div className="titlebar">
-      <div className="tb-nav" aria-hidden="true">
-        <span className="tb-icon">
-          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" /></svg>
-        </span>
-        <span className="tb-icon">
-          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" /></svg>
-        </span>
-        <span className="tb-icon">
-          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.4-5.7M20 4v5h-5" /></svg>
-        </span>
-      </div>
-
-      <div className="search-pill">
-        <svg className="search-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M15.5 14h-.8l-.3-.3A6.5 6.5 0 1 0 14 15.5l.3.3v.8l5 5 1.5-1.5-5-5Zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9Z" />
-        </svg>
-        <span className="search-text">404: Limits Not Found</span>
-        <svg className="search-mic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-3.1A7 7 0 0 0 19 11h-2Z" />
-        </svg>
-      </div>
-
-      <div className="window-controls" aria-hidden="true">
-        <span className="wc-btn">
-          <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6h8" /></svg>
-        </span>
-        <span className="wc-btn">
-          <svg width="12" height="12" viewBox="0 0 12 12"><rect x="2.2" y="2.2" width="7.6" height="7.6" rx="0.8" /></svg>
-        </span>
-        <span className="wc-btn wc-close">
-          <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7" /></svg>
-        </span>
-      </div>
-    </div>
-  );
-}
-
-function AboutSection() {
-  return (
-    <section className="main-about" aria-label="About">
-      <p className="section-kicker">About</p>
-      <div className="about-copy">
-        <p>
-          AI Developer who loves turning messy data into working, intelligent software. Specialized in build responsive, user-friendly interfaces. Integrate AI/ML models and AI-powered features into applications.
-          My background spans database design, ETL pipelines, and handling datasets over 100K records, alongside building modern web applications with Genetic AI.
-          Currently, I am zeroing in on scaling AI workflows with Python, AWS, and Docker.
-          Based in Bengaluru, I am looking for a full-time Python AI Developer role where I can build reliable systems with a solid engineering team.
-        </p>
-      </div>
-    </section>
-  );
-}
-
-function ResumeButton() {
+function ResumeButton({ className = '' }) {
   return (
     <a
-      className="resume-btn"
+      className={`resume-btn ${className}`}
       href="/Mathan_Ponraj_Resume.pdf"
       download="Mathan_Ponraj_Resume.pdf"
       aria-label="Get my resume (PDF download)"
@@ -297,146 +184,417 @@ function ResumeButton() {
   );
 }
 
-function Sidebar() {
+function Sidebar({ active }) {
   return (
     <aside className="sidebar">
-      <div className="profile-top">
-        <img className="profile-photo" src={profile.photo} alt="Mathan Ponraj, Python and React.js Developer in Bengaluru" onError={(event) => { event.currentTarget.style.display = 'none'; const fallback = event.currentTarget.parentElement.querySelector('.profile-fallback'); if (fallback) fallback.style.display = 'grid'; }} />
-        <div className="profile-fallback" aria-hidden="true">MP</div>
-        <h1>{profile.name}</h1>
-        <p className="profile-title">{profile.title}</p>
-        <p className="profile-location"><span aria-hidden="true">●</span> {profile.location}</p>
-
-        <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
-        <div className="social-links">
-          {profile.linkedin ? <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><SocialIcon type="linkedin" /></a> : <span className="social-placeholder" aria-label="LinkedIn link to add"><SocialIcon type="linkedin" /></span>}
-          {profile.github ? <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub"><SocialIcon type="github" /></a> : <span className="social-placeholder" aria-label="GitHub link to add"><SocialIcon type="github" /></span>}
-          {profile.email ? <a href={`mailto:${profile.email}`} aria-label="Email me"><SocialIcon type="mail" /></a> : <span className="social-placeholder" aria-label="Email link to add"><SocialIcon type="mail" /></span>}
-          <a href={whatsappLink} target="_blank" rel="noreferrer" aria-label="Catch me on WhatsApp" title="Catch me on WhatsApp"><SocialIcon type="whatsapp" /></a>
-        </div>
-        <a href={whatsappLink} target="_blank" rel="noreferrer" style={{ fontSize: '0.8rem', fontWeight: 600, color: '#128c7e', textDecoration: 'none' }}>Catch me</a>
-        </div>
-
-        {profile.phone && (
-          <p className="profile-phone">
-            📞 <a href={`tel:${profile.phone}`}>{profile.phone}</a>
-          </p>
-        )}
-
-        <div className="sidebar-resume">
-          <ResumeButton />
-        </div>
+      <div className="sb-top">
+        <a className="logo" href="#top" aria-label="Mathan Ponraj home">
+          mathan<span className="logo-dot">.</span>
+        </a>
+        <p className="mono sb-sub">Portfolio — Bengaluru</p>
       </div>
 
-      <section className="sidebar-section skills-section">
-        <p className="section-kicker">Skills</p>
-        {skillGroups.map((group) => (
-          <div key={group.label} style={{ marginBottom: '8px' }}>
-            <p className="muted-line">{group.label}</p>
-            <div className="tag-list skills-list">
-              {group.items.map((skill) => <span className="tag" key={skill}>{skill}</span>)}
-            </div>
-          </div>
+      <div className="sb-intro mono">
+        <p>An AI full-stack</p>
+        <p>developer.</p>
+      </div>
+
+      <nav className="sb-nav" aria-label="Primary">
+        {navItems.map((item) => (
+          <a
+            key={item.id}
+            href={`#${item.id}`}
+            className={`sb-link ${active === item.id ? 'is-active' : ''}`}
+            aria-current={active === item.id ? 'true' : undefined}
+          >
+            <span className="sb-num mono">{item.num}</span>
+            <span className="sb-label mono">{item.label}</span>
+            <span className="sb-arrow"><Arrow size={11} /></span>
+          </a>
         ))}
-      </section>
+      </nav>
 
-      <section className="sidebar-section philosophy-section">
-        <p className="section-kicker">Vision & Mission</p>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '10px', marginTop: '6px' }}>
-          <div style={{ padding: '10px 12px', background: 'rgba(217, 119, 6, 0.04)', border: '1px solid rgba(217, 119, 6, 0.2)', borderRadius: '8px' }}>
-            <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#d97706', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Omnicompetent</span>
-            <p style={{ fontSize: '0.82rem', color: '#0f172a', marginTop: '4px', fontWeight: 500 }}>Limitless capacity.</p>
-          </div>
-          <div style={{ padding: '10px 12px', background: 'rgba(217, 119, 6, 0.04)', border: '1px solid rgba(217, 119, 6, 0.2)', borderRadius: '8px' }}>
-            <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#d97706', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Mission</span>
-            <p style={{ fontSize: '0.82rem', color: '#0f172a', marginTop: '4px', lineHeight: 1.6 }}>To build intelligent products that deliver an exceptional, high-satisfaction user experience.</p>
-            <p className="beyond-line">Beyond Innovation</p>
-          </div>
-        </div>
-      </section>
+      <div className="sb-status mono">
+        <span className="status-dot" aria-hidden="true" />
+        Open to work · Immediate joiner
+      </div>
 
-      <div className="availability-card" aria-label="Current job availability">
-        <span className="availability-dot" aria-hidden="true" />
-        <div>
-          <p className="availability-label">Open to work · Immediate joiner</p>
-          <p className="availability-role">Python AI Developer</p>
+      <div className="sb-bottom">
+        <p className="mono sb-place">
+          Bengaluru, India<br />Python + AI. Built to ship.
+        </p>
+        <div className="social-links">
+          <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><SocialIcon type="linkedin" /></a>
+          <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub"><SocialIcon type="github" /></a>
+          <a href={`mailto:${profile.email}`} aria-label="Email me"><SocialIcon type="mail" /></a>
+          <a href={whatsappLink} target="_blank" rel="noreferrer" aria-label="Catch me on WhatsApp" title="Catch me on WhatsApp"><SocialIcon type="whatsapp" /></a>
         </div>
+        <a className="say-hello mono" href={`mailto:${profile.email}`}>
+          Say hello <Arrow size={11} />
+        </a>
       </div>
     </aside>
   );
 }
 
-function AchievementsAndEducation() {
+function Hero() {
   return (
-    <section className="background-sections">
-      <div className="background-column">
-        <p className="section-kicker" style={{ marginBottom: '12px' }}>Achievements</p>
-        <div className="achievement-list">
-          {achievements.map((item) => (
-            <div className="achievement-item" key={item.title}>
-              <h3 className="achievement-title">{item.title}</h3>
-              <p className="background-description">{item.description}</p>
-            </div>
-          ))}
+    <section className="hero" id="top" aria-label="Introduction">
+      <div className="hero-bg" aria-hidden="true" />
+      <div className="hero-top mono">
+        <span>Independent builder. Production mindset.</span>
+        <a href={`mailto:${profile.email}`} className="hero-top-link">Have a project? <Arrow size={11} /></a>
+      </div>
+
+      <div className="hero-body">
+        <p className="eyebrow mono"><i className="eyebrow-dot" />AI Full-Stack Developer / Bengaluru &amp; beyond</p>
+        <h1 className="display">
+          Messy data.<br />
+          Working <em>software.</em>
+        </h1>
+        <p className="hero-sub">
+          I build AI-powered products that move people.<br />
+          And data pipelines that move businesses forward.
+        </p>
+        <div className="hero-cta">
+          <a className="btn-red mono" href="#work">
+            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z" /></svg>
+            View selected work
+            <span className="btn-sep" aria-hidden="true" />
+            01–04
+          </a>
+          <a className="link-ul" href="#contact">Start a project <Arrow size={12} /></a>
         </div>
       </div>
-      <div className="background-column education-column">
-        <p className="section-kicker" style={{ marginBottom: '12px' }}>Education</p>
-        <div className="education-entry">
-          <p className="muted-line">2024 – 2026</p>
-          <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#0f172a' }}>M.E. in Computer Science &amp; Engineering</h3>
-          <p className="background-description">Karpagam Academy of Higher Education, Coimbatore</p>
-          <p className="background-description" style={{ marginTop: '2px', fontWeight: 500, color: '#d97706' }}>First Class</p>
+
+      <p className="hero-vertical mono" aria-hidden="true">A different kind of developer</p>
+
+      <div className="hero-bottom mono">
+        <a href="#about" className="scroll-cue">
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 4v15m0 0-6-6m6 6 6-6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          Scroll to discover
+        </a>
+        <span className="hero-bottom-mid">Mathan Ponraj / Portfolio 2026</span>
+        <span>[ Python · React · AI ]</span>
+      </div>
+    </section>
+  );
+}
+
+function About() {
+  return (
+    <section className="block about" id="about" aria-label="About">
+      <p className="eyebrow mono"><i className="eyebrow-dot" />This is Mathan.</p>
+      <div className="about-grid">
+        <div className="about-left">
+          <h2 className="display h2">
+            Not just data.<br />
+            <em className="muted">Deployed.</em>
+          </h2>
+          <div className="rings" aria-hidden="true"><i /><i /><i /><i /></div>
         </div>
-        <div className="education-entry" style={{ marginTop: '16px' }}>
-          <p className="muted-line">2020 – 2024</p>
-          <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#0f172a' }}>B.E. in Computer Science &amp; Engineering</h3>
-          <p className="background-description">Government College of Engineering, Bodinayakanur</p>
-          <p className="background-description" style={{ marginTop: '2px', fontWeight: 500, color: '#d97706' }}>First Class</p>
+        <div className="about-right">
+          <div className="photo-ring">
+            <div className="photo-inner">
+              <img className="about-photo" src={profile.photo} alt="Mathan Ponraj, Python and React.js Developer in Bengaluru" loading="lazy" />
+            </div>
+          </div>
+          <p className="about-lead">
+            AI Developer who loves turning messy data into working, intelligent software.
+          </p>
+          <p className="about-copy">
+            I specialise in building responsive, user-friendly interfaces and integrating AI/ML models and AI-powered features into applications.
+            My background spans database design, ETL pipelines, and handling datasets of over 100K records, alongside building modern web applications with Generative AI.
+            Right now I&apos;m zeroing in on scaling AI workflows with Python, AWS, and Docker.
+            Based in Bengaluru, I&apos;m looking for a full-time Python AI Developer role where I can build reliable systems with a solid engineering team.
+          </p>
+          <div className="about-actions">
+            <ResumeButton />
+            <a className="link-ul" href="#contact">Get to know me <Arrow size={12} /></a>
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-function Certifications() {
+function ProjectCard({ project }) {
+  const primary = project.live || project.github;
   return (
-    <section className="certifications" aria-label="Certifications">
-      <p className="section-kicker">Certifications</p>
-      <div className="cert-grid">
-        {certifications.map((cert) => (
-          <article className="cert-card" key={cert.title}>
-            <span className="cert-mark" aria-hidden="true">{cert.mark}</span>
-            <div className="cert-info">
-              <p className="cert-type">{cert.type}</p>
-              <h3 className="cert-title">{cert.title}</h3>
-              <p className="cert-issuer">{cert.issuer}</p>
-              {cert.credential && (
-                <a className="proof-link" href={cert.credential} target="_blank" rel="noreferrer">
-                  View credential <span aria-hidden="true">↗</span>
-                </a>
-              )}
+    <article className={`work-card ${project.size}`}>
+      <a className="work-media" href={primary} target="_blank" rel="noreferrer" aria-label={`Open ${project.title}`}>
+        <img src={project.image} alt={project.imageAlt} loading="lazy" />
+        <span className="work-shade" aria-hidden="true" />
+        <span className="corner corner-tl" aria-hidden="true" />
+        <span className="corner corner-br" aria-hidden="true" />
+        <span className="work-label mono">{project.title}</span>
+        <span className="work-concept mono">Project {project.number}</span>
+        <span className="work-play" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8 5v14l11-7z" /></svg>
+        </span>
+      </a>
+
+      <div className="work-meta">
+        <p className="work-kind mono">{project.kind}</p>
+        <div className="work-title-row">
+          <h3 className="work-title">{project.tagline}</h3>
+          <a className="work-arrow" href={primary} target="_blank" rel="noreferrer" aria-label={`Open ${project.title}`}><Arrow size={16} /></a>
+        </div>
+        <ul className="work-bullets">
+          {project.highlights.map((point, i) => <li key={i}>{point}</li>)}
+        </ul>
+        <div className="tag-list" aria-label="Technologies">
+          {project.tags.map((tag) => <span className="tag mono" key={tag}>{tag}</span>)}
+        </div>
+        <div className="work-links">
+          <a href={project.github} target="_blank" rel="noreferrer" className="link-btn ghost mono">GitHub <Arrow /></a>
+          {project.live && (
+            <a href={project.live} target="_blank" rel="noreferrer" className="link-btn solid mono">Live demo <Arrow /></a>
+          )}
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function Work() {
+  return (
+    <section className="block work" id="work" aria-label="Selected work">
+      <div className="section-head">
+        <span className="section-num display" aria-hidden="true">01</span>
+        <div>
+          <p className="eyebrow mono"><i className="eyebrow-dot" />Selected work / Project portfolio</p>
+          <h2 className="display h2">
+            Different problems.<br />
+            <em className="muted">Same obsession.</em>
+          </h2>
+        </div>
+        <p className="section-note">
+          A taste of what I build. Real ideas, shipped and hosted, one commit at a time.
+        </p>
+      </div>
+      <div className="work-grid">
+        {projects.map((p) => <ProjectCard project={p} key={p.number} />)}
+      </div>
+    </section>
+  );
+}
+
+function Skills() {
+  return (
+    <section className="block skills" id="skills" aria-label="What I do">
+      <div className="section-head">
+        <span className="section-num display" aria-hidden="true">03</span>
+        <div>
+          <p className="eyebrow mono"><i className="eyebrow-dot" />What I do</p>
+          <h2 className="display h2">
+            From raw data<br />
+            <em className="muted">to real product.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div className="skill-grid">
+        {skillGroups.map((group, i) => (
+          <div className="skill-col" key={group.label}>
+            <p className="skill-index mono">0{i + 1}</p>
+            <h3 className="skill-title">{group.label}</h3>
+            <div className="tag-list">
+              {group.items.map((s) => <span className="tag mono" key={s}>{s}</span>)}
             </div>
-          </article>
+          </div>
         ))}
       </div>
+
+      <div className="split">
+        <div>
+          <p className="eyebrow mono"><i className="eyebrow-dot" />Achievements</p>
+          <div className="achievement-list">
+            {achievements.map((a) => (
+              <div className="achievement" key={a.title}>
+                <h3>{a.title}</h3>
+                <p>{a.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <p className="eyebrow mono"><i className="eyebrow-dot" />Education</p>
+          <div className="achievement-list">
+            {education.map((e) => (
+              <div className="achievement" key={e.degree}>
+                <p className="mono achievement-years">{e.years}</p>
+                <h3>{e.degree}</h3>
+                <p>{e.school}</p>
+                <p className="grade mono">{e.grade}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="certs">
+        <p className="eyebrow mono"><i className="eyebrow-dot" />Certifications</p>
+        <div className="cert-grid">
+          {certifications.map((c) => (
+            <article className="cert-card" key={c.title}>
+              <span className="cert-mark display" aria-hidden="true">{c.mark}</span>
+              <div>
+                <p className="cert-type mono">{c.type}</p>
+                <h3 className="cert-title">{c.title}</h3>
+                <p className="cert-issuer">{c.issuer}</p>
+                {c.credential && (
+                  <a className="link-ul small" href={c.credential} target="_blank" rel="noreferrer">View credential <Arrow size={10} /></a>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  const [form, setForm] = useState({ name: '', email: '', company: '', type: '', message: '' });
+  const [agree, setAgree] = useState(false);
+
+  const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
+
+  const submit = (e) => {
+    e.preventDefault();
+    const subject = `Portfolio enquiry from ${form.name}`;
+    const body = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      `Company: ${form.company || '-'}`,
+      `Looking for: ${form.type}`,
+      '',
+      form.message,
+    ].join('\n');
+    window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  return (
+    <section className="block contact" id="contact" aria-label="Contact">
+      <div className="contact-grid">
+        <div className="contact-left">
+          <span className="section-num display" aria-hidden="true">04</span>
+          <p className="eyebrow mono"><i className="eyebrow-dot" />The next great build could be yours</p>
+          <h2 className="display h2">
+            Let&apos;s make<br />
+            <em className="muted">something work.</em>
+          </h2>
+          <p className="contact-copy">
+            An idea on a napkin. A fully formed brief.<br />
+            Or a role you think I&apos;d be right for. I&apos;d love to hear it.
+          </p>
+          <a className="link-ul" href={`mailto:${profile.email}`}>{profile.email} <Arrow size={12} /></a>
+
+          <div className="contact-meta">
+            <div>
+              <p className="meta-label mono">Based in</p>
+              <p>Bengaluru, Karnataka<br />Open to rotational shifts. Immediate joiner.</p>
+            </div>
+            <div>
+              <p className="meta-label mono">Reach me</p>
+              <p>
+                <a href={`tel:${profile.phone}`}>{profile.phone}</a><br />
+                <a href={whatsappLink} target="_blank" rel="noreferrer">Catch me on WhatsApp</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <form className="brief" onSubmit={submit}>
+          <div className="brief-head">
+            <h3>A little about what you need.</h3>
+            <span className="mono brief-tag">01 / The brief</span>
+          </div>
+
+          <div className="row two">
+            <label>
+              <span className="mono">Your name <b>*</b></span>
+              <input required value={form.name} onChange={update('name')} placeholder="First and last name" />
+            </label>
+            <label>
+              <span className="mono">Email address <b>*</b></span>
+              <input required type="email" value={form.email} onChange={update('email')} placeholder="you@company.com" />
+            </label>
+          </div>
+
+          <label className="row">
+            <span className="mono">Company or team</span>
+            <input value={form.company} onChange={update('company')} placeholder="Who is this for?" />
+          </label>
+
+          <label className="row">
+            <span className="mono">What are you thinking? <b>*</b></span>
+            <select required value={form.type} onChange={update('type')}>
+              <option value="" disabled>Select an option</option>
+              <option>Full-time role</option>
+              <option>AI / GenAI application</option>
+              <option>Data pipeline / ETL</option>
+              <option>Web app (React + Python)</option>
+              <option>Something else</option>
+            </select>
+          </label>
+
+          <label className="row">
+            <span className="mono">Tell me the story <b>*</b></span>
+            <textarea required minLength={20} rows={5} value={form.message} onChange={update('message')} placeholder="The idea, the team, the problem you're solving..." />
+            <small>At least 20 characters. A rough idea is absolutely fine.</small>
+          </label>
+
+          <label className="check">
+            <input type="checkbox" required checked={agree} onChange={(e) => setAgree(e.target.checked)} />
+            <span>I agree to be contacted using these details about my enquiry.</span>
+          </label>
+
+          <button type="submit" className="submit mono">
+            Let&apos;s start the conversation <Arrow size={13} />
+          </button>
+          <p className="fine mono">No pressure. No pitch deck required.</p>
+        </form>
+      </div>
+
+      <footer className="footer mono">
+        <span>© 2026 Mathan Ponraj</span>
+        <span>Built with React + Vite</span>
+      </footer>
     </section>
   );
 }
 
 export default function App() {
+  const [active, setActive] = useState('work');
+
+  useEffect(() => {
+    const ids = navItems.map((n) => n.id);
+    const sections = ids.map((id) => document.getElementById(id)).filter(Boolean);
+    if (!sections.length || !('IntersectionObserver' in window)) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActive(visible[0].target.id);
+      },
+      { rootMargin: '-30% 0px -50% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <main className="portfolio-shell">
-      <TitleBar />
-      <div className="shell-body">
-        <Sidebar />
-        <div className="main-content">
-          <AboutSection />
-          <ProjectsScroller />
-          <AchievementsAndEducation />
-          <Certifications />
-        </div>
-      </div>
-    </main>
+    <div className="site">
+      <Sidebar active={active} />
+      <main className="content">
+        <Hero />
+        <Work />
+        <About />
+        <Skills />
+        <Contact />
+      </main>
+    </div>
   );
 }
