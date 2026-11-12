@@ -88,23 +88,32 @@ const projects = [
     live: 'https://eduhelpdesk.onrender.com/',
     size: 'tall',
   },
-  {
-    number: "04",
-    title: "LapPick",
-    kind: "Machine Learning / Streamlit",
-    tagline: "The right laptop, priced right.",
-    image: '/images/lappick-thumbnail.svg',
-    imageAlt: 'LapPick laptop price and recommendation system banner',
-    tags: ['Python', 'XGBoost', 'Scikit-Learn', 'Streamlit', 'Feature Engineering'],
-    highlights: [
-      "Hardware price predictor & recommendation engine achieving R² ≈ 0.91 accuracy",
-      "Scikit-learn pipeline handling outlier cleaning and multi-category feature encoding",
-      "Interactive Streamlit app filtering recommendations by budget, RAM, CPU, and storage"
-    ],
-    github: 'https://github.com/mathan-ponraj/lappick',
-    live: 'https://laptop-price-and-recommendation-system-icvhjjspmfrmmy2rfmtuaq.streamlit.app/',
-    size: 'wide',
-  },
+ {
+  number: "04",
+  title: "LapPick",
+  kind: "Data Intelligence / Analytical Decision Support",
+  tagline: "Live laptop data. Smarter decisions.",
+  image: '/images/lappick-thumbnail.svg',
+  imageAlt: 'LapPick live laptop data intelligence application',
+  tags: [
+    'Python',
+    'Streamlit',
+    'REST API',
+    'Pandas',
+    'NumPy',
+    'Feature Engineering',
+    'Weighted Scoring',
+    'Cosine Similarity'
+  ],
+  highlights: [
+    "Integrated the API.SH Croma API to retrieve live laptop listings and process changing product data",
+    "Engineered structured hardware features from product descriptions, including CPU tier, RAM, storage, GPU and display specifications",
+    "Implemented usage-based weighted scoring, constraint filtering and cosine similarity for analytical product evaluation"
+  ],
+  github: 'https://github.com/mathan-ponraj/lappick',
+  live: 'https://laptop-price-and-recommendation-system-icvhjjspmfrmmy2rfmtuaq.streamlit.app/',
+  size: 'wide',
+},
 ];
 
 const achievements = [
