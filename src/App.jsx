@@ -55,22 +55,33 @@ const projects = [
     live: 'https://talentiq-ai-two.vercel.app/',
     size: 'wide',
   },
-  {
-    number: "02",
-    title: "TrendTube",
-    kind: "Data Engineering / ETL",
-    tagline: "Nine regions. One pipeline.",
-    image: '/images/youtube-trendtube-thumbnail.jpg',
-    imageAlt: "TrendTube YouTube trending data pipeline",
-    tags: ["Python", "PostgreSQL", "ETL", "YouTube Data API v3", "Pandas", "Star Schema"],
-    highlights: [
-      "Automated ETL pipeline aggregating video trends across 9 global regions via YouTube API",
-      "Pandas-driven data cleaning loading into PostgreSQL Star Schema data model",
-      "Custom SQL engagement metrics for real-time cross-regional trend diagnosis"
-    ],
-    github: "https://github.com/mathan-ponraj/Trendtube",
-    size: 'tall',
-  },
+ {
+  number: "02",
+  title: "TrendTube",
+  kind: "Data Engineering / Analytics SaaS",
+  tagline: "Nine regions. One global view.",
+  image: '/images/youtube-trendtube-thumbnail.jpg',
+  imageAlt: "TrendTube global YouTube trending analytics dashboard",
+  tags: [
+    "Python",
+    "FastAPI",
+    "React",
+    "PostgreSQL",
+    "ETL",
+    "YouTube Data API v3",
+    "Pandas",
+    "Vercel",
+    "Render"
+  ],
+  highlights: [
+    "Built an automated Python ETL pipeline collecting and processing YouTube trending videos across 9 global regions.",
+    "Designed a PostgreSQL star schema to store and analyse 447 video records across 6 populated continents.",
+    "Developed a React analytics dashboard with FastAPI, featuring regional trends, video insights and engagement metrics."
+  ],
+  github: "https://github.com/mathan-ponraj/Trendtube",
+  live: "https://trendtube-five.vercel.app/",
+  size: 'tall',
+},
   {
     number: "03",
     title: "EduHelpDesk",
