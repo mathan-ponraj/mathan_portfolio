@@ -189,6 +189,32 @@ img { max-width: 100%; display: block; }
 .social-links svg { width: 14px; height: 14px; fill: currentColor; }
 .social-links a:hover { background: var(--red); border-color: var(--red); color: #fff; }
 
+/* popup-style notice sitting right under the WhatsApp icon */
+.phone-notice {
+  position: relative;
+  margin-top: -2px;
+  padding: 11px 12px 12px;
+  background: #151515;
+  border: 1px solid var(--red);
+  box-shadow: 4px 4px 0 var(--red-deep);
+  animation: notice-in 0.45s ease both;
+}
+/* little arrow pointing up at the WhatsApp icon (4th icon) */
+.phone-notice::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 124px;
+  width: 10px; height: 10px;
+  background: #151515;
+  border-top: 1px solid var(--red);
+  border-left: 1px solid var(--red);
+  transform: rotate(45deg);
+}
+.phone-notice-title { display: block; color: var(--red); font-size: 0.52rem; font-weight: 700; margin-bottom: 6px; }
+.phone-notice p { color: var(--text-2); font-size: 0.7rem; line-height: 1.6; }
+@keyframes notice-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
 .say-hello {
   display: inline-flex; align-items: center; gap: 10px;
   color: #fff; font-size: 0.6rem; font-weight: 700;
@@ -547,6 +573,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .contact-left { position: relative; }
 .contact-left .section-num { top: -88px; }
 .contact-copy { margin: 34px 0 28px; color: var(--text-2); font-size: 0.95rem; line-height: 1.9; }
+.contact-copy.contact-note { margin-top: -10px; color: var(--text-3); font-size: 0.86rem; }
 .contact-meta {
   margin-top: 48px; padding-top: 32px;
   border-top: 1px solid var(--line);
@@ -555,6 +582,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .contact-meta a:hover { color: var(--red); }
 .meta-label { color: var(--text-3); margin-bottom: 8px; font-size: 0.56rem; }
+.meta-note {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-left: 2px solid var(--red);
+  background: rgba(229, 56, 74, 0.06);
+  color: var(--text-2);
+  font-size: 0.76rem;
+  line-height: 1.7;
+}
 
 .brief {
   background: var(--bg-2);
@@ -589,6 +625,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .brief input::placeholder, .brief textarea::placeholder { color: #5f5b54; }
 .brief input:focus, .brief select:focus, .brief textarea:focus { border-color: var(--red); outline: none; }
 
+/* honeypot field, hidden from people */
+.brief .hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .brief .check { flex-direction: row; align-items: flex-start; gap: 10px; color: var(--text-2); font-size: 0.74rem; }
 .brief .check input { width: 14px; height: 14px; margin-top: 3px; accent-color: var(--red); }
 
@@ -600,6 +646,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   transition: background 0.2s ease;
 }
 .submit:hover { background: #f04b5c; }
+.submit:disabled { opacity: 0.6; cursor: wait; }
+
+.form-status { min-height: 1.2em; text-align: center; font-size: 0.56rem; line-height: 1.7; }
+.form-status.sent { color: #7bd88f; }
+.form-status.error { color: var(--red); }
+
 .fine { text-align: center; color: var(--text-3); font-size: 0.52rem; }
 
 .footer {
@@ -652,7 +704,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .status-dot, .scroll-cue svg, .photo-ring, .photo-ring::after { animation: none; }
+  .status-dot, .scroll-cue svg, .photo-ring, .photo-ring::after, .phone-notice { animation: none; }
   .work-media img, .work-play, .btn-red, .cert-card { transition: none; }
   .work-card:hover .work-media img { transform: none; }
 }
