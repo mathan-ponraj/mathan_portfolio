@@ -6,7 +6,7 @@
 
 Building intelligent solutions through data, code, and AI.
 
-[![Live Portfolio](https://img.shields.io/badge/LIVE%20PORTFOLIO-Visit%20Website-6366f1?style=for-the-badge\&logo=vercel\&logoColor=white)](https://mathan-portfolio-ten.vercel.app/)
+[![Live Portfolio](https://img.shields.io/badge/LIVE%20PORTFOLIO-Visit%20Website-6366f1?style=for-the-badge\&logo=vercel\&logoColor=white)](https://mathan-dev-ai.vercel.app/)
 
 [![GitHub](https://img.shields.io/badge/GitHub-Mathan%20Ponraj-181717?style=for-the-badge\&logo=github)](https://github.com/mathan-ponraj)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge\&logo=linkedin)](https://www.linkedin.com/in/mathan03/)
