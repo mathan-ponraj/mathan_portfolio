@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import './ResumeButton.css';
 
+// Free access key from https://web3forms.com (enter mathanponraj03@gmail.com, the key is emailed to you).
+// Local: add VITE_WEB3FORMS_KEY=your_key to .env   |   Vercel: Settings > Environment Variables, then redeploy.
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY;
+
 const profile = {
   name: "Mathan Ponraj",
   title: "Python + React Developer (AI / ML)",
@@ -246,10 +250,14 @@ function Sidebar({ active }) {
         <div className="social-links">
           <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><SocialIcon type="linkedin" /></a>
           <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub"><SocialIcon type="github" /></a>
-          <a href={`mailto:${profile.email}`} aria-label="Email me"><SocialIcon type="mail" /></a>
+          <a href="#contact" aria-label="Send me a message"><SocialIcon type="mail" /></a>
           <a href={whatsappLink} target="_blank" rel="noreferrer" aria-label="Catch me on WhatsApp" title="Catch me on WhatsApp"><SocialIcon type="whatsapp" /></a>
         </div>
-        <a className="say-hello mono" href={`mailto:${profile.email}`}>
+        <div className="phone-notice" role="note">
+          <span className="phone-notice-title mono">Mobile out of order</span>
+          <p>My mobile is out of order. Kindly reach me through WhatsApp, mail or LinkedIn.</p>
+        </div>
+        <a className="say-hello mono" href="#contact">
           Say hello <Arrow size={11} />
         </a>
       </div>
@@ -263,7 +271,7 @@ function Hero() {
       <div className="hero-bg" aria-hidden="true" />
       <div className="hero-top mono">
         <span>Independent builder. Production mindset.</span>
-        <a href={`mailto:${profile.email}`} className="hero-top-link">Have a project? <Arrow size={11} /></a>
+        <a href="#contact" className="hero-top-link">Have a project? <Arrow size={11} /></a>
       </div>
 
       <div className="hero-body">
@@ -475,24 +483,48 @@ function Skills() {
   );
 }
 
+const emptyForm = { name: '', email: '', company: '', type: '', message: '' };
+
 function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', company: '', type: '', message: '' });
+  const [form, setForm] = useState(emptyForm);
   const [agree, setAgree] = useState(false);
+  const [trap, setTrap] = useState(''); // honeypot: real visitors never fill this
+  const [status, setStatus] = useState('idle'); // idle | sending | sent | error
 
   const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    const subject = `Portfolio enquiry from ${form.name}`;
-    const body = [
-      `Name: ${form.name}`,
-      `Email: ${form.email}`,
-      `Company: ${form.company || '-'}`,
-      `Looking for: ${form.type}`,
-      '',
-      form.message,
-    ].join('\n');
-    window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    if (trap) { setStatus('sent'); return; } // bot: pretend success, send nothing
+    if (!WEB3FORMS_KEY) { setStatus('error'); return; }
+
+    setStatus('sending');
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Portfolio enquiry from ${form.name}`,
+          from_name: 'Portfolio contact form',
+          name: form.name,
+          email: form.email, // reply goes straight to the visitor
+          company: form.company || '-',
+          looking_for: form.type,
+          message: form.message,
+        }),
+      });
+      const json = await res.json();
+      if (json.success) {
+        setStatus('sent');
+        setForm(emptyForm);
+        setAgree(false);
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
@@ -509,7 +541,9 @@ function Contact() {
             An idea on a napkin. A fully formed brief.<br />
             Or a role you think I&apos;d be right for. I&apos;d love to hear it.
           </p>
-          <a className="link-ul" href={`mailto:${profile.email}`}>{profile.email} <Arrow size={12} /></a>
+          <p className="contact-copy contact-note">
+            Send the form and it lands straight in my inbox. I reply by email.
+          </p>
 
           <div className="contact-meta">
             <div>
@@ -520,7 +554,12 @@ function Contact() {
               <p className="meta-label mono">Reach me</p>
               <p>
                 <a href={`tel:${profile.phone}`}>{profile.phone}</a><br />
-                <a href={whatsappLink} target="_blank" rel="noreferrer">Catch me on WhatsApp</a>
+                <a href={whatsappLink} target="_blank" rel="noreferrer">Catch me on WhatsApp</a><br />
+                <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><br />
+                <a href={`mailto:${profile.email}`}>{profile.email}</a>
+              </p>
+              <p className="meta-note">
+                My mobile is out of order. Kindly reach me through WhatsApp, mail or LinkedIn.
               </p>
             </div>
           </div>
@@ -535,17 +574,17 @@ function Contact() {
           <div className="row two">
             <label>
               <span className="mono">Your name <b>*</b></span>
-              <input required value={form.name} onChange={update('name')} placeholder="First and last name" />
+              <input required value={form.name} onChange={update('name')} placeholder="First and last name" autoComplete="name" />
             </label>
             <label>
               <span className="mono">Email address <b>*</b></span>
-              <input required type="email" value={form.email} onChange={update('email')} placeholder="you@company.com" />
+              <input required type="email" value={form.email} onChange={update('email')} placeholder="you@company.com" autoComplete="email" />
             </label>
           </div>
 
           <label className="row">
             <span className="mono">Company or team</span>
-            <input value={form.company} onChange={update('company')} placeholder="Who is this for?" />
+            <input value={form.company} onChange={update('company')} placeholder="Who is this for?" autoComplete="organization" />
           </label>
 
           <label className="row">
@@ -566,14 +605,31 @@ function Contact() {
             <small>At least 20 characters. A rough idea is absolutely fine.</small>
           </label>
 
+          <input
+            type="text"
+            className="hp-field"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            value={trap}
+            onChange={(e) => setTrap(e.target.value)}
+          />
+
           <label className="check">
             <input type="checkbox" required checked={agree} onChange={(e) => setAgree(e.target.checked)} />
             <span>I agree to be contacted using these details about my enquiry.</span>
           </label>
 
-          <button type="submit" className="submit mono">
-            Let&apos;s start the conversation <Arrow size={13} />
+          <button type="submit" className="submit mono" disabled={status === 'sending'}>
+            {status === 'sending' ? 'Sending…' : <>Let&apos;s start the conversation <Arrow size={13} /></>}
           </button>
+
+          <p className={`form-status mono ${status}`} role="status" aria-live="polite">
+            {status === 'sent' && 'Message sent. It is in my inbox and I will reply by email soon.'}
+            {status === 'error' && 'Could not send. Please message me on WhatsApp or LinkedIn instead.'}
+          </p>
+
           <p className="fine mono">No pressure. No pitch deck required.</p>
         </form>
       </div>
