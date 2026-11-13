@@ -8,7 +8,7 @@ const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY;
 
 const profile = {
   name: "Mathan Ponraj",
-  title: "Python + React Developer (AI / ML)",
+  title: "Python Developer (AI / ML)",
   location: "HSR Layout, Bengaluru, Karnataka 560102",
   phone: "7339404085",
   photo: "/images/portfolio photo.png",
@@ -37,7 +37,7 @@ const skillGroups = [
   },
   {
     label: "Data & ML",
-    items: ["Pandas", "NumPy", "Scikit-learn", "Feature Engineering", "Model Evaluation", "ETL", "Data Modelling", "Power BI", "Excel"],
+    items: ["Pandas", "NumPy", "Scikit-learn", "Feature Engineering", "Model Evaluation", "ETL", "Data Modelling", "Data Analysis","Power BI", "Excel"],
   },
 ];
 
