@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mathan-portfolio-ten.vercel.app/sitemap.xml
+Sitemap: https://mathan-dev-ai.vercel.app/sitemap.xml
