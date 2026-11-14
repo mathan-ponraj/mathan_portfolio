@@ -435,12 +435,11 @@ function Skills() {
         ))}
       </div>
 
-      <div className="split">
-        <div>
-          <p className="eyebrow mono"><i className="eyebrow-dot" />Experience</p>
-          <div className="achievement-list">
+      <div className="exp">
+        <p className="eyebrow mono"><i className="eyebrow-dot" />Experience</p>
+        <div className="exp-grid">
             {experience.map((e) => (
-              <div className="achievement" key={e.role + e.company}>
+              <div className="exp-card" key={e.role + e.company}>
                 <p className="mono achievement-years">{e.period}</p>
                 <h3>{e.role}</h3>
                 <p>{e.company}</p>
@@ -449,8 +448,10 @@ function Skills() {
                 </ul>
               </div>
             ))}
-          </div>
         </div>
+      </div>
+
+      <div className="split">
         <div>
           <p className="eyebrow mono"><i className="eyebrow-dot" />Education</p>
           <div className="achievement-list">
@@ -464,9 +465,8 @@ function Skills() {
             ))}
           </div>
         </div>
-      </div>
 
-      <div className="certs">
+        <div className="certs">
         <p className="eyebrow mono"><i className="eyebrow-dot" />Certifications</p>
         <div className="cert-grid">
           {certifications.map((c) => (
@@ -482,6 +482,7 @@ function Skills() {
               </div>
             </article>
           ))}
+        </div>
         </div>
       </div>
     </section>
@@ -558,7 +559,6 @@ function Contact() {
             <div>
               <p className="meta-label mono">Reach me</p>
               <p>
-                <a href={`tel:${profile.phone}`}>{profile.phone}</a><br />
                 <a href={whatsappLink} target="_blank" rel="noreferrer">Catch me on WhatsApp</a><br />
                 <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><br />
                 <a href={`mailto:${profile.email}`}>{profile.email}</a>
