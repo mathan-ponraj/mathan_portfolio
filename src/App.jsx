@@ -6,7 +6,7 @@ const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY;
 
 const profile = {
   name: "Mathan Ponraj",
-  title: "Data Scientist (AI/ ML)",
+  title: "Data Scientist (AI/ML)",
   location: "Marathahalli, Bengaluru, Karnataka 560037",
   phone: "7339404085",
   photo: "/images/portfolio photo.png",
@@ -15,7 +15,7 @@ const profile = {
   github: "https://github.com/mathan-ponraj",
 };
 
-const whatsappLink = `https://wa.me/91${profile.phone}?text=${encodeURIComponent('Hi Mathan, I came across your portfolio and would like to connect to explore how we could collaborate.')}`;
+const whatsappLink = `https://wa.me/91${profile.phone}?text=${encodeURIComponent('I came across your portfolio and would like to connect to explore how we could collaborate.')}`;
 
 const navItems = [
   { id: 'work', num: '01', label: 'Selected Work' },
@@ -38,86 +38,86 @@ const skillGroups = [
     items: ["HTML", "CSS", "JavaScript", "React.js", "Python", "FastAPI", "REST APIs", "SQL", "PostgreSQL", "Git & GitHub"],
   },
 ];
+
 const projects = [
   {
-  number: "01",
-  title: "TalentIQ AI",
-  kind: "GenAI / Career Prep",
-  tagline: "Know your fit. Ace the interview.",
-  image: '/images/resume-interview-thumbnail.jpg',
-  imageAlt: "TalentIQ AI resume analysis and mock interview app",
-  tags: ["React.js", "Vite", "Python", "FastAPI", "LangChain", "RAG", "Gemini API", "Vercel", "Render"],
-  description: "Job seekers rarely know how well their resume fits a role until they are rejected. In this project, I built a GenAI app that uses the Gemini API and a LangChain RAG pipeline with semantic chunking to score resume fit against a target role. It also runs mock interviews at multiple levels and gives automated feedback scores.",
-
-  github: "https://github.com/mathan-ponraj/talentiqai",
-  live: 'https://talentiq-ai-two.vercel.app/',
-  size: 'wide',
+    number: "01",
+    title: "TalentIQ AI",
+    kind: "GenAI / Career Prep",
+    tagline: "Know your fit. Ace the interview.",
+    image: '/images/resume-interview-thumbnail.jpg',
+    imageAlt: "TalentIQ AI resume analysis and mock interview app",
+    tags: ["React.js", "Vite", "Python", "FastAPI", "LangChain", "RAG", "Gemini API", "Vercel", "Render"],
+    description: "Job seekers rarely know how well their resume fits a role until they are rejected. In this project, I built a GenAI app that uses the Gemini API and a LangChain RAG pipeline with semantic chunking to score resume fit against a target role. It also runs mock interviews at multiple levels and gives automated feedback scores.",
+    github: "https://github.com/mathan-ponraj/talentiqai",
+    live: 'https://talentiq-ai-two.vercel.app/',
+    size: 'wide',
   },
-{
-  number: "02",
-  title: "TrendTube",
-  kind: "Data Engineering / Analytics SaaS",
-  tagline: "Find what’s trending. Create what’s next.”,
-  image: '/images/youtube-trendtube-thumbnail.jpg',
-  imageAlt: "TrendTube global YouTube trending analytics dashboard",
-  tags: [
-    "React.js",
-    "Python",
-    "FastAPI",
-    "PostgreSQL",
-    "ETL",
-    "Pandas",
-    "YouTube Data API v3",
-    "Vercel",
-    "Render"
-  ],
-  description: "YouTube creators need to know what is trending around the world before they decide what to make. In this project, I built an automated Python ETL pipeline that collects trending videos from 9 regions through the YouTube Data API and stores them in a PostgreSQL star schema. I then built a React and FastAPI dashboard that shows regional trends, video insights and engagement metrics.",
-  github: "https://github.com/mathan-ponraj/Trendtube",
-  live: "https://trendtube-five.vercel.app/",
-  size: 'tall',
-},
-{
-number: "03",
-title: "LapPick",
-kind: "Data Intelligence / Analytical Decision Support",
-tagline: "Live laptop data. Smarter decisions.",
-image: '/images/lappick-thumbnail.svg',
-imageAlt: 'LapPick live laptop data intelligence application',
-tags: [
-  'Python',
-  'Streamlit',
-  'REST API',
-  'Pandas',
-  'NumPy',
-  'Feature Engineering',
-  'Weighted Scoring',
-  'Cosine Similarity'
-],
-description: "Laptop prices and specs change constantly, which makes buying the right one hard. In this project, I used the API.SH Croma API to pull live listings and extracted CPU, RAM, storage, GPU and display specs from product descriptions. I then ranked laptops with usage-based weighted scoring, constraint filters and cosine similarity.",
-github: 'https://github.com/mathan-ponraj/lappick',
-live: 'https://laptop-price-and-recommendation-system-icvhjjspmfrmmy2rfmtuaq.streamlit.app/',
-size: 'wide',
-},
-
-{
-  number: "04",
-  title: "EduHelpDesk",
-  kind: "Full-Stack / Support System",
-  tagline: "Every ticket, on the clock.",
-  image: '/images/eduhelpdesk-thumbnail.jpg',
-  imageAlt: "EduHelpDesk academic support ticketing system",
-  tags: ["Python", "Flask", "SQLite", "REST APIs", "RBAC", "Render"],
-  description: "Academic support requests often get lost or answered late when there is no system tracking them. In this project, I built a ticketing portal in Flask where students and staff manage requests under role-based access control. It tracks SLA deadlines, flags overdue tickets for escalation and keeps an audit trail of every status change.",
-  github: "https://github.com/mathan-ponraj/EduHelpDesk",
-  live: 'https://eduhelpdesk.onrender.com/',
-  size: 'tall',
-},
+  {
+    number: "02",
+    title: "TrendTube",
+    kind: "Data Engineering / Analytics SaaS",
+    tagline: "Find what’s trending. Create what’s next.",
+    image: '/images/youtube-trendtube-thumbnail.jpg',
+    imageAlt: "TrendTube global YouTube trending analytics dashboard",
+    tags: [
+      "React.js",
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "ETL",
+      "Pandas",
+      "YouTube Data API v3",
+      "Vercel",
+      "Render"
+    ],
+    description: "YouTube creators need to know what is trending around the world before they decide what to make. In this project, I built an automated Python ETL pipeline that collects trending videos from 9 regions through the YouTube Data API and stores them in a PostgreSQL star schema. I then built a React and FastAPI dashboard that shows regional trends, video insights and engagement metrics.",
+    github: "https://github.com/mathan-ponraj/Trendtube",
+    live: "https://trendtube-five.vercel.app/",
+    size: 'tall',
+  },
+  {
+    number: "03",
+    title: "LapPick",
+    kind: "Data Intelligence / Analytical Decision Support",
+    tagline: "Live laptop data. Smarter decisions.",
+    image: '/images/lappick-thumbnail.svg',
+    imageAlt: 'LapPick live laptop data intelligence application',
+    tags: [
+      'Python',
+      'Streamlit',
+      'REST API',
+      'Pandas',
+      'NumPy',
+      'Feature Engineering',
+      'Weighted Scoring',
+      'Cosine Similarity'
+    ],
+    description: "Laptop prices and specs change constantly, which makes buying the right one hard. In this project, I used the API.SH Croma API to pull live listings and extracted CPU, RAM, storage, GPU and display specs from product descriptions. I then ranked laptops with usage-based weighted scoring, constraint filters and cosine similarity.",
+    github: 'https://github.com/mathan-ponraj/lappick',
+    live: 'https://laptop-price-and-recommendation-system-icvhjjspmfrmmy2rfmtuaq.streamlit.app/',
+    size: 'wide',
+  },
+  {
+    number: "04",
+    title: "EduHelpDesk",
+    kind: "Full-Stack / Support System",
+    tagline: "Every ticket, on the clock.",
+    image: '/images/eduhelpdesk-thumbnail.jpg',
+    imageAlt: "EduHelpDesk academic support ticketing system",
+    tags: ["Python", "Flask", "SQLite", "REST APIs", "RBAC", "Render"],
+    description: "Academic support requests often get lost or answered late when there is no system tracking them. In this project, I built a ticketing portal in Flask where students and staff manage requests under role-based access control. It tracks SLA deadlines, flags overdue tickets for escalation and keeps an audit trail of every status change.",
+    github: "https://github.com/mathan-ponraj/EduHelpDesk",
+    live: 'https://eduhelpdesk.onrender.com/',
+    size: 'tall',
+  },
+];
 
 const experience = [
   {
     role: "Freelance Web Developer & Digital Marketer",
     company: "Self-employed",
-    period: "[nov 2025] - Present",
+    period: "Nov 2025 – Present",
     points: [
       "Lead a 3-member team delivering websites, SEO and social media content for small business clients.",
       "Design, build and deploy static and dynamic web pages using HTML, CSS, JavaScript and React.js.",
@@ -128,7 +128,7 @@ const experience = [
   {
     role: "Data Science Intern",
     company: "Rinex.ai",
-    period: "Mar 2025 - May 2025",
+    period: "Mar 2025 – May 2025",
     points: [
       "Cleaned and analysed datasets with Python (Pandas, NumPy) to prepare them for modelling and reporting.",
       "Built and evaluated machine learning models with Scikit-learn, using feature engineering and metrics such as accuracy and F1.",
@@ -139,7 +139,7 @@ const experience = [
   {
     role: "Professional Employability Intern",
     company: "CDAC, Chennai",
-    period: "[Jun 2k23] - [Aug 2k23]",
+    period: "Jun 2023 – Aug 2023",
     points: [
       "Wrote Python programs for data handling and automation tasks as part of structured, industry-aligned training.",
       "Designed and queried relational databases with SQL, including joins, aggregations and subqueries.",
@@ -148,6 +148,7 @@ const experience = [
     ],
   },
 ];
+
 const education = [
   {
     years: "2024 – 2026",
@@ -370,9 +371,7 @@ function ProjectCard({ project }) {
           <h3 className="work-title">{project.tagline}</h3>
           <a className="work-arrow" href={primary} target="_blank" rel="noreferrer" aria-label={`Open ${project.title}`}><Arrow size={16} /></a>
         </div>
-        <ul className="work-bullets">
-          {project.highlights.map((point, i) => <li key={i}>{point}</li>)}
-        </ul>
+        <p className="work-desc">{project.description}</p>
         <div className="tag-list" aria-label="Technologies">
           {project.tags.map((tag) => <span className="tag mono" key={tag}>{tag}</span>)}
         </div>
@@ -438,12 +437,16 @@ function Skills() {
 
       <div className="split">
         <div>
-          <p className="eyebrow mono"><i className="eyebrow-dot" />Achievements</p>
+          <p className="eyebrow mono"><i className="eyebrow-dot" />Experience</p>
           <div className="achievement-list">
-            {achievements.map((a) => (
-              <div className="achievement" key={a.title}>
-                <h3>{a.title}</h3>
-                <p>{a.description}</p>
+            {experience.map((e) => (
+              <div className="achievement" key={e.role + e.company}>
+                <p className="mono achievement-years">{e.period}</p>
+                <h3>{e.role}</h3>
+                <p>{e.company}</p>
+                <ul className="exp-points">
+                  {e.points.map((pt, i) => <li key={i}>{pt}</li>)}
+                </ul>
               </div>
             ))}
           </div>
