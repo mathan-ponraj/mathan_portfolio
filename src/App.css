@@ -53,6 +53,8 @@ img { max-width: 100%; display: block; }
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 0.95;
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum" 1;
 }
 .display em { font-style: italic; font-weight: 400; }
 .display em.muted, .muted { color: #b3aa9b; }
@@ -99,7 +101,9 @@ img { max-width: 100%; display: block; }
   flex-direction: column;
   z-index: 40;
   overflow-y: auto;
+  scrollbar-width: none;
 }
+.sidebar::-webkit-scrollbar { display: none; }
 
 .sb-top { padding: 34px 25px 22px; border-bottom: 1px solid var(--line); }
 
@@ -154,15 +158,18 @@ img { max-width: 100%; display: block; }
 
 .sb-status {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
-  margin: 34px 25px 0;
+  margin: 28px 25px 0;
   color: var(--text-2);
   font-size: 0.54rem;
   letter-spacing: 0.08em;
+  line-height: 1.7;
 }
 .status-dot {
   width: 6px; height: 6px;
+  margin-top: 5px;
+  flex-shrink: 0;
   background: var(--red);
   animation: blink 2.2s ease-in-out infinite;
 }
@@ -220,6 +227,17 @@ img { max-width: 100%; display: block; }
   color: #fff; font-size: 0.6rem; font-weight: 700;
 }
 .say-hello:hover { color: var(--red); }
+
+/* shorter screens: tighten the sidebar so everything fits without scrolling */
+@media (max-height: 860px) and (min-width: 861px) {
+  .sb-top { padding: 24px 25px 16px; }
+  .sb-intro { padding: 18px 25px 12px; }
+  .sb-link { padding: 11px 25px; }
+  .sb-status { margin-top: 16px; }
+  .sb-bottom { padding: 16px 25px 18px; gap: 12px; }
+  .phone-notice { padding: 9px 10px 10px; }
+  .phone-notice p { font-size: 0.66rem; line-height: 1.5; }
+}
 
 /* ---------- buttons / links ---------- */
 .btn-red {
@@ -424,7 +442,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   position: absolute;
   left: -6px; top: -88px;
   font-size: 5rem;
-  color: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.1);
   z-index: 0;
   line-height: 1;
 }
@@ -432,17 +450,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .skills .section-head { grid-template-columns: 1fr; }
 
 /* ---------- work ---------- */
+/* two equal columns, equal-height cards, no staggered offsets */
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 64px 40px;
-  align-items: start;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 56px 40px;
+  align-items: stretch;
 }
-.work-card { display: flex; flex-direction: column; gap: 22px; }
-.work-card.wide { grid-column: span 7; }
-.work-card.tall { grid-column: span 5; }
-.work-card:nth-child(2) { margin-top: 90px; }
-.work-card:nth-child(4) { margin-top: 70px; }
+.work-card { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
 
 .work-media {
   position: relative;
@@ -484,23 +499,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .work-card:hover .work-play { opacity: 1; transform: scale(1); }
 
+/* meta fills the card so the buttons line up at the bottom of every card */
+.work-meta { display: flex; flex-direction: column; flex: 1; }
+
 .work-kind { color: var(--text-3); font-size: 0.58rem; }
-.work-title-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-top: 8px; }
-.work-title { font-family: var(--serif); font-weight: 500; font-size: clamp(1.9rem, 3.2vw, 2.6rem); line-height: 1.05; letter-spacing: -0.01em; }
-.work-arrow { color: var(--text-3); padding-top: 10px; transition: color 0.2s, transform 0.2s; }
+.work-title-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-top: 10px; }
+.work-title { font-family: var(--serif); font-weight: 500; font-size: clamp(1.8rem, 2.6vw, 2.3rem); line-height: 1.08; letter-spacing: -0.01em; }
+.work-arrow { color: var(--text-3); padding-top: 8px; transition: color 0.2s, transform 0.2s; }
 .work-card:hover .work-arrow { color: var(--red); transform: translate(3px, -3px); }
 
-.work-bullets { margin: 18px 0 20px; display: flex; flex-direction: column; gap: 9px; }
-.work-bullets li {
-  position: relative;
-  padding-left: 18px;
+.work-desc {
+  margin: 16px 0 22px;
   color: var(--text-2);
-  font-size: 0.84rem;
-  line-height: 1.65;
-}
-.work-bullets li::before {
-  content: ""; position: absolute; left: 0; top: 0.7em;
-  width: 5px; height: 5px; background: var(--red);
+  font-size: 0.88rem;
+  line-height: 1.8;
 }
 
 .tag-list { display: flex; flex-wrap: wrap; gap: 7px; }
@@ -514,7 +526,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .tag:hover { border-color: var(--red); color: #fff; }
 
-.work-links { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+.work-links { display: flex; gap: 10px; margin-top: auto; padding-top: 24px; flex-wrap: wrap; }
 
 /* ---------- skills ---------- */
 .skill-grid {
@@ -528,11 +540,44 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .skill-index { color: var(--red); margin-bottom: 18px; }
 .skill-title { font-family: var(--serif); font-weight: 500; font-size: 1.9rem; margin-bottom: 22px; line-height: 1.1; }
 
+/* experience: three cards side by side */
+.exp { margin-top: clamp(64px, 8vw, 100px); }
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+.exp-card {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--red);
+  padding: 28px 26px 30px;
+}
+.exp-card .achievement-years { color: var(--text-3); margin: 0 0 12px; font-size: 0.58rem; }
+.exp-card h3 { font-family: var(--serif); font-weight: 500; font-size: 1.5rem; line-height: 1.2; }
+.exp-card > p:not(.achievement-years) { color: var(--gold); font-size: 0.84rem; margin-top: 6px; }
+
+.exp-points { margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+.exp-points li {
+  position: relative;
+  padding-left: 16px;
+  color: var(--text-2);
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+.exp-points li::before {
+  content: ""; position: absolute; left: 0; top: 0.72em;
+  width: 5px; height: 5px; background: var(--red);
+}
+
+/* education (left) and certifications (right) share one row */
 .split {
   margin-top: clamp(64px, 8vw, 100px);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(36px, 6vw, 88px);
+  align-items: start;
 }
 .achievement-list { display: flex; flex-direction: column; gap: 26px; }
 .achievement { padding-left: 20px; border-left: 1px solid var(--red); }
@@ -541,11 +586,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .achievement .achievement-years { color: var(--text-3); margin: 0 0 8px; font-size: 0.58rem; }
 .achievement .grade { color: var(--gold); margin-top: 8px; font-size: 0.58rem; }
 
-.certs { margin-top: clamp(64px, 8vw, 100px); }
-.cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.certs { margin: 0; }
+.cert-grid { display: flex; flex-direction: column; gap: 14px; }
 .cert-card {
   display: flex; gap: 20px; align-items: flex-start;
-  padding: 24px;
+  padding: 20px 22px;
   background: var(--bg-2);
   border: 1px solid var(--line);
   transition: border-color 0.25s ease, transform 0.25s ease;
@@ -668,8 +713,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .skill-grid { grid-template-columns: 1fr; }
   .skill-col { border-right: 0; border-bottom: 1px solid var(--line); }
   .skill-col:last-child { border-bottom: 0; }
-  .work-card.wide, .work-card.tall { grid-column: span 12; }
-  .work-card:nth-child(2), .work-card:nth-child(4) { margin-top: 0; }
+  .work-grid { grid-template-columns: 1fr; }
+  .exp-grid { grid-template-columns: 1fr; }
   .rings { display: none; }
   .about-left { min-height: 0; }
 }
@@ -695,11 +740,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .hero-vertical { display: none; }
   .hero-top span:first-child { display: none; }
   .hero-bottom-mid { display: none; }
-  .cert-grid { grid-template-columns: 1fr; }
   .row.two { grid-template-columns: 1fr; }
   .photo-ring { width: 170px; height: 170px; }
   .brief { padding: 22px; box-shadow: 6px 6px 0 var(--red-deep); }
   .contact-meta { grid-template-columns: 1fr; }
+  .section-num { font-size: 3.6rem; top: -64px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
