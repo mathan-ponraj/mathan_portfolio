@@ -2,14 +2,12 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import './ResumeButton.css';
 
-// Free access key from https://web3forms.com (enter mathanponraj03@gmail.com, the key is emailed to you).
-// Local: add VITE_WEB3FORMS_KEY=your_key to .env   |   Vercel: Settings > Environment Variables, then redeploy.
 const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY;
 
 const profile = {
   name: "Mathan Ponraj",
-  title: "Python Developer (AI / ML)",
-  location: "HSR Layout, Bengaluru, Karnataka 560102",
+  title: "Data Scientist (AI/ ML)",
+  location: "Marathahalli, Bengaluru, Karnataka 560037",
   phone: "7339404085",
   photo: "/images/portfolio photo.png",
   email: "mathanponraj03@gmail.com",
@@ -17,7 +15,7 @@ const profile = {
   github: "https://github.com/mathan-ponraj",
 };
 
-const whatsappLink = `https://wa.me/91${profile.phone}?text=${encodeURIComponent('Hi Mathan, When are you available to join?')}`;
+const whatsappLink = `https://wa.me/91${profile.phone}?text=${encodeURIComponent('Hi Mathan, I came across your portfolio and would like to connect to explore how we could collaborate.')}`;
 
 const navItems = [
   { id: 'work', num: '01', label: 'Selected Work' },
@@ -28,124 +26,128 @@ const navItems = [
 
 const skillGroups = [
   {
+    label: "Data & ML",
+    items: ["Pandas", "NumPy", "Exploratory Data Analysis", "Statistics", "Feature Engineering", "Scikit-learn", "Model Evaluation", "ETL", "Power BI", "Excel"],
+  },
+  {
     label: "AI",
-    items: ["LangChain", "RAG", "OpenAI API", "Gemini API", "Prompt Engineering", "Hugging Face"],
+    items: ["Generative AI", "LLMs", "Prompt Engineering", "OpenAI API", "Gemini API", "RAG", "LangChain", "Hugging Face"],
   },
   {
     label: "FullStack Development",
-    items: ["Python", "HTML", "CSS", "JavaScript", "React.js", "FastAPI", "REST APIs", "SQL", "PostgreSQL", "Git & GitHub", "Postman"],
-  },
-  {
-    label: "Data & ML",
-    items: ["Pandas", "NumPy", "Scikit-learn", "Feature Engineering", "Model Evaluation", "ETL", "Data Modelling", "Data Analysis","Power BI", "Excel"],
+    items: ["HTML", "CSS", "JavaScript", "React.js", "Python", "FastAPI", "REST APIs", "SQL", "PostgreSQL", "Git & GitHub"],
   },
 ];
-
 const projects = [
   {
-    number: "01",
-    title: "TalentIQ AI",
-    kind: "GenAI / Career Prep",
-    tagline: "Know your fit. Ace the interview.",
-    image: '/images/resume-interview-thumbnail.jpg',
-    imageAlt: "TalentIQ AI resume analysis and mock interview app",
-    tags: ["Python", "FastAPI", "LangChain", "React.js", "Vite", "Gemini API", "Render"],
-    highlights: [
-      "GenAI career-prep app analyzing resume fit against target roles using Gemini API",
-      "LangChain RAG pipeline with semantic chunking for contextual skill matching",
-      "Multi-level AI-simulated mock interview suite with automated feedback scoring"
-    ],
-    github: "https://github.com/mathan-ponraj/talentiqai",
-    live: 'https://talentiq-ai-two.vercel.app/',
-    size: 'wide',
+  number: "01",
+  title: "TalentIQ AI",
+  kind: "GenAI / Career Prep",
+  tagline: "Know your fit. Ace the interview.",
+  image: '/images/resume-interview-thumbnail.jpg',
+  imageAlt: "TalentIQ AI resume analysis and mock interview app",
+  tags: ["React.js", "Vite", "Python", "FastAPI", "LangChain", "RAG", "Gemini API", "Vercel", "Render"],
+  description: "Job seekers rarely know how well their resume fits a role until they are rejected. In this project, I built a GenAI app that uses the Gemini API and a LangChain RAG pipeline with semantic chunking to score resume fit against a target role. It also runs mock interviews at multiple levels and gives automated feedback scores.",
+
+  github: "https://github.com/mathan-ponraj/talentiqai",
+  live: 'https://talentiq-ai-two.vercel.app/',
+  size: 'wide',
   },
- {
+{
   number: "02",
   title: "TrendTube",
   kind: "Data Engineering / Analytics SaaS",
-  tagline: "Nine regions. One global view.",
+  tagline: "Find what’s trending. Create what’s next.”,
   image: '/images/youtube-trendtube-thumbnail.jpg',
   imageAlt: "TrendTube global YouTube trending analytics dashboard",
   tags: [
+    "React.js",
     "Python",
     "FastAPI",
-    "React",
     "PostgreSQL",
     "ETL",
-    "YouTube Data API v3",
     "Pandas",
+    "YouTube Data API v3",
     "Vercel",
     "Render"
   ],
-  highlights: [
-    "Built an automated Python ETL pipeline collecting and processing YouTube trending videos across 9 global regions.",
-    "Designed a PostgreSQL star schema to store and analyse 447 video records across 6 populated continents.",
-    "Developed a React analytics dashboard with FastAPI, featuring regional trends, video insights and engagement metrics."
-  ],
+  description: "YouTube creators need to know what is trending around the world before they decide what to make. In this project, I built an automated Python ETL pipeline that collects trending videos from 9 regions through the YouTube Data API and stores them in a PostgreSQL star schema. I then built a React and FastAPI dashboard that shows regional trends, video insights and engagement metrics.",
   github: "https://github.com/mathan-ponraj/Trendtube",
   live: "https://trendtube-five.vercel.app/",
   size: 'tall',
 },
-  {
-    number: "03",
-    title: "EduHelpDesk",
-    kind: "Full-Stack / Support System",
-    tagline: "Every ticket, on the clock.",
-    image: '/images/eduhelpdesk-thumbnail.jpg',
-    imageAlt: "EduHelpDesk academic support ticketing system",
-    tags: ["Python", "Flask", "SQLite", "REST APIs", "RBAC", "Render"],
-    highlights: [
-      "Role-Based Access Control (RBAC) support portal for student/staff ticket management",
-      "Automated SLA tracking engine calculating aging and flagging overdue escalations",
-      "Full audit trail logging status change histories with administrative analytics"
-    ],
-    github: "https://github.com/mathan-ponraj/EduHelpDesk",
-    live: 'https://eduhelpdesk.onrender.com/',
-    size: 'tall',
-  },
- {
-  number: "04",
-  title: "LapPick",
-  kind: "Data Intelligence / Analytical Decision Support",
-  tagline: "Live laptop data. Smarter decisions.",
-  image: '/images/lappick-thumbnail.svg',
-  imageAlt: 'LapPick live laptop data intelligence application',
-  tags: [
-    'Python',
-    'Streamlit',
-    'REST API',
-    'Pandas',
-    'NumPy',
-    'Feature Engineering',
-    'Weighted Scoring',
-    'Cosine Similarity'
-  ],
-  highlights: [
-    "Integrated the API.SH Croma API to retrieve live laptop listings and process changing product data",
-    "Engineered structured hardware features from product descriptions, including CPU tier, RAM, storage, GPU and display specifications",
-    "Implemented usage-based weighted scoring, constraint filtering and cosine similarity for analytical product evaluation"
-  ],
-  github: 'https://github.com/mathan-ponraj/lappick',
-  live: 'https://laptop-price-and-recommendation-system-icvhjjspmfrmmy2rfmtuaq.streamlit.app/',
-  size: 'wide',
+{
+number: "03",
+title: "LapPick",
+kind: "Data Intelligence / Analytical Decision Support",
+tagline: "Live laptop data. Smarter decisions.",
+image: '/images/lappick-thumbnail.svg',
+imageAlt: 'LapPick live laptop data intelligence application',
+tags: [
+  'Python',
+  'Streamlit',
+  'REST API',
+  'Pandas',
+  'NumPy',
+  'Feature Engineering',
+  'Weighted Scoring',
+  'Cosine Similarity'
+],
+description: "Laptop prices and specs change constantly, which makes buying the right one hard. In this project, I used the API.SH Croma API to pull live listings and extracted CPU, RAM, storage, GPU and display specs from product descriptions. I then ranked laptops with usage-based weighted scoring, constraint filters and cosine similarity.",
+github: 'https://github.com/mathan-ponraj/lappick',
+live: 'https://laptop-price-and-recommendation-system-icvhjjspmfrmmy2rfmtuaq.streamlit.app/',
+size: 'wide',
 },
-];
 
-const achievements = [
+{
+  number: "04",
+  title: "EduHelpDesk",
+  kind: "Full-Stack / Support System",
+  tagline: "Every ticket, on the clock.",
+  image: '/images/eduhelpdesk-thumbnail.jpg',
+  imageAlt: "EduHelpDesk academic support ticketing system",
+  tags: ["Python", "Flask", "SQLite", "REST APIs", "RBAC", "Render"],
+  description: "Academic support requests often get lost or answered late when there is no system tracking them. In this project, I built a ticketing portal in Flask where students and staff manage requests under role-based access control. It tracks SLA deadlines, flags overdue tickets for escalation and keeps an audit trail of every status change.",
+  github: "https://github.com/mathan-ponraj/EduHelpDesk",
+  live: 'https://eduhelpdesk.onrender.com/',
+  size: 'tall',
+},
+
+const experience = [
   {
-    title: "Live Product Deployments",
-    description: "Successfully completed and hosted 3+ live production web applications combining scalable backend engineering and AI components.",
+    role: "Freelance Web Developer & Digital Marketer",
+    company: "Self-employed",
+    period: "[nov 2025] - Present",
+    points: [
+      "Lead a 3-member team delivering websites, SEO and social media content for small business clients.",
+      "Design, build and deploy static and dynamic web pages using HTML, CSS, JavaScript and React.js.",
+      "Improve search visibility with on-page SEO: keyword research, page titles, meta descriptions and site structure.",
+      "Produce Instagram content, including video editing and Photoshop graphics, and manage client deadlines."
+    ],
   },
   {
-    title: "Freelance Leadership",
-    description: "Successfully ran 1 year of freelance operations, leading a 3-member technical team (ongoing).",
+    role: "Data Science Intern",
+    company: "Rinex.ai",
+    period: "Mar 2025 - May 2025",
+    points: [
+      "Cleaned and analysed datasets with Python (Pandas, NumPy) to prepare them for modelling and reporting.",
+      "Built and evaluated machine learning models with Scikit-learn, using feature engineering and metrics such as accuracy and F1.",
+      "Created visualisations and summaries that turned analysis results into clear findings for non-technical readers.",
+      "Worked with SQL and a cloud deployment workflow to move models toward production use."
+    ],
   },
   {
-    title: "Full-Stack & Content Execution",
-    description: "Developed and deployed static and dynamic web pages while managing end-to-end Instagram content creation, including professional video editing and Photoshop design.",
+    role: "Professional Employability Intern",
+    company: "CDAC, Chennai",
+    period: "[Jun 2k23] - [Aug 2k23]",
+    points: [
+      "Wrote Python programs for data handling and automation tasks as part of structured, industry-aligned training.",
+      "Designed and queried relational databases with SQL, including joins, aggregations and subqueries.",
+      "Deployed applications to cloud platforms and learned the basics of hosting, environment setup and release workflows.",
+      "Built the professional skills expected on a tech team: version control with Git and GitHub, documentation and teamwork."
+    ],
   },
 ];
-
 const education = [
   {
     years: "2024 – 2026",
