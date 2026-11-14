@@ -18,10 +18,12 @@ const profile = {
 const whatsappLink = `https://wa.me/91${profile.phone}?text=${encodeURIComponent('I came across your portfolio and would like to connect to explore how we could collaborate.')}`;
 
 const navItems = [
-  { id: 'work', num: '01', label: 'Selected Work' },
-  { id: 'about', num: '02', label: 'About Me' },
-  { id: 'skills', num: '03', label: 'What I Do' },
-  { id: 'contact', num: '04', label: 'Start a Project' },
+  { id: 'about', num: '01', label: 'About Me' },
+  { id: 'skills', num: '02', label: 'Skills' },
+  { id: 'experience', num: '03', label: 'Experience' },
+  { id: 'work', num: '04', label: 'Projects' },
+  { id: 'education', num: '05', label: 'Education' },
+  { id: 'contact', num: '06', label: 'Contact Me' },
 ];
 
 const skillGroups = [
@@ -390,7 +392,7 @@ function Work() {
   return (
     <section className="block work" id="work" aria-label="Selected work">
       <div className="section-head">
-        <span className="section-num display" aria-hidden="true">01</span>
+        <span className="section-num display" aria-hidden="true">04</span>
         <div>
           <p className="eyebrow mono"><i className="eyebrow-dot" />Selected work / Project portfolio</p>
           <h2 className="display h2">
@@ -411,11 +413,11 @@ function Work() {
 
 function Skills() {
   return (
-    <section className="block skills" id="skills" aria-label="What I do">
+    <section className="block skills" id="skills" aria-label="Skills">
       <div className="section-head">
-        <span className="section-num display" aria-hidden="true">03</span>
+        <span className="section-num display" aria-hidden="true">02</span>
         <div>
-          <p className="eyebrow mono"><i className="eyebrow-dot" />What I do</p>
+          <p className="eyebrow mono"><i className="eyebrow-dot" />Skills</p>
           <h2 className="display h2">
             From raw data<br />
             <em className="muted">to real product.</em>
@@ -434,20 +436,51 @@ function Skills() {
           </div>
         ))}
       </div>
+    </section>
+  );
+}
 
-      <div className="exp">
-        <p className="eyebrow mono"><i className="eyebrow-dot" />Experience</p>
-        <div className="exp-grid">
-            {experience.map((e) => (
-              <div className="exp-card" key={e.role + e.company}>
-                <p className="mono achievement-years">{e.period}</p>
-                <h3>{e.role}</h3>
-                <p>{e.company}</p>
-                <ul className="exp-points">
-                  {e.points.map((pt, i) => <li key={i}>{pt}</li>)}
-                </ul>
-              </div>
-            ))}
+function Experience() {
+  return (
+    <section className="block experience" id="experience" aria-label="Experience">
+      <div className="section-head">
+        <span className="section-num display" aria-hidden="true">03</span>
+        <div>
+          <p className="eyebrow mono"><i className="eyebrow-dot" />Experience</p>
+          <h2 className="display h2">
+            Hands-on,<br />
+            <em className="muted">not just theory.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div className="exp-grid">
+        {experience.map((e) => (
+          <div className="exp-card" key={e.role + e.company}>
+            <p className="mono achievement-years">{e.period}</p>
+            <h3>{e.role}</h3>
+            <p>{e.company}</p>
+            <ul className="exp-points">
+              {e.points.map((pt, i) => <li key={i}>{pt}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Education() {
+  return (
+    <section className="block education" id="education" aria-label="Education and certifications">
+      <div className="section-head">
+        <span className="section-num display" aria-hidden="true">05</span>
+        <div>
+          <p className="eyebrow mono"><i className="eyebrow-dot" />Credentials</p>
+          <h2 className="display h2">
+            Always<br />
+            <em className="muted">learning.</em>
+          </h2>
         </div>
       </div>
 
@@ -467,22 +500,22 @@ function Skills() {
         </div>
 
         <div className="certs">
-        <p className="eyebrow mono"><i className="eyebrow-dot" />Certifications</p>
-        <div className="cert-grid">
-          {certifications.map((c) => (
-            <article className="cert-card" key={c.title}>
-              <span className="cert-mark display" aria-hidden="true">{c.mark}</span>
-              <div>
-                <p className="cert-type mono">{c.type}</p>
-                <h3 className="cert-title">{c.title}</h3>
-                <p className="cert-issuer">{c.issuer}</p>
-                {c.credential && (
-                  <a className="link-ul small" href={c.credential} target="_blank" rel="noreferrer">View credential <Arrow size={10} /></a>
-                )}
-              </div>
-            </article>
-          ))}
-        </div>
+          <p className="eyebrow mono"><i className="eyebrow-dot" />Certifications</p>
+          <div className="cert-grid">
+            {certifications.map((c) => (
+              <article className="cert-card" key={c.title}>
+                <span className="cert-mark display" aria-hidden="true">{c.mark}</span>
+                <div>
+                  <p className="cert-type mono">{c.type}</p>
+                  <h3 className="cert-title">{c.title}</h3>
+                  <p className="cert-issuer">{c.issuer}</p>
+                  {c.credential && (
+                    <a className="link-ul small" href={c.credential} target="_blank" rel="noreferrer">View credential <Arrow size={10} /></a>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -537,7 +570,7 @@ function Contact() {
     <section className="block contact" id="contact" aria-label="Contact">
       <div className="contact-grid">
         <div className="contact-left">
-          <span className="section-num display" aria-hidden="true">04</span>
+          <span className="section-num display" aria-hidden="true">06</span>
           <p className="eyebrow mono"><i className="eyebrow-dot" />The next great build could be yours</p>
           <h2 className="display h2">
             Let&apos;s make<br />
@@ -648,7 +681,7 @@ function Contact() {
 }
 
 export default function App() {
-  const [active, setActive] = useState('work');
+  const [active, setActive] = useState('about');
 
   useEffect(() => {
     const ids = navItems.map((n) => n.id);
@@ -671,9 +704,11 @@ export default function App() {
       <Sidebar active={active} />
       <main className="content">
         <Hero />
-        <Work />
         <About />
         <Skills />
+        <Experience />
+        <Work />
+        <Education />
         <Contact />
       </main>
     </div>
