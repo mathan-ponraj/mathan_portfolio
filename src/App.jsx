@@ -8,7 +8,7 @@ const profile = {
   name: "Mathan Ponraj",
   title: "Data Scientist (AI/ML)",
   location: "Marathahalli, Bengaluru, Karnataka 560037",
-  phone: "7339404085",
+  phone: "9486924085",
   photo: "/images/portfolio photo.png",
   email: "mathanponraj03@gmail.com",
   linkedin: "https://www.linkedin.com/in/mathan03/",
