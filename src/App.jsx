@@ -224,8 +224,8 @@ function Sidebar({ active }) {
       </div>
 
       <div className="sb-intro mono">
-        <p>An AI full-stack</p>
-        <p>developer.</p>
+        <p>Data Scientist/p>
+        <p> AI Developer</p>
       </div>
 
       <nav className="sb-nav" aria-label="Primary">
@@ -258,10 +258,6 @@ function Sidebar({ active }) {
           <a href="#contact" aria-label="Send me a message"><SocialIcon type="mail" /></a>
           <a href={whatsappLink} target="_blank" rel="noreferrer" aria-label="Catch me on WhatsApp" title="Catch me on WhatsApp"><SocialIcon type="whatsapp" /></a>
         </div>
-        <div className="phone-notice" role="note">
-          <span className="phone-notice-title mono">Mobile out of order</span>
-          <p>My mobile is out of order. Kindly reach me through WhatsApp, mail or LinkedIn.</p>
-        </div>
         <a className="say-hello mono" href="#contact">
           Say hello <Arrow size={11} />
         </a>
@@ -280,7 +276,7 @@ function Hero() {
       </div>
 
       <div className="hero-body">
-        <p className="eyebrow mono"><i className="eyebrow-dot" />AI Full-Stack Developer / Bengaluru &amp; beyond</p>
+        <p className="eyebrow mono"><i className="eyebrow-dot" />Data Scientist / Bengaluru &amp; Limitless Capacity</p>
         <h1 className="display">
           Messy data.<br />
           Working <em>software.</em>
